@@ -1,0 +1,18 @@
+[
+  {
+    "ContainingType": "CustomStore.Controllers.JWTController",
+    "Method": "Login",
+    "RelativePath": "api/JWT/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "BussiniessObject.Models.LoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

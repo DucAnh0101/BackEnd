@@ -1,13 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36212.18 d17.14
+VisualStudioVersion = 17.14.36212.18
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomStore", "CustomStore\CustomStore.csproj", "{B235D242-179E-4A08-8A2F-7AC3D48F78EE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BussiniessObject", "BussiniessObject\BussiniessObject.csproj", "{42645C7A-C264-411B-AE64-793A5E6C46FD}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{1BC733A7-FF10-40B2-9D82-E7D6856F6E24}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{47495FFF-314F-4E54-81A0-291D7B0192EE}"
 EndProject
@@ -27,10 +25,6 @@ Global
 		{42645C7A-C264-411B-AE64-793A5E6C46FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42645C7A-C264-411B-AE64-793A5E6C46FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42645C7A-C264-411B-AE64-793A5E6C46FD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1BC733A7-FF10-40B2-9D82-E7D6856F6E24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1BC733A7-FF10-40B2-9D82-E7D6856F6E24}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1BC733A7-FF10-40B2-9D82-E7D6856F6E24}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1BC733A7-FF10-40B2-9D82-E7D6856F6E24}.Release|Any CPU.Build.0 = Release|Any CPU
 		{47495FFF-314F-4E54-81A0-291D7B0192EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{47495FFF-314F-4E54-81A0-291D7B0192EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47495FFF-314F-4E54-81A0-291D7B0192EE}.Release|Any CPU.ActiveCfg = Release|Any CPU

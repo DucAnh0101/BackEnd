@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Code\\C#\\CodePrepare\\DataAccessLayer\\DataAccessLayer.csproj": {}
+    "F:\\Code\\C#\\backend\\DataAccessLayer\\DataAccessLayer.csproj": {}
   },
   "projects": {
-    "F:\\Code\\C#\\CodePrepare\\DataAccessLayer\\DataAccessLayer.csproj": {
+    "F:\\Code\\C#\\backend\\DataAccessLayer\\DataAccessLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Code\\C#\\CodePrepare\\DataAccessLayer\\DataAccessLayer.csproj",
+        "projectUniqueName": "F:\\Code\\C#\\backend\\DataAccessLayer\\DataAccessLayer.csproj",
         "projectName": "DataAccessLayer",
-        "projectPath": "F:\\Code\\C#\\CodePrepare\\DataAccessLayer\\DataAccessLayer.csproj",
+        "projectPath": "F:\\Code\\C#\\backend\\DataAccessLayer\\DataAccessLayer.csproj",
         "packagesPath": "C:\\Users\\Bomwf\\.nuget\\packages\\",
-        "outputPath": "F:\\Code\\C#\\CodePrepare\\DataAccessLayer\\obj\\",
+        "outputPath": "F:\\Code\\C#\\backend\\DataAccessLayer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -49,6 +49,12 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

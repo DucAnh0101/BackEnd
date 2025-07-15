@@ -16,7 +16,11 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = BussiniessObject
+<<<<<<< HEAD
 build_property.ProjectDir = D:\TTS\Dat_Hiem\backend\BussiniessObject\
+=======
+build_property.ProjectDir = F:\Code\C#\backend\BussiniessObject\
+>>>>>>> 2d89dfe6380df228815e0f2db0363d04011aab49
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.EffectiveAnalysisLevelStyle = 8.0

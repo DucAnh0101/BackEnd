@@ -7,7 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <ProjectReference Include="..\BussiniessObject\BussiniessObject.csproj" />
+=======
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" />
+>>>>>>> 2d89dfe6380df228815e0f2db0363d04011aab49
   </ItemGroup>
 
 </Project>

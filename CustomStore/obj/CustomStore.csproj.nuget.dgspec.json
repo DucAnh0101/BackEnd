@@ -4,12 +4,12 @@
     "F:\\Code\\C#\\backend\\CustomStore\\CustomStore.csproj": {}
   },
   "projects": {
-    "F:\\Code\\C#\\backend\\BussiniessObject\\BussiniessObject.csproj": {
+    "F:\\Code\\C#\\backend\\BussiniessObject\\BusiniessObject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Code\\C#\\backend\\BussiniessObject\\BussiniessObject.csproj",
-        "projectName": "BussiniessObject",
-        "projectPath": "F:\\Code\\C#\\backend\\BussiniessObject\\BussiniessObject.csproj",
+        "projectUniqueName": "F:\\Code\\C#\\backend\\BussiniessObject\\BusiniessObject.csproj",
+        "projectName": "BusiniessObject",
+        "projectPath": "F:\\Code\\C#\\backend\\BussiniessObject\\BusiniessObject.csproj",
         "packagesPath": "C:\\Users\\Bomwf\\.nuget\\packages\\",
         "outputPath": "F:\\Code\\C#\\backend\\BussiniessObject\\obj\\",
         "projectStyle": "PackageReference",
@@ -117,8 +117,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "F:\\Code\\C#\\backend\\BussiniessObject\\BussiniessObject.csproj": {
-                "projectPath": "F:\\Code\\C#\\backend\\BussiniessObject\\BussiniessObject.csproj"
+              "F:\\Code\\C#\\backend\\BussiniessObject\\BusiniessObject.csproj": {
+                "projectPath": "F:\\Code\\C#\\backend\\BussiniessObject\\BusiniessObject.csproj"
               },
               "F:\\Code\\C#\\backend\\DataAccessLayer\\DataAccessLayer.csproj": {
                 "projectPath": "F:\\Code\\C#\\backend\\DataAccessLayer\\DataAccessLayer.csproj"
@@ -272,8 +272,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "F:\\Code\\C#\\backend\\BussiniessObject\\BussiniessObject.csproj": {
-                "projectPath": "F:\\Code\\C#\\backend\\BussiniessObject\\BussiniessObject.csproj"
+              "F:\\Code\\C#\\backend\\BussiniessObject\\BusiniessObject.csproj": {
+                "projectPath": "F:\\Code\\C#\\backend\\BussiniessObject\\BusiniessObject.csproj"
               },
               "F:\\Code\\C#\\backend\\DataAccessLayer\\DataAccessLayer.csproj": {
                 "projectPath": "F:\\Code\\C#\\backend\\DataAccessLayer\\DataAccessLayer.csproj"

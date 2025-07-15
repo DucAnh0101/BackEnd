@@ -9,7 +9,23 @@
     "Parameters": [
       {
         "Name": "model",
-        "Type": "BussiniessObject.Models.LoginRequest",
+        "Type": "DataAccessLayer.Models.LoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CustomStore.Controllers.JWTController",
+    "Method": "ResetPassword",
+    "RelativePath": "api/JWT/reset-password",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "reset",
+        "Type": "DataAccessLayer.DTOs.ResetPassReq",
         "IsRequired": true
       }
     ],

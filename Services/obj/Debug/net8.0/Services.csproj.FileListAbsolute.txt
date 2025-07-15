@@ -1,9 +1,7 @@
 F:\Code\C#\backend\Services\bin\Debug\net8.0\Services.deps.json
 F:\Code\C#\backend\Services\bin\Debug\net8.0\Services.dll
 F:\Code\C#\backend\Services\bin\Debug\net8.0\Services.pdb
-F:\Code\C#\backend\Services\bin\Debug\net8.0\BussiniessObject.dll
 F:\Code\C#\backend\Services\bin\Debug\net8.0\DataAccessLayer.dll
-F:\Code\C#\backend\Services\bin\Debug\net8.0\BussiniessObject.pdb
 F:\Code\C#\backend\Services\bin\Debug\net8.0\DataAccessLayer.pdb
 F:\Code\C#\backend\Services\obj\Debug\net8.0\Services.csproj.AssemblyReference.cache
 F:\Code\C#\backend\Services\obj\Debug\net8.0\Services.GeneratedMSBuildEditorConfig.editorconfig
@@ -16,3 +14,5 @@ F:\Code\C#\backend\Services\obj\Debug\net8.0\Services.dll
 F:\Code\C#\backend\Services\obj\Debug\net8.0\refint\Services.dll
 F:\Code\C#\backend\Services\obj\Debug\net8.0\Services.pdb
 F:\Code\C#\backend\Services\obj\Debug\net8.0\ref\Services.dll
+F:\Code\C#\backend\Services\bin\Debug\net8.0\BusiniessObject.dll
+F:\Code\C#\backend\Services\bin\Debug\net8.0\BusiniessObject.pdb

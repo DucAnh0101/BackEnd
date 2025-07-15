@@ -1,4 +1,4 @@
-﻿namespace BussiniessObject.Models
+﻿namespace DataAccessLayer.Models
 {
     public class JwtSettings
     {

@@ -1,17 +1,26 @@
-using BussiniessObject.Models;
+using BusinessObject;
+using DataAccessLayer.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Services;
+using Services.Implements;
+using Services.Services;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<IAuthServices, AuthServices>();
 
 // 1. Bind JWT settings
 builder.Services.Configure<JwtSettings>(
     builder.Configuration.GetSection("JwtSettings"));
 var jwtSettings = builder.Configuration.GetSection("JwtSettings").Get<JwtSettings>();
+builder.Services.AddDbContext<MyDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("MyCnn"));
+});
 
 // 2. Add authentication
 builder.Services.AddAuthentication("Bearer")
@@ -37,7 +46,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowReactNative", builder =>
     {
         builder
-            .WithOrigins("http://localhost:5119")
+            .WithOrigins()
             .AllowAnyHeader()
             .AllowAnyMethod()
             .AllowCredentials();

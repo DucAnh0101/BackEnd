@@ -49,10 +49,8 @@ F:\Code\C#\backend\CustomStore\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.D
 F:\Code\C#\backend\CustomStore\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 F:\Code\C#\backend\CustomStore\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 F:\Code\C#\backend\CustomStore\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
-F:\Code\C#\backend\CustomStore\bin\Debug\net8.0\BussiniessObject.dll
 F:\Code\C#\backend\CustomStore\bin\Debug\net8.0\DataAccessLayer.dll
 F:\Code\C#\backend\CustomStore\bin\Debug\net8.0\Services.dll
-F:\Code\C#\backend\CustomStore\bin\Debug\net8.0\BussiniessObject.pdb
 F:\Code\C#\backend\CustomStore\bin\Debug\net8.0\DataAccessLayer.pdb
 F:\Code\C#\backend\CustomStore\bin\Debug\net8.0\Services.pdb
 F:\Code\C#\backend\CustomStore\obj\Debug\net8.0\CustomStore.csproj.AssemblyReference.cache
@@ -79,3 +77,5 @@ F:\Code\C#\backend\CustomStore\obj\Debug\net8.0\refint\CustomStore.dll
 F:\Code\C#\backend\CustomStore\obj\Debug\net8.0\CustomStore.pdb
 F:\Code\C#\backend\CustomStore\obj\Debug\net8.0\CustomStore.genruntimeconfig.cache
 F:\Code\C#\backend\CustomStore\obj\Debug\net8.0\ref\CustomStore.dll
+F:\Code\C#\backend\CustomStore\bin\Debug\net8.0\BusiniessObject.dll
+F:\Code\C#\backend\CustomStore\bin\Debug\net8.0\BusiniessObject.pdb

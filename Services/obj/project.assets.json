@@ -925,7 +925,7 @@
           }
         }
       },
-      "BussiniessObject/1.0.0": {
+      "BusiniessObject/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
@@ -934,10 +934,10 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.0"
         },
         "compile": {
-          "bin/placeholder/BussiniessObject.dll": {}
+          "bin/placeholder/BusiniessObject.dll": {}
         },
         "runtime": {
-          "bin/placeholder/BussiniessObject.dll": {}
+          "bin/placeholder/BusiniessObject.dll": {}
         }
       },
       "DataAccessLayer/1.0.0": {
@@ -2415,10 +2415,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "BussiniessObject/1.0.0": {
+    "BusiniessObject/1.0.0": {
       "type": "project",
-      "path": "../BussiniessObject/BussiniessObject.csproj",
-      "msbuildProject": "../BussiniessObject/BussiniessObject.csproj"
+      "path": "../BussiniessObject/BusiniessObject.csproj",
+      "msbuildProject": "../BussiniessObject/BusiniessObject.csproj"
     },
     "DataAccessLayer/1.0.0": {
       "type": "project",
@@ -2428,7 +2428,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "BussiniessObject >= 1.0.0",
+      "BusiniessObject >= 1.0.0",
       "DataAccessLayer >= 1.0.0"
     ]
   },
@@ -2464,8 +2464,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "F:\\Code\\C#\\backend\\BussiniessObject\\BussiniessObject.csproj": {
-              "projectPath": "F:\\Code\\C#\\backend\\BussiniessObject\\BussiniessObject.csproj"
+            "F:\\Code\\C#\\backend\\BussiniessObject\\BusiniessObject.csproj": {
+              "projectPath": "F:\\Code\\C#\\backend\\BussiniessObject\\BusiniessObject.csproj"
             },
             "F:\\Code\\C#\\backend\\DataAccessLayer\\DataAccessLayer.csproj": {
               "projectPath": "F:\\Code\\C#\\backend\\DataAccessLayer\\DataAccessLayer.csproj"

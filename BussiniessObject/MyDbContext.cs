@@ -1,8 +1,7 @@
 ﻿using BussiniessObject.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
-namespace BussiniessObject
+namespace BusinessObject
 {
     public class MyDbContext : DbContext
     {
@@ -11,19 +10,6 @@ namespace BussiniessObject
         {
         }
 
-        public DbSet<LoginRequest> Users { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                var config = new ConfigurationBuilder()
-                    .SetBasePath(Directory.GetCurrentDirectory())
-                    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                    .Build();
-
-                optionsBuilder.UseSqlServer(config.GetConnectionString("MyCnn"));
-            }
-        }
+        public DbSet<User> Users { get; set; }
     }
 }

@@ -1,0 +1,18 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Build
+bin/
+obj/
+*.dll
+*.exe
+
+# Temporary
+*.log
+*.tmp
+*.cache
+
+# Environment
+.env

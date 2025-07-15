@@ -108,7 +108,7 @@ namespace Services.Services
             }}
             .footer {{
                 margin-top: 30px;
-                font-size: 12px;
+                font-size: 12px;``
                 color: #888;
             }}
         </style>

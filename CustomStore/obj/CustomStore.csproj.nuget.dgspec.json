@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Code\\C#\\backend\\CustomStore\\CustomStore.csproj": {}
+    "D:\\TTS\\Dat_Hiem\\backend\\CustomStore\\CustomStore.csproj": {}
   },
   "projects": {
-    "F:\\Code\\C#\\backend\\BussiniessObject\\BusiniessObject.csproj": {
+    "D:\\TTS\\Dat_Hiem\\backend\\BussiniessObject\\BusiniessObject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Code\\C#\\backend\\BussiniessObject\\BusiniessObject.csproj",
+        "projectUniqueName": "D:\\TTS\\Dat_Hiem\\backend\\BussiniessObject\\BusiniessObject.csproj",
         "projectName": "BusiniessObject",
-        "projectPath": "F:\\Code\\C#\\backend\\BussiniessObject\\BusiniessObject.csproj",
-        "packagesPath": "C:\\Users\\Bomwf\\.nuget\\packages\\",
-        "outputPath": "F:\\Code\\C#\\backend\\BussiniessObject\\obj\\",
+        "projectPath": "D:\\TTS\\Dat_Hiem\\backend\\BussiniessObject\\BusiniessObject.csproj",
+        "packagesPath": "C:\\Users\\nguye\\.nuget\\packages\\",
+        "outputPath": "D:\\TTS\\Dat_Hiem\\backend\\BussiniessObject\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Bomwf\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\nguye\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -32,8 +32,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "F:\\Code\\C#\\backend\\DataAccessLayer\\DataAccessLayer.csproj": {
-                "projectPath": "F:\\Code\\C#\\backend\\DataAccessLayer\\DataAccessLayer.csproj"
+              "D:\\TTS\\Dat_Hiem\\backend\\DataAccessLayer\\DataAccessLayer.csproj": {
+                "projectPath": "D:\\TTS\\Dat_Hiem\\backend\\DataAccessLayer\\DataAccessLayer.csproj"
               }
             }
           }
@@ -89,20 +89,20 @@
         }
       }
     },
-    "F:\\Code\\C#\\backend\\CustomStore\\CustomStore.csproj": {
+    "D:\\TTS\\Dat_Hiem\\backend\\CustomStore\\CustomStore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Code\\C#\\backend\\CustomStore\\CustomStore.csproj",
+        "projectUniqueName": "D:\\TTS\\Dat_Hiem\\backend\\CustomStore\\CustomStore.csproj",
         "projectName": "CustomStore",
-        "projectPath": "F:\\Code\\C#\\backend\\CustomStore\\CustomStore.csproj",
-        "packagesPath": "C:\\Users\\Bomwf\\.nuget\\packages\\",
-        "outputPath": "F:\\Code\\C#\\backend\\CustomStore\\obj\\",
+        "projectPath": "D:\\TTS\\Dat_Hiem\\backend\\CustomStore\\CustomStore.csproj",
+        "packagesPath": "C:\\Users\\nguye\\.nuget\\packages\\",
+        "outputPath": "D:\\TTS\\Dat_Hiem\\backend\\CustomStore\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Bomwf\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\nguye\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -117,14 +117,14 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "F:\\Code\\C#\\backend\\BussiniessObject\\BusiniessObject.csproj": {
-                "projectPath": "F:\\Code\\C#\\backend\\BussiniessObject\\BusiniessObject.csproj"
+              "D:\\TTS\\Dat_Hiem\\backend\\BussiniessObject\\BusiniessObject.csproj": {
+                "projectPath": "D:\\TTS\\Dat_Hiem\\backend\\BussiniessObject\\BusiniessObject.csproj"
               },
-              "F:\\Code\\C#\\backend\\DataAccessLayer\\DataAccessLayer.csproj": {
-                "projectPath": "F:\\Code\\C#\\backend\\DataAccessLayer\\DataAccessLayer.csproj"
+              "D:\\TTS\\Dat_Hiem\\backend\\DataAccessLayer\\DataAccessLayer.csproj": {
+                "projectPath": "D:\\TTS\\Dat_Hiem\\backend\\DataAccessLayer\\DataAccessLayer.csproj"
               },
-              "F:\\Code\\C#\\backend\\Services\\Services.csproj": {
-                "projectPath": "F:\\Code\\C#\\backend\\Services\\Services.csproj"
+              "D:\\TTS\\Dat_Hiem\\backend\\Services\\Services.csproj": {
+                "projectPath": "D:\\TTS\\Dat_Hiem\\backend\\Services\\Services.csproj"
               }
             }
           }
@@ -173,20 +173,20 @@
         }
       }
     },
-    "F:\\Code\\C#\\backend\\DataAccessLayer\\DataAccessLayer.csproj": {
+    "D:\\TTS\\Dat_Hiem\\backend\\DataAccessLayer\\DataAccessLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Code\\C#\\backend\\DataAccessLayer\\DataAccessLayer.csproj",
+        "projectUniqueName": "D:\\TTS\\Dat_Hiem\\backend\\DataAccessLayer\\DataAccessLayer.csproj",
         "projectName": "DataAccessLayer",
-        "projectPath": "F:\\Code\\C#\\backend\\DataAccessLayer\\DataAccessLayer.csproj",
-        "packagesPath": "C:\\Users\\Bomwf\\.nuget\\packages\\",
-        "outputPath": "F:\\Code\\C#\\backend\\DataAccessLayer\\obj\\",
+        "projectPath": "D:\\TTS\\Dat_Hiem\\backend\\DataAccessLayer\\DataAccessLayer.csproj",
+        "packagesPath": "C:\\Users\\nguye\\.nuget\\packages\\",
+        "outputPath": "D:\\TTS\\Dat_Hiem\\backend\\DataAccessLayer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Bomwf\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\nguye\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -244,20 +244,20 @@
         }
       }
     },
-    "F:\\Code\\C#\\backend\\Services\\Services.csproj": {
+    "D:\\TTS\\Dat_Hiem\\backend\\Services\\Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Code\\C#\\backend\\Services\\Services.csproj",
+        "projectUniqueName": "D:\\TTS\\Dat_Hiem\\backend\\Services\\Services.csproj",
         "projectName": "Services",
-        "projectPath": "F:\\Code\\C#\\backend\\Services\\Services.csproj",
-        "packagesPath": "C:\\Users\\Bomwf\\.nuget\\packages\\",
-        "outputPath": "F:\\Code\\C#\\backend\\Services\\obj\\",
+        "projectPath": "D:\\TTS\\Dat_Hiem\\backend\\Services\\Services.csproj",
+        "packagesPath": "C:\\Users\\nguye\\.nuget\\packages\\",
+        "outputPath": "D:\\TTS\\Dat_Hiem\\backend\\Services\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Bomwf\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\nguye\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -272,11 +272,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "F:\\Code\\C#\\backend\\BussiniessObject\\BusiniessObject.csproj": {
-                "projectPath": "F:\\Code\\C#\\backend\\BussiniessObject\\BusiniessObject.csproj"
+              "D:\\TTS\\Dat_Hiem\\backend\\BussiniessObject\\BusiniessObject.csproj": {
+                "projectPath": "D:\\TTS\\Dat_Hiem\\backend\\BussiniessObject\\BusiniessObject.csproj"
               },
-              "F:\\Code\\C#\\backend\\DataAccessLayer\\DataAccessLayer.csproj": {
-                "projectPath": "F:\\Code\\C#\\backend\\DataAccessLayer\\DataAccessLayer.csproj"
+              "D:\\TTS\\Dat_Hiem\\backend\\DataAccessLayer\\DataAccessLayer.csproj": {
+                "projectPath": "D:\\TTS\\Dat_Hiem\\backend\\DataAccessLayer\\DataAccessLayer.csproj"
               }
             }
           }

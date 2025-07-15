@@ -1,8 +1,10 @@
-using BusinessObject;
+﻿using BusinessObject;
+using BussiniessObject.Models;
 using DataAccessLayer.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Services;
+using Services.Impl;
 using Services.Implements;
 using Services.Services;
 using System.Text;
@@ -13,6 +15,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IAuthServices, AuthServices>();
 
+// Đăng ký DbContext
+builder.Services.AddDbContext<DatHiemContext>();
+
+// Đăng ký interface và implementation cho F&Q Service
+builder.Services.AddScoped<F_QService>();
 // 1. Bind JWT settings
 builder.Services.Configure<JwtSettings>(
     builder.Configuration.GetSection("JwtSettings"));

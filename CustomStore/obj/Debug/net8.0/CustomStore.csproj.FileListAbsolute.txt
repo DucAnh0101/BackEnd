@@ -70,7 +70,6 @@ F:\Code\C#\backend\CustomStore\obj\Debug\net8.0\staticwebassets.build.json
 F:\Code\C#\backend\CustomStore\obj\Debug\net8.0\staticwebassets.build.json.cache
 F:\Code\C#\backend\CustomStore\obj\Debug\net8.0\staticwebassets.development.json
 F:\Code\C#\backend\CustomStore\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-F:\Code\C#\backend\CustomStore\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 F:\Code\C#\backend\CustomStore\obj\Debug\net8.0\CustomSt.E268776B.Up2Date
 F:\Code\C#\backend\CustomStore\obj\Debug\net8.0\CustomStore.dll
 F:\Code\C#\backend\CustomStore\obj\Debug\net8.0\refint\CustomStore.dll

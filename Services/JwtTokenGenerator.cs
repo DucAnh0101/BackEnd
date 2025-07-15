@@ -30,6 +30,7 @@ namespace Services
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(
+                userId: userId,
                 issuer: _settings.Issuer,
                 audience: _settings.Audience,
                 claims: claims,

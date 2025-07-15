@@ -9,5 +9,6 @@ public partial class QuestionGroup
 
     public string Name { get; set; } = null!;
 
-    public virtual ICollection<Question> Questions { get; set; } = new List<Question>();
+    public virtual ICollection<Question> Questions { get; set; }
+
 }

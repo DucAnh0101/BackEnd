@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace BussiniessObject.Models;
 
@@ -13,5 +14,5 @@ public partial class Question
 
     public string AnswerText { get; set; } = null!;
 
-    public virtual QuestionGroup Group { get; set; } = null!;
+    public virtual QuestionGroup Group { get; set; }
 }

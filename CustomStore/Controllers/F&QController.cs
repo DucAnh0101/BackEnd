@@ -34,5 +34,15 @@ namespace CustomStore.Controllers
                 return NotFound();
             return Ok(question);
         }
+
+        // Lấy câu hỏi theo Group_Id
+        [HttpGet("questions/group/{Group_id}")]
+        public async Task<ActionResult<QuestionRes>> GetQuestionsByGroupIdAsync(int Group_id)
+        {
+            var question = await _fQService.GetQuestionsByGroupIdAsync(Group_id);
+            if (question == null)
+                return NotFound();
+            return Ok(question);
+        }
     }
 }

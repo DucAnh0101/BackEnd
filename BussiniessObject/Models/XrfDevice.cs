@@ -3,10 +3,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BusinessObject.Models
 {
-   public enum DeviceType
+   public class XrfDevice : MeasuringDevice
     {
-        Gamma,
-        PhoGamma,
-        Xrf
+        public string Note { get; set; }
+        public XrfDevice() => Type = DeviceType.Xrf;
     }
 }

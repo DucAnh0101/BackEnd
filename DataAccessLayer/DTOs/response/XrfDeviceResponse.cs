@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.DTOs.response
 {
-    public class XrfRes
+   public class XrfDeviceResponse
     {
         public int Id { get; set; }
-
-        public int MeasuringDeviceId { get; set; }
-
-        public string Note { get; set; } = null!;
+        public string SerialNumber { get; set; }
+        public string Note { get; set; }
     }
 }

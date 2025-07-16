@@ -14,8 +14,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IAuthServices, AuthServices>();
 builder.Services.AddScoped<IUserServices, UserServices>();
-builder.Services.AddScoped<F_QService>();
-builder.Services.AddScoped<IDeviceServices, DeviceService>();
+builder.Services.AddScoped<IGammaService, GammaService>();
+builder.Services.AddScoped<IPhoGammaService, PhoGammaService>();
+builder.Services.AddScoped<IXrfService, XrfService>();
 
 // 1. Bind JWT settings
 builder.Services.Configure<JwtSettings>(

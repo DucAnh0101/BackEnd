@@ -1,5 +1,4 @@
-﻿using DataAccessLayer.DTOs;
-using DataAccessLayer.Models;
+﻿using DataAccessLayer.DTOs.request;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Services.Implements;

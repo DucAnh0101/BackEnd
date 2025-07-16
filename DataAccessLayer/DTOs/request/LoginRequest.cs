@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace DataAccessLayer.Models
+namespace DataAccessLayer.DTOs.request
 {
     public class LoginRequest
     {

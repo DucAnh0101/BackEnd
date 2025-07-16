@@ -1,6 +1,5 @@
 ﻿using BusinessObject;
-using DataAccessLayer.DTOs;
-using DataAccessLayer.Models;
+using DataAccessLayer.DTOs.request;
 using Services.Implements;
 using System.Net;
 using System.Net.Mail;

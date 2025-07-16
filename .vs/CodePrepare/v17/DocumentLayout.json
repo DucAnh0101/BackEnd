@@ -1,8 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\TTS\\Dat_Hiem\\backend\\",
+  "WorkspaceRootPath": "F:\\Code\\C#\\backend\\",
   "Documents": [
     {
+<<<<<<< HEAD
       "AbsoluteMoniker": "D:0:0:{B235D242-179E-4A08-8A2F-7AC3D48F78EE}|CustomStore\\CustomStore.csproj|d:\\tts\\dat_hiem\\backend\\customstore\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B235D242-179E-4A08-8A2F-7AC3D48F78EE}|CustomStore\\CustomStore.csproj|solutionrelative:customstore\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -33,6 +34,18 @@
     {
       "AbsoluteMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|d:\\tts\\dat_hiem\\backend\\services\\implements\\ixrfservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|solutionrelative:services\\implements\\ixrfservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+=======
+      "AbsoluteMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|f:\\code\\c#\\backend\\services\\services\\notificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|solutionrelative:services\\services\\notificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B235D242-179E-4A08-8A2F-7AC3D48F78EE}|CustomStore\\CustomStore.csproj|f:\\code\\c#\\backend\\customstore\\controllers\\notificationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B235D242-179E-4A08-8A2F-7AC3D48F78EE}|CustomStore\\CustomStore.csproj|solutionrelative:customstore\\controllers\\notificationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|f:\\code\\c#\\backend\\services\\implements\\inotificationservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|solutionrelative:services\\implements\\inotificationservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+>>>>>>> b25226b00660a65b8fb2abdf69b67025aef9677d
     }
   ],
   "DocumentGroupContainers": [
@@ -42,6 +55,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
+<<<<<<< HEAD
           "SelectedChildIndex": 0,
           "Children": [
             {
@@ -124,11 +138,27 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-16T12:11:58.815Z",
+=======
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "INotificationServices.cs",
+              "DocumentMoniker": "F:\\Code\\C#\\backend\\Services\\Implements\\INotificationServices.cs",
+              "RelativeDocumentMoniker": "Services\\Implements\\INotificationServices.cs",
+              "ToolTip": "F:\\Code\\C#\\backend\\Services\\Implements\\INotificationServices.cs",
+              "RelativeToolTip": "Services\\Implements\\INotificationServices.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-16T10:03:05.239Z",
+>>>>>>> b25226b00660a65b8fb2abdf69b67025aef9677d
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+<<<<<<< HEAD
               "Title": "XrfService.cs",
               "DocumentMoniker": "D:\\TTS\\Dat_Hiem\\backend\\Services\\Services\\XrfService.cs",
               "RelativeDocumentMoniker": "Services\\Services\\XrfService.cs",
@@ -137,10 +167,21 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-16T12:08:05.718Z",
+=======
+              "Title": "NotificationController.cs",
+              "DocumentMoniker": "F:\\Code\\C#\\backend\\CustomStore\\Controllers\\NotificationController.cs",
+              "RelativeDocumentMoniker": "CustomStore\\Controllers\\NotificationController.cs",
+              "ToolTip": "F:\\Code\\C#\\backend\\CustomStore\\Controllers\\NotificationController.cs",
+              "RelativeToolTip": "CustomStore\\Controllers\\NotificationController.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAA3wEAAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-16T09:55:41.809Z",
+>>>>>>> b25226b00660a65b8fb2abdf69b67025aef9677d
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 2,
               "Title": "PhoGammaService.cs",
               "DocumentMoniker": "D:\\TTS\\Dat_Hiem\\backend\\Services\\Services\\PhoGammaService.cs",
@@ -150,6 +191,17 @@
               "ViewState": "AgIAAAkAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-16T12:07:37.436Z",
+=======
+              "DocumentIndex": 0,
+              "Title": "NotificationService.cs",
+              "DocumentMoniker": "F:\\Code\\C#\\backend\\Services\\Services\\NotificationService.cs",
+              "RelativeDocumentMoniker": "Services\\Services\\NotificationService.cs",
+              "ToolTip": "F:\\Code\\C#\\backend\\Services\\Services\\NotificationService.cs",
+              "RelativeToolTip": "Services\\Services\\NotificationService.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAywBgAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-16T09:35:38.213Z",
+>>>>>>> b25226b00660a65b8fb2abdf69b67025aef9677d
               "EditorCaption": ""
             }
           ]

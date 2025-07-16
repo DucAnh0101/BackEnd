@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace DataAccessLayer.DTOs
+namespace DataAccessLayer.DTOs.request
 {
     public class ResetPassReq
     {

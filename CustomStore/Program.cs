@@ -3,6 +3,7 @@ using DataAccessLayer.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Services;
+using Services.Impl;
 using Services.Implements;
 using Services.Services;
 using System.Text;
@@ -13,6 +14,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IAuthServices, AuthServices>();
 builder.Services.AddScoped<IUserServices, UserServices>();
+builder.Services.AddScoped<F_QService>();
+builder.Services.AddScoped<IDeviceService, DeviceService>();
 
 // 1. Bind JWT settings
 builder.Services.Configure<JwtSettings>(

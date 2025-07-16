@@ -3,6 +3,7 @@
   "WorkspaceRootPath": "D:\\TTS\\Dat_Hiem\\backend\\",
   "Documents": [
     {
+<<<<<<< HEAD
       "AbsoluteMoniker": "D:0:0:{02B5DD56-B2CD-4AD9-9F85-F636B349116E}|DataAccessLayer\\DataAccessLayer.csproj|d:\\tts\\dat_hiem\\backend\\dataaccesslayer\\dtos\\request\\xrfreq.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{02B5DD56-B2CD-4AD9-9F85-F636B349116E}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\dtos\\request\\xrfreq.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -57,6 +58,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|d:\\tts\\dat_hiem\\backend\\services\\implements\\ideviceservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|solutionrelative:services\\implements\\ideviceservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+=======
+      "AbsoluteMoniker": "D:0:0:{B235D242-179E-4A08-8A2F-7AC3D48F78EE}|CustomStore\\CustomStore.csproj|f:\\code\\c#\\backend\\customstore\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B235D242-179E-4A08-8A2F-7AC3D48F78EE}|CustomStore\\CustomStore.csproj|solutionrelative:customstore\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+>>>>>>> 1cb72fc13b20226e921c63551c8194f6a1693be9
     }
   ],
   "DocumentGroupContainers": [
@@ -75,6 +80,7 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+<<<<<<< HEAD
               "Title": "XrfReq.cs",
               "DocumentMoniker": "D:\\TTS\\Dat_Hiem\\backend\\DataAccessLayer\\DTOs\\request\\XrfReq.cs",
               "RelativeDocumentMoniker": "DataAccessLayer\\DTOs\\request\\XrfReq.cs",
@@ -252,6 +258,16 @@
               "ViewState": "AgIAABgAAAAAAAAAAAAYwAoAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-16T06:44:55.793Z",
+=======
+              "Title": "Program.cs",
+              "DocumentMoniker": "F:\\Code\\C#\\backend\\CustomStore\\Program.cs",
+              "RelativeDocumentMoniker": "CustomStore\\Program.cs",
+              "ToolTip": "F:\\Code\\C#\\backend\\CustomStore\\Program.cs",
+              "RelativeToolTip": "CustomStore\\Program.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAAAYAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-16T06:15:40.444Z",
+>>>>>>> 1cb72fc13b20226e921c63551c8194f6a1693be9
               "EditorCaption": ""
             }
           ]

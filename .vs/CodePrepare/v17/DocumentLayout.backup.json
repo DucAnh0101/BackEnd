@@ -46,6 +46,7 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 5,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\TTS\\Dat_Hiem\\backend\\CustomStore\\Program.cs",
@@ -53,6 +54,15 @@
               "ToolTip": "D:\\TTS\\Dat_Hiem\\backend\\CustomStore\\Program.cs",
               "RelativeToolTip": "CustomStore\\Program.cs",
               "ViewState": "AgIAAB0AAAAAAAAAAAAvwCUAAAAaAAAAAAAAAA==",
+=======
+              "DocumentIndex": 0,
+              "Title": "DeviceServices.cs",
+              "DocumentMoniker": "F:\\Code\\C#\\backend\\Services\\Services\\DeviceServices.cs",
+              "RelativeDocumentMoniker": "Services\\Services\\DeviceServices.cs",
+              "ToolTip": "F:\\Code\\C#\\backend\\Services\\Services\\DeviceServices.cs",
+              "RelativeToolTip": "Services\\Services\\DeviceServices.cs",
+              "ViewState": "AgIAAOEAAAAAAAAAAAAAAHcAAABIAAAAAAAAAA==",
+>>>>>>> 1cb72fc13b20226e921c63551c8194f6a1693be9
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-16T08:25:29.688Z",
               "EditorCaption": ""

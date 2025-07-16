@@ -1,58 +1,34 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "F:\\Code\\C#\\backend\\",
+  "WorkspaceRootPath": "D:\\TTS\\Dat_Hiem\\backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|f:\\code\\c#\\backend\\services\\services\\deviceservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|solutionrelative:services\\services\\deviceservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|f:\\code\\c#\\backend\\services\\implements\\ideviceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|solutionrelative:services\\implements\\ideviceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|f:\\code\\c#\\backend\\services\\mapper\\measuringdevicemapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|solutionrelative:services\\mapper\\measuringdevicemapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B235D242-179E-4A08-8A2F-7AC3D48F78EE}|CustomStore\\CustomStore.csproj|f:\\code\\c#\\backend\\customstore\\controllers\\devicecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B235D242-179E-4A08-8A2F-7AC3D48F78EE}|CustomStore\\CustomStore.csproj|solutionrelative:customstore\\controllers\\devicecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{42645C7A-C264-411B-AE64-793A5E6C46FD}|BussiniessObject\\BusiniessObject.csproj|f:\\code\\c#\\backend\\bussiniessobject\\mydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{42645C7A-C264-411B-AE64-793A5E6C46FD}|BussiniessObject\\BusiniessObject.csproj|d:\\tts\\dat_hiem\\backend\\bussiniessobject\\mydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{42645C7A-C264-411B-AE64-793A5E6C46FD}|BussiniessObject\\BusiniessObject.csproj|solutionrelative:bussiniessobject\\mydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{42645C7A-C264-411B-AE64-793A5E6C46FD}|BussiniessObject\\BusiniessObject.csproj|f:\\code\\c#\\backend\\bussiniessobject\\models\\phogammainfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42645C7A-C264-411B-AE64-793A5E6C46FD}|BussiniessObject\\BusiniessObject.csproj|solutionrelative:bussiniessobject\\models\\phogammainfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{42645C7A-C264-411B-AE64-793A5E6C46FD}|BussiniessObject\\BusiniessObject.csproj|f:\\code\\c#\\backend\\bussiniessobject\\models\\measuringdevice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42645C7A-C264-411B-AE64-793A5E6C46FD}|BussiniessObject\\BusiniessObject.csproj|solutionrelative:bussiniessobject\\models\\measuringdevice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{42645C7A-C264-411B-AE64-793A5E6C46FD}|BussiniessObject\\BusiniessObject.csproj|f:\\code\\c#\\backend\\bussiniessobject\\models\\gammainfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42645C7A-C264-411B-AE64-793A5E6C46FD}|BussiniessObject\\BusiniessObject.csproj|solutionrelative:bussiniessobject\\models\\gammainfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{42645C7A-C264-411B-AE64-793A5E6C46FD}|BussiniessObject\\BusiniessObject.csproj|f:\\code\\c#\\backend\\bussiniessobject\\models\\question.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42645C7A-C264-411B-AE64-793A5E6C46FD}|BussiniessObject\\BusiniessObject.csproj|solutionrelative:bussiniessobject\\models\\question.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{42645C7A-C264-411B-AE64-793A5E6C46FD}|BussiniessObject\\BusiniessObject.csproj|f:\\code\\c#\\backend\\bussiniessobject\\models\\xrfinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42645C7A-C264-411B-AE64-793A5E6C46FD}|BussiniessObject\\BusiniessObject.csproj|solutionrelative:bussiniessobject\\models\\xrfinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{42645C7A-C264-411B-AE64-793A5E6C46FD}|BussiniessObject\\BusiniessObject.csproj|f:\\code\\c#\\backend\\bussiniessobject\\models\\gammacalibration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{42645C7A-C264-411B-AE64-793A5E6C46FD}|BussiniessObject\\BusiniessObject.csproj|d:\\tts\\dat_hiem\\backend\\bussiniessobject\\models\\gammacalibration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{42645C7A-C264-411B-AE64-793A5E6C46FD}|BussiniessObject\\BusiniessObject.csproj|solutionrelative:bussiniessobject\\models\\gammacalibration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{42645C7A-C264-411B-AE64-793A5E6C46FD}|BussiniessObject\\BusiniessObject.csproj|f:\\code\\c#\\backend\\bussiniessobject\\models\\devicetype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42645C7A-C264-411B-AE64-793A5E6C46FD}|BussiniessObject\\BusiniessObject.csproj|solutionrelative:bussiniessobject\\models\\devicetype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B235D242-179E-4A08-8A2F-7AC3D48F78EE}|CustomStore\\CustomStore.csproj|d:\\tts\\dat_hiem\\backend\\customstore\\controllers\\devicecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B235D242-179E-4A08-8A2F-7AC3D48F78EE}|CustomStore\\CustomStore.csproj|solutionrelative:customstore\\controllers\\devicecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{42645C7A-C264-411B-AE64-793A5E6C46FD}|BussiniessObject\\BusiniessObject.csproj|f:\\code\\c#\\backend\\bussiniessobject\\models\\questiongroup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42645C7A-C264-411B-AE64-793A5E6C46FD}|BussiniessObject\\BusiniessObject.csproj|solutionrelative:bussiniessobject\\models\\questiongroup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|d:\\tts\\dat_hiem\\backend\\services\\services\\deviceservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|solutionrelative:services\\services\\deviceservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42645C7A-C264-411B-AE64-793A5E6C46FD}|BussiniessObject\\BusiniessObject.csproj|d:\\tts\\dat_hiem\\backend\\bussiniessobject\\models\\phogammainfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42645C7A-C264-411B-AE64-793A5E6C46FD}|BussiniessObject\\BusiniessObject.csproj|solutionrelative:bussiniessobject\\models\\phogammainfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B235D242-179E-4A08-8A2F-7AC3D48F78EE}|CustomStore\\CustomStore.csproj|d:\\tts\\dat_hiem\\backend\\customstore\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B235D242-179E-4A08-8A2F-7AC3D48F78EE}|CustomStore\\CustomStore.csproj|solutionrelative:customstore\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|d:\\tts\\dat_hiem\\backend\\services\\implements\\ideviceservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|solutionrelative:services\\implements\\ideviceservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -62,175 +38,101 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 4,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DeviceServices.cs",
-              "DocumentMoniker": "F:\\Code\\C#\\backend\\Services\\Services\\DeviceServices.cs",
-              "RelativeDocumentMoniker": "Services\\Services\\DeviceServices.cs",
-              "ToolTip": "F:\\Code\\C#\\backend\\Services\\Services\\DeviceServices.cs",
-              "RelativeToolTip": "Services\\Services\\DeviceServices.cs",
-              "ViewState": "AgIAAG0AAAAAAAAAAAAgwHcAAABIAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\TTS\\Dat_Hiem\\backend\\CustomStore\\Program.cs",
+              "RelativeDocumentMoniker": "CustomStore\\Program.cs",
+              "ToolTip": "D:\\TTS\\Dat_Hiem\\backend\\CustomStore\\Program.cs",
+              "RelativeToolTip": "CustomStore\\Program.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAvwCUAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-16T06:11:27.241Z",
+              "WhenOpened": "2025-07-16T08:25:29.688Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "IDeviceService.cs",
-              "DocumentMoniker": "F:\\Code\\C#\\backend\\Services\\Implements\\IDeviceService.cs",
-              "RelativeDocumentMoniker": "Services\\Implements\\IDeviceService.cs",
-              "ToolTip": "F:\\Code\\C#\\backend\\Services\\Implements\\IDeviceService.cs",
-              "RelativeToolTip": "Services\\Implements\\IDeviceService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-16T06:11:24.336Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MeasuringDeviceMapper.cs",
-              "DocumentMoniker": "F:\\Code\\C#\\backend\\Services\\mapper\\MeasuringDeviceMapper.cs",
-              "RelativeDocumentMoniker": "Services\\mapper\\MeasuringDeviceMapper.cs",
-              "ToolTip": "F:\\Code\\C#\\backend\\Services\\mapper\\MeasuringDeviceMapper.cs",
-              "RelativeToolTip": "Services\\mapper\\MeasuringDeviceMapper.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-16T06:11:16.472Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "DeviceController.cs",
-              "DocumentMoniker": "F:\\Code\\C#\\backend\\CustomStore\\Controllers\\DeviceController.cs",
-              "RelativeDocumentMoniker": "CustomStore\\Controllers\\DeviceController.cs",
-              "ToolTip": "F:\\Code\\C#\\backend\\CustomStore\\Controllers\\DeviceController.cs",
-              "RelativeToolTip": "CustomStore\\Controllers\\DeviceController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-16T06:11:11.292Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "XRFInfo.cs",
-              "DocumentMoniker": "F:\\Code\\C#\\backend\\BussiniessObject\\Models\\XRFInfo.cs",
-              "RelativeDocumentMoniker": "BussiniessObject\\Models\\XRFInfo.cs",
-              "ToolTip": "F:\\Code\\C#\\backend\\BussiniessObject\\Models\\XRFInfo.cs",
-              "RelativeToolTip": "BussiniessObject\\Models\\XRFInfo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-16T06:05:49.506Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
               "Title": "GammaCalibration.cs",
-              "DocumentMoniker": "F:\\Code\\C#\\backend\\BussiniessObject\\Models\\GammaCalibration.cs",
+              "DocumentMoniker": "D:\\TTS\\Dat_Hiem\\backend\\BussiniessObject\\Models\\GammaCalibration.cs",
               "RelativeDocumentMoniker": "BussiniessObject\\Models\\GammaCalibration.cs",
-              "ToolTip": "F:\\Code\\C#\\backend\\BussiniessObject\\Models\\GammaCalibration.cs",
+              "ToolTip": "D:\\TTS\\Dat_Hiem\\backend\\BussiniessObject\\Models\\GammaCalibration.cs",
               "RelativeToolTip": "BussiniessObject\\Models\\GammaCalibration.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwAsAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-16T06:05:41.348Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "DeviceType.cs",
-              "DocumentMoniker": "F:\\Code\\C#\\backend\\BussiniessObject\\Models\\DeviceType.cs",
-              "RelativeDocumentMoniker": "BussiniessObject\\Models\\DeviceType.cs",
-              "ToolTip": "F:\\Code\\C#\\backend\\BussiniessObject\\Models\\DeviceType.cs",
-              "RelativeToolTip": "BussiniessObject\\Models\\DeviceType.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-16T06:05:29.353Z",
+              "WhenOpened": "2025-07-16T08:16:56.712Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "MyDbContext.cs",
-              "DocumentMoniker": "F:\\Code\\C#\\backend\\BussiniessObject\\MyDbContext.cs",
-              "RelativeDocumentMoniker": "BussiniessObject\\MyDbContext.cs",
-              "ToolTip": "F:\\Code\\C#\\backend\\BussiniessObject\\MyDbContext.cs",
-              "RelativeToolTip": "BussiniessObject\\MyDbContext.cs",
-              "ViewState": "AgIAACoBAAAAAAAAAAAuwDEBAAAkAAAAAAAAAA==",
+              "Title": "PhoGammaInfo.cs",
+              "DocumentMoniker": "D:\\TTS\\Dat_Hiem\\backend\\BussiniessObject\\Models\\PhoGammaInfo.cs",
+              "RelativeDocumentMoniker": "BussiniessObject\\Models\\PhoGammaInfo.cs",
+              "ToolTip": "D:\\TTS\\Dat_Hiem\\backend\\BussiniessObject\\Models\\PhoGammaInfo.cs",
+              "RelativeToolTip": "BussiniessObject\\Models\\PhoGammaInfo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-16T05:55:09.152Z",
+              "WhenOpened": "2025-07-16T08:16:52.43Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MyDbContext.cs",
+              "DocumentMoniker": "D:\\TTS\\Dat_Hiem\\backend\\BussiniessObject\\MyDbContext.cs",
+              "RelativeDocumentMoniker": "BussiniessObject\\MyDbContext.cs",
+              "ToolTip": "D:\\TTS\\Dat_Hiem\\backend\\BussiniessObject\\MyDbContext.cs",
+              "RelativeToolTip": "BussiniessObject\\MyDbContext.cs",
+              "ViewState": "AgIAAOoAAAAAAAAAAAAAAOoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-16T08:16:40.84Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DeviceController.cs",
+              "DocumentMoniker": "D:\\TTS\\Dat_Hiem\\backend\\CustomStore\\Controllers\\DeviceController.cs",
+              "RelativeDocumentMoniker": "CustomStore\\Controllers\\DeviceController.cs",
+              "ToolTip": "D:\\TTS\\Dat_Hiem\\backend\\CustomStore\\Controllers\\DeviceController.cs",
+              "RelativeToolTip": "CustomStore\\Controllers\\DeviceController.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwBgAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-16T07:22:42.606Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "MeasuringDevice.cs",
-              "DocumentMoniker": "F:\\Code\\C#\\backend\\BussiniessObject\\Models\\MeasuringDevice.cs",
-              "RelativeDocumentMoniker": "BussiniessObject\\Models\\MeasuringDevice.cs",
-              "ToolTip": "F:\\Code\\C#\\backend\\BussiniessObject\\Models\\MeasuringDevice.cs",
-              "RelativeToolTip": "BussiniessObject\\Models\\MeasuringDevice.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAA5AAAAAAAAAA==",
+              "Title": "IDeviceServices.cs",
+              "DocumentMoniker": "D:\\TTS\\Dat_Hiem\\backend\\Services\\Implements\\IDeviceServices.cs",
+              "RelativeDocumentMoniker": "Services\\Implements\\IDeviceServices.cs",
+              "ToolTip": "D:\\TTS\\Dat_Hiem\\backend\\Services\\Implements\\IDeviceServices.cs",
+              "RelativeToolTip": "Services\\Implements\\IDeviceServices.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAADwvyYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-16T06:05:21.376Z",
+              "WhenOpened": "2025-07-16T06:54:24.249Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "GammaInfo.cs",
-              "DocumentMoniker": "F:\\Code\\C#\\backend\\BussiniessObject\\Models\\GammaInfo.cs",
-              "RelativeDocumentMoniker": "BussiniessObject\\Models\\GammaInfo.cs",
-              "ToolTip": "F:\\Code\\C#\\backend\\BussiniessObject\\Models\\GammaInfo.cs",
-              "RelativeToolTip": "BussiniessObject\\Models\\GammaInfo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAGAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "DeviceServices.cs",
+              "DocumentMoniker": "D:\\TTS\\Dat_Hiem\\backend\\Services\\Services\\DeviceServices.cs",
+              "RelativeDocumentMoniker": "Services\\Services\\DeviceServices.cs",
+              "ToolTip": "D:\\TTS\\Dat_Hiem\\backend\\Services\\Services\\DeviceServices.cs",
+              "RelativeToolTip": "Services\\Services\\DeviceServices.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAYwAoAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-16T06:05:12.279Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "PhoGammaInfo.cs",
-              "DocumentMoniker": "F:\\Code\\C#\\backend\\BussiniessObject\\Models\\PhoGammaInfo.cs",
-              "RelativeDocumentMoniker": "BussiniessObject\\Models\\PhoGammaInfo.cs",
-              "ToolTip": "F:\\Code\\C#\\backend\\BussiniessObject\\Models\\PhoGammaInfo.cs",
-              "RelativeToolTip": "BussiniessObject\\Models\\PhoGammaInfo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-16T06:04:47.051Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "QuestionGroup.cs",
-              "DocumentMoniker": "F:\\Code\\C#\\backend\\BussiniessObject\\Models\\QuestionGroup.cs",
-              "RelativeDocumentMoniker": "BussiniessObject\\Models\\QuestionGroup.cs",
-              "ToolTip": "F:\\Code\\C#\\backend\\BussiniessObject\\Models\\QuestionGroup.cs",
-              "RelativeToolTip": "BussiniessObject\\Models\\QuestionGroup.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-16T06:05:04.251Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Question.cs",
-              "DocumentMoniker": "F:\\Code\\C#\\backend\\BussiniessObject\\Models\\Question.cs",
-              "RelativeDocumentMoniker": "BussiniessObject\\Models\\Question.cs",
-              "ToolTip": "F:\\Code\\C#\\backend\\BussiniessObject\\Models\\Question.cs",
-              "RelativeToolTip": "BussiniessObject\\Models\\Question.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-16T06:04:57.427Z",
+              "WhenOpened": "2025-07-16T06:44:55.793Z",
               "EditorCaption": ""
             }
           ]

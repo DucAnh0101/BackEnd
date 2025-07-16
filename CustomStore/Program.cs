@@ -12,15 +12,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IAuthServices, AuthServices>();
+builder.Services.AddScoped<IUserServices, UserServices>();
 
 // 1. Bind JWT settings
 builder.Services.Configure<JwtSettings>(
     builder.Configuration.GetSection("JwtSettings"));
 var jwtSettings = builder.Configuration.GetSection("JwtSettings").Get<JwtSettings>();
 builder.Services.AddDbContext<MyDbContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("MyCnn"));
-});
+    options.UseSqlServer(builder.Configuration.GetConnectionString("MyCnn")));
 
 // 2. Add authentication
 builder.Services.AddAuthentication("Bearer")

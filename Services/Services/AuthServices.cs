@@ -1,6 +1,6 @@
 ﻿using BusinessObject;
-using BussiniessObject.Models;
 using DataAccessLayer.DTOs;
+using DataAccessLayer.Models;
 using Services.Implements;
 using System.Net;
 using System.Net.Mail;
@@ -9,50 +9,38 @@ namespace Services.Services
 {
     public class AuthServices : IAuthServices
     {
-        private readonly MyDbContext _dbContext;
+        private readonly MyDbContext dbContext;
+        private readonly JwtTokenGenerator jwtTokenGenerator;
 
-        public AuthServices(MyDbContext dbContext)
+        public AuthServices(MyDbContext _dbContext, JwtTokenGenerator _jwtTokenGenerator)
         {
-            _dbContext = dbContext;
+            dbContext = _dbContext;
+            jwtTokenGenerator = _jwtTokenGenerator;
         }
-
-        private List<User> _users = new List<User>
-    {
-        new User
-        {
-            UserName = "john123",
-            PhoneNumber = "0123456789",
-            DOB = new DateOnly(1990, 1, 1),
-            CitizenId = "123456789",
-            Email = "anhbdhe173581@fpt.edu.vn",
-            Password = "oldpassword"
-        }
-    };
 
         public async Task ResetPasswordAsync(ResetPassReq request)
         {
-            var user = _users.FirstOrDefault(u =>
+            var user = dbContext.Users.FirstOrDefault(u =>
                 u.UserName == request.UserName &&
                 u.PhoneNumber == request.PhoneNumber &&
                 u.DOB == request.DOB &&
                 u.CitizenId == request.CitizenId &&
                 u.Email == request.Email);
-
             if (user == null)
             {
                 throw new Exception("User is not exist or information is incorrect.");
             }
-
             var newPassword = GenerateRandomPassword();
             user.Password = newPassword;
 
-            await SendEmailAsync(user.Email, "Yêu cầu đặt lại mật khẩu", BuildResetPasswordEmailBody(user.UserName, newPassword));
+            await dbContext.SaveChangesAsync();
 
+            await SendEmailAsync(user.Email, "Reset password request", BuildResetPasswordEmailBody(user.UserName, newPassword));
         }
 
         private string GenerateRandomPassword(int length = 8)
         {
-            const string chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            const string chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
             var rand = new Random();
             return new string(Enumerable.Repeat(chars, length)
                 .Select(s => s[rand.Next(s.Length)]).ToArray());
@@ -126,5 +114,17 @@ namespace Services.Services
     </body>
     </html>";
         }
+
+        public string Login(LoginRequest request)
+        {
+            var user = dbContext.Users.FirstOrDefault(u => u.UserName == request.Username && u.Password == request.Password);
+            if (user == null) throw new Exception("Username or password is incorrect");
+            if (user.IsDelete == true) throw new Exception("Your account is not be able to login.");
+
+            var token = jwtTokenGenerator.GenerateToken(user.Id.ToString(), user.RoleId.ToString());
+
+            return token;
+        }
+
     }
 }

@@ -2,31 +2,36 @@
 using DataAccessLayer.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Services;
 using Services.Implements;
 
 namespace CustomStore.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class JWTController : ControllerBase
+    public class AuthController : ControllerBase
     {
-        private readonly IAuthServices _authServices;
-        public JWTController(IAuthServices authServices)
+        private readonly IAuthServices authServices;
+        public AuthController(IAuthServices _authServices)
         {
-            _authServices = authServices;
+            authServices = _authServices;
         }
         [AllowAnonymous]
         [HttpPost("login")]
-        public IActionResult Login(LoginRequest model, [FromServices] JwtTokenGenerator tokenGen)
+        public async Task<IActionResult> Login([FromBody] LoginRequest model)
         {
-            if (model.Username == "admin" && model.Password == "123")
+            if (!ModelState.IsValid)
             {
-                var token = tokenGen.GenerateToken("1", "Admin");
-                return Ok(new { Token = token });
+                return BadRequest(ModelState);
             }
-
-            return Unauthorized();
+            try
+            {
+                var token = authServices.Login(model);
+                return Ok(token);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPost("reset-password")]
@@ -39,8 +44,8 @@ namespace CustomStore.Controllers
 
             try
             {
-                await _authServices.ResetPasswordAsync(reset);
-                return Ok(new { message = "Mật khẩu mới đã được gửi tới email của bạn." });
+                await authServices.ResetPasswordAsync(reset);
+                return Ok(new { message = "Your new password sended." });
             }
             catch (Exception ex)
             {

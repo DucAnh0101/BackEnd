@@ -3,20 +3,24 @@
   "WorkspaceRootPath": "F:\\Code\\C#\\backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B235D242-179E-4A08-8A2F-7AC3D48F78EE}|CustomStore\\CustomStore.csproj|f:\\code\\c#\\backend\\customstore\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{B235D242-179E-4A08-8A2F-7AC3D48F78EE}|CustomStore\\CustomStore.csproj|solutionrelative:customstore\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|f:\\code\\c#\\backend\\services\\services\\userservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|solutionrelative:services\\services\\userservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|f:\\code\\c#\\backend\\services\\jwttokengenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|solutionrelative:services\\jwttokengenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{02B5DD56-B2CD-4AD9-9F85-F636B349116E}|DataAccessLayer\\DataAccessLayer.csproj|f:\\code\\c#\\backend\\dataaccesslayer\\dtos\\userupdatereq.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02B5DD56-B2CD-4AD9-9F85-F636B349116E}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\dtos\\userupdatereq.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|f:\\code\\c#\\backend\\services\\services\\authservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|solutionrelative:services\\services\\authservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B235D242-179E-4A08-8A2F-7AC3D48F78EE}|CustomStore\\CustomStore.csproj|f:\\code\\c#\\backend\\customstore\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B235D242-179E-4A08-8A2F-7AC3D48F78EE}|CustomStore\\CustomStore.csproj|solutionrelative:customstore\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B235D242-179E-4A08-8A2F-7AC3D48F78EE}|CustomStore\\CustomStore.csproj|f:\\code\\c#\\backend\\customstore\\controllers\\jwtcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B235D242-179E-4A08-8A2F-7AC3D48F78EE}|CustomStore\\CustomStore.csproj|solutionrelative:customstore\\controllers\\jwtcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|f:\\code\\c#\\backend\\services\\implements\\iuserservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|solutionrelative:services\\implements\\iuserservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02B5DD56-B2CD-4AD9-9F85-F636B349116E}|DataAccessLayer\\DataAccessLayer.csproj|f:\\code\\c#\\backend\\dataaccesslayer\\dtos\\userres.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02B5DD56-B2CD-4AD9-9F85-F636B349116E}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\dtos\\userres.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,65 +30,72 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-<<<<<<< Updated upstream
-          "SelectedChildIndex": 1,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-=======
           "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "launchSettings.json",
-              "DocumentMoniker": "F:\\Code\\C#\\backend\\CustomStore\\Properties\\launchSettings.json",
-              "RelativeDocumentMoniker": "CustomStore\\Properties\\launchSettings.json",
-              "ToolTip": "F:\\Code\\C#\\backend\\CustomStore\\Properties\\launchSettings.json",
-              "RelativeToolTip": "CustomStore\\Properties\\launchSettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-07-15T16:09:24.124Z",
+              "Title": "UserServices.cs",
+              "DocumentMoniker": "F:\\Code\\C#\\backend\\Services\\Services\\UserServices.cs",
+              "RelativeDocumentMoniker": "Services\\Services\\UserServices.cs",
+              "ToolTip": "F:\\Code\\C#\\backend\\Services\\Services\\UserServices.cs",
+              "RelativeToolTip": "Services\\Services\\UserServices.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAmwCoAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-16T01:49:42.278Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UserRes.cs",
+              "DocumentMoniker": "F:\\Code\\C#\\backend\\DataAccessLayer\\DTOs\\UserRes.cs",
+              "RelativeDocumentMoniker": "DataAccessLayer\\DTOs\\UserRes.cs",
+              "ToolTip": "F:\\Code\\C#\\backend\\DataAccessLayer\\DTOs\\UserRes.cs",
+              "RelativeToolTip": "DataAccessLayer\\DTOs\\UserRes.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-16T02:22:06.984Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "JwtTokenGenerator.cs",
-              "DocumentMoniker": "F:\\Code\\C#\\backend\\Services\\JwtTokenGenerator.cs",
-              "RelativeDocumentMoniker": "Services\\JwtTokenGenerator.cs",
-              "ToolTip": "F:\\Code\\C#\\backend\\Services\\JwtTokenGenerator.cs",
-              "RelativeToolTip": "Services\\JwtTokenGenerator.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAIAywBsAAAAAAAAAAAAAAA==",
+              "Title": "UserUpdateReq.cs",
+              "DocumentMoniker": "F:\\Code\\C#\\backend\\DataAccessLayer\\DTOs\\UserUpdateReq.cs",
+              "RelativeDocumentMoniker": "DataAccessLayer\\DTOs\\UserUpdateReq.cs",
+              "ToolTip": "F:\\Code\\C#\\backend\\DataAccessLayer\\DTOs\\UserUpdateReq.cs",
+              "RelativeToolTip": "DataAccessLayer\\DTOs\\UserUpdateReq.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-15T08:03:45.911Z",
+              "WhenOpened": "2025-07-16T02:21:59.565Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "F:\\Code\\C#\\backend\\CustomStore\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "CustomStore\\Controllers\\UserController.cs",
+              "ToolTip": "F:\\Code\\C#\\backend\\CustomStore\\Controllers\\UserController.cs",
+              "RelativeToolTip": "CustomStore\\Controllers\\UserController.cs",
+              "ViewState": "AgIAADcAAAAAAAAAAAAxwEAAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-16T01:51:25.875Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
->>>>>>> Stashed changes
-              "Title": "JWTController.cs",
-              "DocumentMoniker": "F:\\Code\\C#\\backend\\CustomStore\\Controllers\\JWTController.cs",
-              "RelativeDocumentMoniker": "CustomStore\\Controllers\\JWTController.cs",
-              "ToolTip": "F:\\Code\\C#\\backend\\CustomStore\\Controllers\\JWTController.cs",
-              "RelativeToolTip": "CustomStore\\Controllers\\JWTController.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAA4wCAAAABRAAAAAAAAAA==",
+              "Title": "IUserServices.cs",
+              "DocumentMoniker": "F:\\Code\\C#\\backend\\Services\\Implements\\IUserServices.cs",
+              "RelativeDocumentMoniker": "Services\\Implements\\IUserServices.cs",
+              "ToolTip": "F:\\Code\\C#\\backend\\Services\\Implements\\IUserServices.cs",
+              "RelativeToolTip": "Services\\Implements\\IUserServices.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-15T06:38:40.181Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AuthServices.cs",
-              "DocumentMoniker": "F:\\Code\\C#\\backend\\Services\\Services\\AuthServices.cs",
-              "RelativeDocumentMoniker": "Services\\Services\\AuthServices.cs",
-              "ToolTip": "F:\\Code\\C#\\backend\\Services\\Services\\AuthServices.cs",
-              "RelativeToolTip": "Services\\Services\\AuthServices.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAuwG4AAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-15T03:07:21.886Z"
+              "WhenOpened": "2025-07-16T01:48:16.792Z",
+              "EditorCaption": ""
             }
           ]
         }

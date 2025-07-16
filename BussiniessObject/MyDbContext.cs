@@ -1,4 +1,5 @@
 ﻿using BusinessObject.Models;
+using BusiniessObject.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -23,6 +24,7 @@ namespace BusinessObject
         public DbSet<GammaCalibration> GammaCalibrations { get; set; }
         public DbSet<PhoGammaInfo> PhoGammaInfos { get; set; }
         public DbSet<XRFInfo> XRFInfos { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -183,7 +185,7 @@ namespace BusinessObject
                     .HasColumnName("name");
             });
 
-            
+
 
             // Seed data for QuestionGroup
             modelBuilder.Entity<QuestionGroup>().HasData(
@@ -266,6 +268,17 @@ namespace BusinessObject
                     .OnDelete(DeleteBehavior.Cascade);
             });
 
+            modelBuilder.Entity<Notification>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Content)
+                      .HasMaxLength(50)
+                      .IsRequired();
+
+                entity.Property(e => e.RequiredDate)
+                      .IsRequired();
+            });
+
             modelBuilder.Entity<DeviceType>().HasData(
     new DeviceType { Id = 1, TypeName = "Gamma" },
     new DeviceType { Id = 2, TypeName = "Gamma Spectrum" },
@@ -290,6 +303,10 @@ namespace BusinessObject
                 new XRFInfo { Id = 1, MeasuringDeviceId = 3, Note = "Thiết bị kiểm tra tại mỏ A" },
                 new XRFInfo { Id = 2, MeasuringDeviceId = 3, Note = "Thiết bị đang hiệu chuẩn" }
             );
+            modelBuilder.Entity<Notification>().HasData(
+    new Notification { Id = 1, Content = "Kiểm tra thiết bị đo Gamma", RequiredDate = new DateTime(2025, 8, 1) },
+    new Notification { Id = 2, Content = "Lập kế hoạch hiệu chuẩn XRF", RequiredDate = new DateTime(2025, 8, 15) }
+);
 
         }
     }

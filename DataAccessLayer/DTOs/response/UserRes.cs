@@ -1,4 +1,4 @@
-﻿namespace DataAccessLayer.DTOs
+﻿namespace DataAccessLayer.DTOs.response
 {
     public class UserRes
     {

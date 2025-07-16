@@ -1,5 +1,4 @@
-﻿using DataAccessLayer.DTOs;
-using DataAccessLayer.Models;
+﻿using DataAccessLayer.DTOs.request;
 
 namespace Services.Implements
 {

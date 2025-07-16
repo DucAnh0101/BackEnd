@@ -1,6 +1,7 @@
 ﻿using BusinessObject;
 using BusinessObject.Models;
-using DataAccessLayer.DTOs;
+using DataAccessLayer.DTOs.request;
+using DataAccessLayer.DTOs.response;
 using Services.Implements;
 
 namespace Services.Services

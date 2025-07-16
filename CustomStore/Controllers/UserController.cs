@@ -1,4 +1,4 @@
-﻿using DataAccessLayer.DTOs;
+﻿using DataAccessLayer.DTOs.request;
 using Microsoft.AspNetCore.Mvc;
 using Services.Implements;
 

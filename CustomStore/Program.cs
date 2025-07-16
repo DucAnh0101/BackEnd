@@ -1,5 +1,5 @@
 using BusinessObject;
-using DataAccessLayer.Models;
+using DataAccessLayer.DTOs.request;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Services;
@@ -16,6 +16,7 @@ builder.Services.AddScoped<IAuthServices, AuthServices>();
 builder.Services.AddScoped<IUserServices, UserServices>();
 builder.Services.AddScoped<F_QService>();
 builder.Services.AddScoped<IDeviceServices, DeviceService>();
+builder.Services.AddScoped<INotificationServices, NotificationService>();
 
 // 1. Bind JWT settings
 builder.Services.Configure<JwtSettings>(

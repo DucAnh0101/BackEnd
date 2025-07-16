@@ -4,11 +4,10 @@ using DataAccessLayer.DTOs.request;
 using DataAccessLayer.DTOs.response;
 using Microsoft.EntityFrameworkCore;
 using Services.Implements;
-using Services.mapper;
 
 namespace Services.Impl
 {
-    public class DeviceService : IDeviceService
+    public class DeviceService : IDeviceServices
     {
         private readonly MyDbContext _context;
 
@@ -17,209 +16,279 @@ namespace Services.Impl
             _context = context;
         }
 
-        public async Task<DeviceRes> CreateAsync(DeviceReq request)
+        // GammaCalibration
+        public async Task<GammaRes> AddGammaDataAsync(GammaReq req)
         {
-            var typeName = request.Type?.Trim().ToLower();
-
-            var deviceType = await _context.DeviceTypes
-                .FirstOrDefaultAsync(d => d.TypeName.ToLower() == typeName);
-
-            if (deviceType == null)
-                throw new Exception($"Loại thiết bị '{request.Type}' không tồn tại.");
-
-            var device = new MeasuringDevice
+            var entity = new GammaCalibration
             {
-                SerialNumber = request.SerialNumber,
-                DeviceTypeId = deviceType.Id
+                Khoang = req.Khoang,
+                HeSoChuanMay = req.HeSoChuanMay,
+                MeasuringDeviceId = req.MeasuringDeviceId
             };
-
-            _context.MeasuringDevices.Add(device);
+            _context.GammaCalibrations.Add(entity);
             await _context.SaveChangesAsync();
-
-            switch (typeName)
+            return new GammaRes
             {
-                case "gamma":
-                    await CreateGammaInfoAsync(device.Id, request);
-                    break;
+                Id = entity.Id,
+                Khoang = entity.Khoang,
+                HeSoChuanMay = entity.HeSoChuanMay,
+                MeasuringDeviceId = entity.MeasuringDeviceId
+            };
+        }
 
-                case "phogamma":
-                    await CreatePhoGammaInfoAsync(device.Id, request);
-                    break;
+        public async Task<GammaRes?> GetGammaByIdAsync(int id)
+        {
+            var entity = await _context.GammaCalibrations.FindAsync(id);
+            return entity == null ? null : new GammaRes
+            {
+                Id = entity.Id,
+                Khoang = entity.Khoang,
+                HeSoChuanMay = entity.HeSoChuanMay,
+                MeasuringDeviceId = entity.MeasuringDeviceId
+            };
+        }
 
-                case "xrf":
-                    await CreateXrfInfoAsync(device.Id, request);
-                    break;
-
-                default:
-                    throw new Exception("Loại thiết bị không hợp lệ.");
-            }
-
+        public async Task<GammaRes> UpdateGammaAsync(int id, GammaReq req)
+        {
+            var entity = await _context.GammaCalibrations.FindAsync(id);
+            if (entity == null) throw new KeyNotFoundException("GammaCalibration not found");
+            entity.Khoang = req.Khoang;
+            entity.HeSoChuanMay = req.HeSoChuanMay;
+            entity.MeasuringDeviceId = req.MeasuringDeviceId;
             await _context.SaveChangesAsync();
-
-            return new DeviceRes
+            return new GammaRes
             {
-                Id = device.Id,
-                SerialNumber = device.SerialNumber,
-                Type = typeName,
-                Calibrations = request.Calibrations?.Select(c => new GammaCalibrationRes
-                {
-                    Khoang = c.Khoang,
-                    HeSoChuanMay = c.HeSoChuanMay
-                }).ToList(),
-                K = request.K,
-                U = request.U,
-                Th = request.Th,
-                Note = request.Note
+                Id = entity.Id,
+                Khoang = entity.Khoang,
+                HeSoChuanMay = entity.HeSoChuanMay,
+                MeasuringDeviceId = entity.MeasuringDeviceId
             };
         }
 
-        public async Task<List<MeasuringDeviceDto>> GetByTypeAsync(int typeId)
+        public async Task<bool> DeleteGammaAsync(int id)
         {
-            var devices = await _context.MeasuringDevices
-                .Where(md => md.DeviceTypeId == typeId)
-                .Include(md => md.DeviceType)
-                .Include(md => md.GammaInfo)
-                    .ThenInclude(g => g.Calibrations)
-                .Include(md => md.PhoGammaInfo)
-                .Include(md => md.XRFInfo)
-                .ToListAsync();
-
-            return devices.Select(MeasuringDeviceMapper.ToDto).ToList();
-        }
-
-        private Task CreateGammaInfoAsync(int deviceId, DeviceReq request)
-        {
-            var gammaInfo = new GammaInfo
-            {
-                MeasuringDeviceId = deviceId,
-                Calibrations = request.Calibrations?.Select(c => new GammaCalibration
-                {
-                    Khoang = c.Khoang,
-                    HeSoChuanMay = c.HeSoChuanMay
-                }).ToList()
-            };
-
-            _context.GammaInfos.Add(gammaInfo);
-            return Task.CompletedTask;
-        }
-
-        private Task CreatePhoGammaInfoAsync(int deviceId, DeviceReq request)
-        {
-            var phoGamma = new PhoGammaInfo
-            {
-                MeasuringDeviceId = deviceId,
-                K = request.K ?? 0,
-                U = request.U ?? 0,
-                Th = request.Th ?? 0
-            };
-
-            _context.PhoGammaInfos.Add(phoGamma);
-            return Task.CompletedTask;
-        }
-
-        private Task CreateXrfInfoAsync(int deviceId, DeviceReq request)
-        {
-            var xrf = new XRFInfo
-            {
-                MeasuringDeviceId = deviceId,
-                Note = request.Note
-            }
-            ;
-
-            _context.XRFInfos.Add(xrf);
-            return Task.CompletedTask;
-        }
-
-        public async Task<DeviceRes> UpdateAsync(int id, DeviceReq request)
-        {
-            var device = await _context.MeasuringDevices
-                .Include(d => d.GammaInfo)
-                    .ThenInclude(g => g.Calibrations)
-                .Include(d => d.PhoGammaInfo)
-                .Include(d => d.XRFInfo)
-                .FirstOrDefaultAsync(d => d.Id == id);
-
-            if (device == null)
-                throw new Exception("Không tìm thấy thiết bị để cập nhật.");
-
-            // Cập nhật serial
-            device.SerialNumber = request.SerialNumber;
-
-            // Cập nhật loại thiết bị nếu cần
-            var typeName = request.Type?.Trim().ToLower();
-            var deviceType = await _context.DeviceTypes
-                .FirstOrDefaultAsync(d => d.TypeName.ToLower() == typeName);
-
-            if (deviceType == null)
-                throw new Exception($"Loại thiết bị '{request.Type}' không tồn tại.");
-
-            device.DeviceTypeId = deviceType.Id;
-
-            // Xoá thông tin cũ trước khi cập nhật
-            if (device.GammaInfo != null)
-                _context.GammaInfos.Remove(device.GammaInfo);
-            if (device.PhoGammaInfo != null)
-                _context.PhoGammaInfos.Remove(device.PhoGammaInfo);
-            if (device.XRFInfo != null)
-                _context.XRFInfos.Remove(device.XRFInfo);
-
-            // Thêm lại thông tin mới
-            switch (typeName)
-            {
-                case "gamma":
-                    await CreateGammaInfoAsync(device.Id, request);
-                    break;
-                case "phogamma":
-                    await CreatePhoGammaInfoAsync(device.Id, request);
-                    break;
-                case "xrf":
-                    await CreateXrfInfoAsync(device.Id, request);
-                    break;
-                default:
-                    throw new Exception("Loại thiết bị không hợp lệ.");
-            }
-
-            await _context.SaveChangesAsync();
-
-            return new DeviceRes
-            {
-                Id = device.Id,
-                SerialNumber = device.SerialNumber,
-                Type = typeName,
-                Calibrations = request.Calibrations?.Select(c => new GammaCalibrationRes
-                {
-                    Khoang = c.Khoang,
-                    HeSoChuanMay = c.HeSoChuanMay
-                }).ToList(),
-                K = request.K,
-                U = request.U,
-                Th = request.Th,
-                Note = request.Note
-            };
-        }
-        public async Task<bool> DeleteAsync(int id)
-        {
-            var device = await _context.MeasuringDevices
-                .Include(d => d.GammaInfo)
-                .Include(d => d.PhoGammaInfo)
-                .Include(d => d.XRFInfo)
-                .FirstOrDefaultAsync(d => d.Id == id);
-
-            if (device == null)
-                return false;
-
-            // Xoá các bảng phụ nếu có
-            if (device.GammaInfo != null)
-                _context.GammaInfos.Remove(device.GammaInfo);
-            if (device.PhoGammaInfo != null)
-                _context.PhoGammaInfos.Remove(device.PhoGammaInfo);
-            if (device.XRFInfo != null)
-                _context.XRFInfos.Remove(device.XRFInfo);
-
-            _context.MeasuringDevices.Remove(device);
+            var entity = await _context.GammaCalibrations.FindAsync(id);
+            if (entity == null) return false;
+            _context.GammaCalibrations.Remove(entity);
             await _context.SaveChangesAsync();
             return true;
         }
 
+        // PhoGammaInfo
+        public async Task<PhoGammaRes> AddPhoGammaDataAsync(PhoGammaReq req)
+        {
+            var entity = new PhoGammaInfo
+            {
+                K = req.K,
+                U = req.U,
+                Th = req.Th,
+                MeasuringDeviceId = req.MeasuringDeviceId
+            };
+            _context.PhoGammaInfos.Add(entity);
+            await _context.SaveChangesAsync();
+            return new PhoGammaRes
+            {
+                Id = entity.Id,
+                K = entity.K,
+                U = entity.U,
+                Th = entity.Th,
+                MeasuringDeviceId = entity.MeasuringDeviceId
+            };
+        }
+
+        public async Task<PhoGammaRes?> GetPhoGammaByIdAsync(int id)
+        {
+            var entity = await _context.PhoGammaInfos.FindAsync(id);
+            return entity == null ? null : new PhoGammaRes
+            {
+                Id = entity.Id,
+                K = entity.K,
+                U = entity.U,
+                Th = entity.Th,
+                MeasuringDeviceId = entity.MeasuringDeviceId
+            };
+        }
+
+        public async Task<PhoGammaRes> UpdatePhoGammaAsync(int id, PhoGammaReq req)
+        {
+            var entity = await _context.PhoGammaInfos.FindAsync(id);
+            if (entity == null) throw new KeyNotFoundException("PhoGammaInfo not found");
+            entity.K = req.K;
+            entity.U = req.U;
+            entity.Th = req.Th;
+            entity.MeasuringDeviceId = req.MeasuringDeviceId;
+            await _context.SaveChangesAsync();
+            return new PhoGammaRes
+            {
+                Id = entity.Id,
+                K = entity.K,
+                U = entity.U,
+                Th = entity.Th,
+                MeasuringDeviceId = entity.MeasuringDeviceId
+            };
+        }
+
+        public async Task<bool> DeletePhoGammaAsync(int id)
+        {
+            var entity = await _context.PhoGammaInfos.FindAsync(id);
+            if (entity == null) return false;
+            _context.PhoGammaInfos.Remove(entity);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+        // XRFInfo
+        public async Task<XrfRes> AddXrfDataAsync(XrfReq req)
+        {
+            var entity = new XRFInfo
+            {
+                Note = req.Note,
+                MeasuringDeviceId = req.MeasuringDeviceId
+            };
+            _context.XRFInfos.Add(entity);
+            await _context.SaveChangesAsync();
+            return new XrfRes
+            {
+                Id = entity.Id,
+                Note = entity.Note,
+                MeasuringDeviceId = entity.MeasuringDeviceId
+            };
+        }
+
+        public async Task<XrfRes?> GetXrfByIdAsync(int id)
+        {
+            var entity = await _context.XRFInfos.FindAsync(id);
+            return entity == null ? null : new XrfRes
+            {
+                Id = entity.Id,
+                Note = entity.Note,
+                MeasuringDeviceId = entity.MeasuringDeviceId
+            };
+        }
+
+        public async Task<XrfRes> UpdateXrfAsync(int id, XrfReq req)
+        {
+            var entity = await _context.XRFInfos.FindAsync(id);
+            if (entity == null) throw new KeyNotFoundException("XRFInfo not found");
+            entity.Note = req.Note;
+            entity.MeasuringDeviceId = req.MeasuringDeviceId;
+            await _context.SaveChangesAsync();
+            return new XrfRes
+            {
+                Id = entity.Id,
+                Note = entity.Note,
+                MeasuringDeviceId = entity.MeasuringDeviceId
+            };
+        }
+
+        public async Task<bool> DeleteXrfAsync(int id)
+        {
+            var entity = await _context.XRFInfos.FindAsync(id);
+            if (entity == null) return false;
+            _context.XRFInfos.Remove(entity);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+        // MeasuringDevice
+        public async Task<MeasuringDeviceRes> AddMeasuringDeviceAsync(MeasuringDeviceReq req)
+        {
+            var entity = new MeasuringDevice
+            {
+                SerialNumber = req.SerialNumber,
+                DeviceTypeId = req.DeviceTypeId
+            };
+            _context.MeasuringDevices.Add(entity);
+            await _context.SaveChangesAsync();
+            return new MeasuringDeviceRes
+            {
+                Id = entity.Id,
+                SerialNumber = entity.SerialNumber,
+                DeviceTypeId = entity.DeviceTypeId
+            };
+        }
+
+        public async Task<MeasuringDeviceRes?> GetMeasuringDeviceByIdAsync(int id)
+        {
+            var entity = await _context.MeasuringDevices.FindAsync(id);
+            return entity == null ? null : new MeasuringDeviceRes
+            {
+                Id = entity.Id,
+                SerialNumber = entity.SerialNumber,
+                DeviceTypeId = entity.DeviceTypeId
+            };
+        }
+
+        public async Task<MeasuringDeviceRes> UpdateMeasuringDeviceAsync(int id, MeasuringDeviceReq req)
+        {
+            var entity = await _context.MeasuringDevices.FindAsync(id);
+            if (entity == null) throw new KeyNotFoundException("MeasuringDevice not found");
+            entity.SerialNumber = req.SerialNumber;
+            entity.DeviceTypeId = req.DeviceTypeId;
+            await _context.SaveChangesAsync();
+            return new MeasuringDeviceRes
+            {
+                Id = entity.Id,
+                SerialNumber = entity.SerialNumber,
+                DeviceTypeId = entity.DeviceTypeId
+            };
+        }
+
+        public async Task<bool> DeleteMeasuringDeviceAsync(int id)
+        {
+            var entity = await _context.MeasuringDevices.FindAsync(id);
+            if (entity == null) return false;
+            _context.MeasuringDevices.Remove(entity);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+        // DeviceType
+        public async Task<DeviceTypeRes> AddDeviceTypeAsync(DeviceTypeReq req)
+        {
+            var entity = new DeviceType
+            {
+                TypeName = req.TypeName
+            };
+            _context.DeviceTypes.Add(entity);
+            await _context.SaveChangesAsync();
+            return new DeviceTypeRes
+            {
+                Id = entity.Id,
+                TypeName = entity.TypeName
+            };
+        }
+
+        public async Task<DeviceTypeRes?> GetDeviceTypeByIdAsync(int id)
+        {
+            var entity = await _context.DeviceTypes.FindAsync(id);
+            return entity == null ? null : new DeviceTypeRes
+            {
+                Id = entity.Id,
+                TypeName = entity.TypeName
+            };
+        }
+
+        public async Task<DeviceTypeRes> UpdateDeviceTypeAsync(int id, DeviceTypeReq req)
+        {
+            var entity = await _context.DeviceTypes.FindAsync(id);
+            if (entity == null) throw new KeyNotFoundException("DeviceType not found");
+            entity.TypeName = req.TypeName;
+            await _context.SaveChangesAsync();
+            return new DeviceTypeRes
+            {
+                Id = entity.Id,
+                TypeName = entity.TypeName
+            };
+        }
+
+        public async Task<bool> DeleteDeviceTypeAsync(int id)
+        {
+            var entity = await _context.DeviceTypes.FindAsync(id);
+            if (entity == null) return false;
+            _context.DeviceTypes.Remove(entity);
+            await _context.SaveChangesAsync();
+            return true;
+        }
     }
 }

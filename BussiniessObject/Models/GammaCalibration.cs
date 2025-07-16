@@ -10,16 +10,14 @@ namespace BusinessObject.Models
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(100)]
-        public string Khoang { get; set; }
+        public Double Khoang { get; set; }
 
         [Required]
-        [MaxLength(100)]
-        public string HeSoChuanMay { get; set; }
+        public Double HeSoChuanMay { get; set; }
 
         [Required]
-        public int GammaInfoId { get; set; }
+        public int MeasuringDeviceId { get; set; }
 
-        public virtual GammaInfo GammaInfo { get; set; }
+        public MeasuringDevice MeasuringDevice { get; set; } = null!;
     }
 }

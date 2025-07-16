@@ -12,7 +12,7 @@ namespace BusinessObject.Models
         [Required]
         public int MeasuringDeviceId { get; set; }
 
-        public virtual MeasuringDevice MeasuringDevice { get; set; }
+        public MeasuringDevice MeasuringDevice { get; set; } = null!;
 
         [MaxLength(1000)]
         public string Note { get; set; }

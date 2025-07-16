@@ -4,6 +4,7 @@ using BusinessObject;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BusiniessObject.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250716084335_duocngao")]
+    partial class duocngao
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,36 +29,34 @@ namespace BusiniessObject.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("id");
+                        .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("TypeName")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)")
-                        .HasColumnName("type_name");
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("DeviceType", (string)null);
+                    b.ToTable("DeviceTypes");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            TypeName = "Gamma Spectrometer"
+                            TypeName = "Gamma"
                         },
                         new
                         {
                             Id = 2,
-                            TypeName = "XRF Analyzer"
+                            TypeName = "Gamma Spectrum"
                         },
                         new
                         {
                             Id = 3,
-                            TypeName = "PhoGamma Device"
+                            TypeName = "XRF"
                         });
                 });
 
@@ -67,22 +68,18 @@ namespace BusiniessObject.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("GammaInfoId")
+                    b.Property<double>("HeSoChuanMay")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Khoang")
+                        .HasColumnType("float");
+
+                    b.Property<int>("MeasuringDeviceId")
                         .HasColumnType("int");
-
-                    b.Property<string>("HeSoChuanMay")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("Khoang")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("GammaInfoId");
+                    b.HasIndex("MeasuringDeviceId");
 
                     b.ToTable("GammaCalibrations");
 
@@ -90,59 +87,16 @@ namespace BusiniessObject.Migrations
                         new
                         {
                             Id = 1,
-                            GammaInfoId = 1,
-                            HeSoChuanMay = "1.25",
-                            Khoang = "0-100 keV"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            GammaInfoId = 1,
-                            HeSoChuanMay = "1.30",
-                            Khoang = "100-200 keV"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            GammaInfoId = 2,
-                            HeSoChuanMay = "1.20",
-                            Khoang = "0-150 keV"
-                        });
-                });
-
-            modelBuilder.Entity("BusinessObject.Models.GammaInfo", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("MeasuringDeviceId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MeasuringDeviceId")
-                        .IsUnique();
-
-                    b.ToTable("GammaInfos");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
+                            HeSoChuanMay = 0.97999999999999998,
+                            Khoang = 50.0,
                             MeasuringDeviceId = 1
                         },
                         new
                         {
                             Id = 2,
-                            MeasuringDeviceId = 2
-                        },
-                        new
-                        {
-                            Id = 3,
-                            MeasuringDeviceId = 3
+                            HeSoChuanMay = 1.05,
+                            Khoang = 14.0,
+                            MeasuringDeviceId = 1
                         });
                 });
 
@@ -150,45 +104,42 @@ namespace BusiniessObject.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("id");
+                        .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("DeviceTypeId")
-                        .HasColumnType("int")
-                        .HasColumnName("device_type_id");
+                        .HasColumnType("int");
 
                     b.Property<string>("SerialNumber")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)")
-                        .HasColumnName("serial_number");
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("DeviceTypeId");
 
-                    b.ToTable("MeasuringDevice", (string)null);
+                    b.ToTable("MeasuringDevices");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
                             DeviceTypeId = 1,
-                            SerialNumber = "GAMMA-001"
+                            SerialNumber = "GAMMA001"
                         },
                         new
                         {
                             Id = 2,
                             DeviceTypeId = 2,
-                            SerialNumber = "XRF-002"
+                            SerialNumber = "GAMMASPEC001"
                         },
                         new
                         {
                             Id = 3,
                             DeviceTypeId = 3,
-                            SerialNumber = "PHO-003"
+                            SerialNumber = "XRF001"
                         });
                 });
 
@@ -214,8 +165,7 @@ namespace BusiniessObject.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MeasuringDeviceId")
-                        .IsUnique();
+                    b.HasIndex("MeasuringDeviceId");
 
                     b.ToTable("PhoGammaInfos");
 
@@ -223,26 +173,18 @@ namespace BusiniessObject.Migrations
                         new
                         {
                             Id = 1,
-                            K = 0.123,
-                            MeasuringDeviceId = 1,
-                            Th = 0.78900000000000003,
-                            U = 0.45600000000000002
+                            K = 12.5,
+                            MeasuringDeviceId = 2,
+                            Th = 3.1000000000000001,
+                            U = 5.2000000000000002
                         },
                         new
                         {
                             Id = 2,
-                            K = 0.23400000000000001,
+                            K = 14.0,
                             MeasuringDeviceId = 2,
-                            Th = 0.89000000000000001,
-                            U = 0.56699999999999995
-                        },
-                        new
-                        {
-                            Id = 3,
-                            K = 0.34499999999999997,
-                            MeasuringDeviceId = 3,
-                            Th = 0.90100000000000002,
-                            U = 0.67800000000000005
+                            Th = 3.7999999999999998,
+                            U = 4.9000000000000004
                         });
                 });
 
@@ -494,8 +436,7 @@ namespace BusiniessObject.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MeasuringDeviceId")
-                        .IsUnique();
+                    b.HasIndex("MeasuringDeviceId");
 
                     b.ToTable("XRFInfos");
 
@@ -503,39 +444,22 @@ namespace BusiniessObject.Migrations
                         new
                         {
                             Id = 1,
-                            MeasuringDeviceId = 1,
-                            Note = "Calibrated for soil analysis"
+                            MeasuringDeviceId = 3,
+                            Note = "Thiết bị kiểm tra tại mỏ A"
                         },
                         new
                         {
                             Id = 2,
-                            MeasuringDeviceId = 2,
-                            Note = "Used for metal detection"
-                        },
-                        new
-                        {
-                            Id = 3,
                             MeasuringDeviceId = 3,
-                            Note = "General purpose XRF"
+                            Note = "Thiết bị đang hiệu chuẩn"
                         });
                 });
 
             modelBuilder.Entity("BusinessObject.Models.GammaCalibration", b =>
                 {
-                    b.HasOne("BusinessObject.Models.GammaInfo", "GammaInfo")
-                        .WithMany("Calibrations")
-                        .HasForeignKey("GammaInfoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("GammaInfo");
-                });
-
-            modelBuilder.Entity("BusinessObject.Models.GammaInfo", b =>
-                {
                     b.HasOne("BusinessObject.Models.MeasuringDevice", "MeasuringDevice")
-                        .WithOne("GammaInfo")
-                        .HasForeignKey("BusinessObject.Models.GammaInfo", "MeasuringDeviceId")
+                        .WithMany("GammaCalibrations")
+                        .HasForeignKey("MeasuringDeviceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -548,8 +472,7 @@ namespace BusiniessObject.Migrations
                         .WithMany("MeasuringDevices")
                         .HasForeignKey("DeviceTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("FK_MeasuringDevice_DeviceType");
+                        .IsRequired();
 
                     b.Navigation("DeviceType");
                 });
@@ -557,8 +480,8 @@ namespace BusiniessObject.Migrations
             modelBuilder.Entity("BusinessObject.Models.PhoGammaInfo", b =>
                 {
                     b.HasOne("BusinessObject.Models.MeasuringDevice", "MeasuringDevice")
-                        .WithOne("PhoGammaInfo")
-                        .HasForeignKey("BusinessObject.Models.PhoGammaInfo", "MeasuringDeviceId")
+                        .WithMany("PhoGammaInfos")
+                        .HasForeignKey("MeasuringDeviceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -579,8 +502,8 @@ namespace BusiniessObject.Migrations
             modelBuilder.Entity("BusinessObject.Models.XRFInfo", b =>
                 {
                     b.HasOne("BusinessObject.Models.MeasuringDevice", "MeasuringDevice")
-                        .WithOne("XRFInfo")
-                        .HasForeignKey("BusinessObject.Models.XRFInfo", "MeasuringDeviceId")
+                        .WithMany("XRFInfos")
+                        .HasForeignKey("MeasuringDeviceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -592,21 +515,13 @@ namespace BusiniessObject.Migrations
                     b.Navigation("MeasuringDevices");
                 });
 
-            modelBuilder.Entity("BusinessObject.Models.GammaInfo", b =>
-                {
-                    b.Navigation("Calibrations");
-                });
-
             modelBuilder.Entity("BusinessObject.Models.MeasuringDevice", b =>
                 {
-                    b.Navigation("GammaInfo")
-                        .IsRequired();
+                    b.Navigation("GammaCalibrations");
 
-                    b.Navigation("PhoGammaInfo")
-                        .IsRequired();
+                    b.Navigation("PhoGammaInfos");
 
-                    b.Navigation("XRFInfo")
-                        .IsRequired();
+                    b.Navigation("XRFInfos");
                 });
 
             modelBuilder.Entity("BusinessObject.Models.QuestionGroup", b =>

@@ -12,8 +12,6 @@ namespace BusinessObject.Models
         [Required]
         public int MeasuringDeviceId { get; set; }
 
-        public virtual MeasuringDevice MeasuringDevice { get; set; }
-
         [Required]
         public double K { get; set; }
 
@@ -22,5 +20,7 @@ namespace BusinessObject.Models
 
         [Required]
         public double Th { get; set; }
+
+        public MeasuringDevice MeasuringDevice { get; set; } = null!;
     }
 }

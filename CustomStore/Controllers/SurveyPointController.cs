@@ -40,7 +40,7 @@ namespace CustomStore.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return NotFound(ex.Message);
             }
         }
 
@@ -49,7 +49,7 @@ namespace CustomStore.Controllers
         {
             try
             {
-                _surveyPointServices.DeleteSurveyPoint(id);
+                _surveyPointServices.DeleteSurveyPoint(id); `
                 return Ok("Delete survey ponit successfully!");
             }
             catch (Exception ex)

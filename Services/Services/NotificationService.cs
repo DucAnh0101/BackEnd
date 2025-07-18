@@ -1,5 +1,5 @@
 ﻿using BusinessObject;
-using BusiniessObject.Models;
+using BusinessObject.Models;
 using DataAccessLayer.DTOs.request;
 using DataAccessLayer.DTOs.response;
 using Services.Implements;

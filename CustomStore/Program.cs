@@ -17,6 +17,7 @@ builder.Services.AddScoped<IUserServices, UserServices>();
 builder.Services.AddScoped<F_QService>();
 builder.Services.AddScoped<IDeviceServices, DeviceService>();
 builder.Services.AddScoped<INotificationServices, NotificationService>();
+builder.Services.AddScoped<ISurveyPointServices, SurveyPointServices>();
 
 // 1. Bind JWT settings
 builder.Services.Configure<JwtSettings>(

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace BusiniessObject.Models
+namespace BusinessObject.Models
 {
     public class Notification
     {

@@ -93,7 +93,7 @@ namespace CustomStore.Controllers
             try
             {
                 var hydro = _surveyPointServices.CreateLocation(location, id);
-                return Ok(hydro);
+                return Ok(location);
             }
             catch (Exception ex)
             {
@@ -116,12 +116,12 @@ namespace CustomStore.Controllers
         }
 
         [HttpPost("add-vegetation/{id}")]
-        public async Task<IActionResult> AddVegetation([FromBody] LocationDesDto location, int id)
+        public async Task<IActionResult> AddVegetation([FromBody] VegetationCoverDto vegetation, int id)
         {
             try
             {
-                var hydro = _surveyPointServices.CreateLocation(location, id);
-                return Ok(hydro);
+                var hydro = _surveyPointServices.CreateVegetationCover(vegetation, id);
+                return Ok(vegetation);
             }
             catch (Exception ex)
             {

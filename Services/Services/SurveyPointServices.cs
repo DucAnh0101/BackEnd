@@ -100,7 +100,7 @@ namespace Services.Services
         public VegetationCoverDto CreateVegetationCover(VegetationCoverDto vegetationCover, int id)
         {
             if (vegetationCover == null) throw new ArgumentNullException("Please fill all needed informaton");
-            var ehydro = myDbContext.LocationDescriptions.FirstOrDefault(h => h.SurveyPointId == id);
+            var ehydro = myDbContext.VegetationCovers.FirstOrDefault(h => h.SurveyPointId == id);
             if (ehydro != null) throw new Exception("Vegetation already exist in this database");
             try
             {

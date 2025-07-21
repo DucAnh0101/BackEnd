@@ -18,11 +18,11 @@ namespace CustomStore.Controllers
 
         [HttpPost]
         [Route("add-surveypoint")]
-        public async Task<IActionResult> CreateSurveyPoint(SurveyPointReq req)
+        public async Task<IActionResult> CreateSurveyPoint(SurveyPointReq req, int id)
         {
             try
             {
-                var sp = _surveyPointServices.CreateSurveyPonit(req);
+                var sp = _surveyPointServices.CreateSurveyPonit(req, id);
                 return Ok(sp.Id);
             }
             catch (Exception ex)

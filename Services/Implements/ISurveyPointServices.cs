@@ -7,7 +7,7 @@ namespace Services.Implements
     public interface ISurveyPointServices
     {
         List<SurveyPointRes> GetSurveyPointByUId(int id);
-        SurveyPoint CreateSurveyPonit(SurveyPointReq req);
+        SurveyPoint CreateSurveyPonit(SurveyPointReq req, int id);
         void DeleteSurveyPoint(int id);
         LocationDesDto CreateLocation(LocationDesDto location, int id);
         void UpdateLocation(LocationDesDto location, int id);

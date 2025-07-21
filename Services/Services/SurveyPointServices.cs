@@ -72,7 +72,7 @@ namespace Services.Services
             }
         }
 
-        public SurveyPoint CreateSurveyPonit(SurveyPointReq req)
+        public SurveyPoint CreateSurveyPonit(SurveyPointReq req, int id)
         {
             if (req == null) throw new Exception("Please enter all information needed!");
             try
@@ -85,6 +85,7 @@ namespace Services.Services
                     Altitude = req.Altitude,
                     Address = req.Address,
                     IsActive = req.IsActive,
+                    UserId = id
                 };
 
                 myDbContext.SurveyPoints.Add(surveyp);

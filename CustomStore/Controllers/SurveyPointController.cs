@@ -23,7 +23,7 @@ namespace CustomStore.Controllers
             try
             {
                 var sp = _surveyPointServices.CreateSurveyPonit(req);
-                return Ok("Create Successfully");
+                return Ok(sp.Id);
             }
             catch (Exception ex)
             {

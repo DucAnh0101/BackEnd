@@ -86,6 +86,7 @@ namespace Services.Services
                     Address = req.Address,
                     IsActive = req.IsActive,
                 };
+
                 myDbContext.SurveyPoints.Add(surveyp);
                 myDbContext.SaveChanges();
 

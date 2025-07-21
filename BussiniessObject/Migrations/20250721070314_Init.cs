@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BusiniessObject.Migrations
 {
     /// <inheritdoc />
-    public partial class NewDB : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -27,20 +27,6 @@ namespace BusiniessObject.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Notifications",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Content = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    RequiredDate = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Notifications", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "question_group",
                 columns: table => new
                 {
@@ -51,24 +37,6 @@ namespace BusiniessObject.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK__question__3213E83F4DFF750F", x => x.id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "SurveyPoints",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    survey_name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    latitude = table.Column<decimal>(type: "decimal(10,8)", nullable: false),
-                    longitude = table.Column<decimal>(type: "decimal(11,8)", nullable: false),
-                    altitude = table.Column<decimal>(type: "decimal(8,2)", nullable: false),
-                    address = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
-                    is_active = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_SurveyPoints", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -131,6 +99,115 @@ namespace BusiniessObject.Migrations
                         column: x => x.group_id,
                         principalTable: "question_group",
                         principalColumn: "id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Notifications",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Content = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    RequiredDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    user_id = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Notifications", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Notifications_Users_user_id",
+                        column: x => x.user_id,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SurveyPoints",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    survey_name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    latitude = table.Column<decimal>(type: "decimal(10,8)", nullable: false),
+                    longitude = table.Column<decimal>(type: "decimal(11,8)", nullable: false),
+                    altitude = table.Column<decimal>(type: "decimal(8,2)", nullable: false),
+                    address = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
+                    is_active = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
+                    user_id = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SurveyPoints", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_SurveyPoints_Users_user_id",
+                        column: x => x.user_id,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "GammaCalibrations",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Khoang = table.Column<double>(type: "float", nullable: false),
+                    HeSoChuanMay = table.Column<double>(type: "float", nullable: false),
+                    MeasuringDeviceId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_GammaCalibrations", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_GammaCalibrations_MeasuringDevices_MeasuringDeviceId",
+                        column: x => x.MeasuringDeviceId,
+                        principalTable: "MeasuringDevices",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PhoGammaInfos",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MeasuringDeviceId = table.Column<int>(type: "int", nullable: false),
+                    K = table.Column<double>(type: "float", nullable: false),
+                    U = table.Column<double>(type: "float", nullable: false),
+                    Th = table.Column<double>(type: "float", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PhoGammaInfos", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_PhoGammaInfos_MeasuringDevices_MeasuringDeviceId",
+                        column: x => x.MeasuringDeviceId,
+                        principalTable: "MeasuringDevices",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "XRFInfos",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MeasuringDeviceId = table.Column<int>(type: "int", nullable: false),
+                    Note = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_XRFInfos", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_XRFInfos_MeasuringDevices_MeasuringDeviceId",
+                        column: x => x.MeasuringDeviceId,
+                        principalTable: "MeasuringDevices",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -212,69 +289,6 @@ namespace BusiniessObject.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "GammaCalibrations",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Khoang = table.Column<double>(type: "float", nullable: false),
-                    HeSoChuanMay = table.Column<double>(type: "float", nullable: false),
-                    MeasuringDeviceId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_GammaCalibrations", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_GammaCalibrations_MeasuringDevices_MeasuringDeviceId",
-                        column: x => x.MeasuringDeviceId,
-                        principalTable: "MeasuringDevices",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "PhoGammaInfos",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    MeasuringDeviceId = table.Column<int>(type: "int", nullable: false),
-                    K = table.Column<double>(type: "float", nullable: false),
-                    U = table.Column<double>(type: "float", nullable: false),
-                    Th = table.Column<double>(type: "float", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PhoGammaInfos", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_PhoGammaInfos_MeasuringDevices_MeasuringDeviceId",
-                        column: x => x.MeasuringDeviceId,
-                        principalTable: "MeasuringDevices",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "XRFInfos",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    MeasuringDeviceId = table.Column<int>(type: "int", nullable: false),
-                    Note = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_XRFInfos", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_XRFInfos_MeasuringDevices_MeasuringDeviceId",
-                        column: x => x.MeasuringDeviceId,
-                        principalTable: "MeasuringDevices",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
             migrationBuilder.InsertData(
                 table: "DeviceTypes",
                 columns: new[] { "Id", "TypeName" },
@@ -283,24 +297,6 @@ namespace BusiniessObject.Migrations
                     { 1, "Gamma" },
                     { 2, "Gamma Spectrum" },
                     { 3, "XRF" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Notifications",
-                columns: new[] { "Id", "Content", "RequiredDate" },
-                values: new object[,]
-                {
-                    { 1, "Kiểm tra thiết bị đo Gamma", new DateTime(2025, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 2, "Lập kế hoạch hiệu chuẩn XRF", new DateTime(2025, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified) }
-                });
-
-            migrationBuilder.InsertData(
-                table: "SurveyPoints",
-                columns: new[] { "Id", "address", "altitude", "is_active", "latitude", "longitude", "survey_name" },
-                values: new object[,]
-                {
-                    { 1, "Hanoi, Vietnam", 10.5m, true, 21.0285m, 105.8542m, "Survey Point Alpha" },
-                    { 2, "Hanoi, Vietnam", 12.3m, true, 21.0245m, 105.8412m, "Survey Point Beta" }
                 });
 
             migrationBuilder.InsertData(
@@ -326,24 +322,6 @@ namespace BusiniessObject.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Hydrologies",
-                columns: new[] { "Id", "distance_to_water_source", "surface_water_distance", "surface_water_features", "surface_water_flow", "surface_water_level", "surface_water_type", "survey_point_id", "water_flow", "water_level", "water_presence", "water_source_features" },
-                values: new object[,]
-                {
-                    { 1, 50.0m, 45.0m, "Clean flowing water", 0.8m, 1.8m, "River", 1, 1.2m, 2.5m, true, "Small river nearby" },
-                    { 2, 200.0m, null, null, null, null, null, 2, null, null, false, "Distant water source" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "LocationDescriptions",
-                columns: new[] { "Id", "location_description", "infrastructure", "population_density", "residents", "survey_point_id", "survey_point_type" },
-                values: new object[,]
-                {
-                    { 1, "Central urban area with high population density", "Good roads, electricity, water supply", 1500.50m, "Mixed residential and commercial", 1, "Urban" },
-                    { 2, "Suburban area with moderate population", "Basic infrastructure available", 800.25m, "Mainly residential", 2, "Suburban" }
-                });
-
-            migrationBuilder.InsertData(
                 table: "MeasuringDevices",
                 columns: new[] { "Id", "DeviceTypeId", "SerialNumber" },
                 values: new object[,]
@@ -354,12 +332,21 @@ namespace BusiniessObject.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "VegetationCovers",
-                columns: new[] { "Id", "crop_percentage", "flower_percentage", "forest_percentage", "grass_percentage", "natural_forest_percentage", "other", "soil_percentage", "survey_point_id" },
+                table: "Notifications",
+                columns: new[] { "Id", "Content", "RequiredDate", "user_id" },
                 values: new object[,]
                 {
-                    { 1, 10.0m, 5.0m, 25.0m, 20.0m, 20.0m, 5.0m, 15.0m, 1 },
-                    { 2, 10.0m, 5.0m, 20.0m, 30.0m, 10.0m, 5.0m, 20.0m, 2 }
+                    { 1, "Kiểm tra thiết bị đo Gamma", new DateTime(2025, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1 },
+                    { 2, "Lập kế hoạch hiệu chuẩn XRF", new DateTime(2025, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 1 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "SurveyPoints",
+                columns: new[] { "Id", "address", "altitude", "is_active", "latitude", "longitude", "survey_name", "user_id" },
+                values: new object[,]
+                {
+                    { 1, "Hanoi, Vietnam", 10.5m, true, 21.0285m, 105.8542m, "Survey Point Alpha", 1 },
+                    { 2, "Hanoi, Vietnam", 12.3m, true, 21.0245m, 105.8412m, "Survey Point Beta", 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -382,12 +369,39 @@ namespace BusiniessObject.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Hydrologies",
+                columns: new[] { "Id", "distance_to_water_source", "surface_water_distance", "surface_water_features", "surface_water_flow", "surface_water_level", "surface_water_type", "survey_point_id", "water_flow", "water_level", "water_presence", "water_source_features" },
+                values: new object[,]
+                {
+                    { 1, 50.0m, 45.0m, "Clean flowing water", 0.8m, 1.8m, "River", 1, 1.2m, 2.5m, true, "Small river nearby" },
+                    { 2, 200.0m, null, null, null, null, null, 2, null, null, false, "Distant water source" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "LocationDescriptions",
+                columns: new[] { "Id", "location_description", "infrastructure", "population_density", "residents", "survey_point_id", "survey_point_type" },
+                values: new object[,]
+                {
+                    { 1, "Central urban area with high population density", "Good roads, electricity, water supply", 1500.50m, "Mixed residential and commercial", 1, "Urban" },
+                    { 2, "Suburban area with moderate population", "Basic infrastructure available", 800.25m, "Mainly residential", 2, "Suburban" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "PhoGammaInfos",
                 columns: new[] { "Id", "K", "MeasuringDeviceId", "Th", "U" },
                 values: new object[,]
                 {
                     { 1, 12.5, 2, 3.1000000000000001, 5.2000000000000002 },
                     { 2, 14.0, 2, 3.7999999999999998, 4.9000000000000004 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "VegetationCovers",
+                columns: new[] { "Id", "crop_percentage", "flower_percentage", "forest_percentage", "grass_percentage", "natural_forest_percentage", "other", "soil_percentage", "survey_point_id" },
+                values: new object[,]
+                {
+                    { 1, 10.0m, 5.0m, 25.0m, 20.0m, 20.0m, 5.0m, 15.0m, 1 },
+                    { 2, 10.0m, 5.0m, 20.0m, 30.0m, 10.0m, 5.0m, 20.0m, 2 }
                 });
 
             migrationBuilder.InsertData(
@@ -422,6 +436,11 @@ namespace BusiniessObject.Migrations
                 column: "DeviceTypeId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Notifications_user_id",
+                table: "Notifications",
+                column: "user_id");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_PhoGammaInfos_MeasuringDeviceId",
                 table: "PhoGammaInfos",
                 column: "MeasuringDeviceId");
@@ -430,6 +449,11 @@ namespace BusiniessObject.Migrations
                 name: "IX_question_group_id",
                 table: "question",
                 column: "group_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SurveyPoints_user_id",
+                table: "SurveyPoints",
+                column: "user_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_CitizenId",
@@ -483,9 +507,6 @@ namespace BusiniessObject.Migrations
                 name: "question");
 
             migrationBuilder.DropTable(
-                name: "Users");
-
-            migrationBuilder.DropTable(
                 name: "VegetationCovers");
 
             migrationBuilder.DropTable(
@@ -499,6 +520,9 @@ namespace BusiniessObject.Migrations
 
             migrationBuilder.DropTable(
                 name: "MeasuringDevices");
+
+            migrationBuilder.DropTable(
+                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "DeviceTypes");

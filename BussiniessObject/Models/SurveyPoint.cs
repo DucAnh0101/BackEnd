@@ -35,6 +35,12 @@ namespace BusinessObject.Models
         [Column("is_active")]
         public bool IsActive { get; set; } = true;
 
+        [Required]
+        [ForeignKey("User")]
+        [Column("user_id")]
+        public int UserId { get; set; }
+
+        public virtual User User { get; set; }
         public virtual LocationDescription? LocationDescription { get; set; }
         public virtual VegetationCover? VegetationCover { get; set; }
         public virtual Hydrology? Hydrology { get; set; }

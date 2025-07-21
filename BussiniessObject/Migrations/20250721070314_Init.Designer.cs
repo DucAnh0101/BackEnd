@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BusiniessObject.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20250721034256_NewDB")]
-    partial class NewDB
+    [Migration("20250721070314_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -313,7 +313,13 @@ namespace BusiniessObject.Migrations
                     b.Property<DateTime>("RequiredDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int")
+                        .HasColumnName("user_id");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Notifications");
 
@@ -322,13 +328,15 @@ namespace BusiniessObject.Migrations
                         {
                             Id = 1,
                             Content = "Kiểm tra thiết bị đo Gamma",
-                            RequiredDate = new DateTime(2025, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            RequiredDate = new DateTime(2025, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            UserId = 1
                         },
                         new
                         {
                             Id = 2,
                             Content = "Lập kế hoạch hiệu chuẩn XRF",
-                            RequiredDate = new DateTime(2025, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            RequiredDate = new DateTime(2025, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            UserId = 1
                         });
                 });
 
@@ -509,7 +517,13 @@ namespace BusiniessObject.Migrations
                         .HasColumnType("nvarchar(200)")
                         .HasColumnName("survey_name");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int")
+                        .HasColumnName("user_id");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("SurveyPoints");
 
@@ -522,7 +536,8 @@ namespace BusiniessObject.Migrations
                             IsActive = true,
                             Latitude = 21.0285m,
                             Longitude = 105.8542m,
-                            SurveyName = "Survey Point Alpha"
+                            SurveyName = "Survey Point Alpha",
+                            UserId = 1
                         },
                         new
                         {
@@ -532,7 +547,8 @@ namespace BusiniessObject.Migrations
                             IsActive = true,
                             Latitude = 21.0245m,
                             Longitude = 105.8412m,
-                            SurveyName = "Survey Point Beta"
+                            SurveyName = "Survey Point Beta",
+                            UserId = 1
                         });
                 });
 
@@ -827,6 +843,17 @@ namespace BusiniessObject.Migrations
                     b.Navigation("DeviceType");
                 });
 
+            modelBuilder.Entity("BusinessObject.Models.Notification", b =>
+                {
+                    b.HasOne("BusinessObject.Models.User", "User")
+                        .WithMany("Notifications")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("BusinessObject.Models.PhoGammaInfo", b =>
                 {
                     b.HasOne("BusinessObject.Models.MeasuringDevice", "MeasuringDevice")
@@ -847,6 +874,17 @@ namespace BusiniessObject.Migrations
                         .HasConstraintName("FK__question__group___398D8EEE");
 
                     b.Navigation("Group");
+                });
+
+            modelBuilder.Entity("BusinessObject.Models.SurveyPoint", b =>
+                {
+                    b.HasOne("BusinessObject.Models.User", "User")
+                        .WithMany("SurveyPoints")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("BusinessObject.Models.VegetationCover", b =>
@@ -897,6 +935,13 @@ namespace BusiniessObject.Migrations
                     b.Navigation("LocationDescription");
 
                     b.Navigation("VegetationCover");
+                });
+
+            modelBuilder.Entity("BusinessObject.Models.User", b =>
+                {
+                    b.Navigation("Notifications");
+
+                    b.Navigation("SurveyPoints");
                 });
 #pragma warning restore 612, 618
         }

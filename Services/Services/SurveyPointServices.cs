@@ -144,7 +144,7 @@ namespace Services.Services
                 .Include(s => s.Hydrology)
                 .Include(s => s.LocationDescription)
                 .Include(s => s.VegetationCover)
-                .Where(s => s.Id == id && s.IsActive == true)
+                .Where(s => s.UserId == id && s.IsActive == true)
                 .Select(sp => new SurveyPointRes
                 {
                     Id = sp.Id,

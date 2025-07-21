@@ -36,12 +36,18 @@ namespace BusinessObject.Models
         [StringLength(50)]
         [EmailAddress]
         public string Email { get; set; }
+
         [Required]
         [StringLength(1000)]
         public string AvtUrl { get; set; }
+
         [Required]
         public bool IsDelete { get; set; } = false;
+
         [Required]
         public bool IsMale { get; set; } = false;
+
+        public virtual ICollection<SurveyPoint> SurveyPoints { get; set; } = new List<SurveyPoint>();
+        public virtual ICollection<Notification> Notifications { get; set; } = new List<Notification>();
     }
 }

@@ -27,15 +27,15 @@ namespace BusinessObject.Models
         [Column("crop_percentage", TypeName = "decimal(5,2)")]
         public decimal? CropPercentage { get; set; }
 
-        [MaxLength(200)]
-        [Column("other")]
-        public string? Other { get; set; }
+        [Column("other", TypeName = "decimal(5,2)")]
+        public decimal? Other { get; set; }
 
         [Column("natural_forest_percentage", TypeName = "decimal(5,2)")]
         public decimal? NaturalForestPercentage { get; set; }
 
         [Column("flower_percentage", TypeName = "decimal(5,2)")]
         public decimal? FlowerPercentage { get; set; }
+
         public virtual SurveyPoint SurveyPoint { get; set; }
     }
 }

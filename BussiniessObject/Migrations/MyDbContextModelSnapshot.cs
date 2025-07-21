@@ -97,6 +97,160 @@ namespace BusiniessObject.Migrations
                         });
                 });
 
+            modelBuilder.Entity("BusinessObject.Models.Hydrology", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal?>("DistanceToWaterSource")
+                        .HasColumnType("decimal(8,2)")
+                        .HasColumnName("distance_to_water_source");
+
+                    b.Property<decimal?>("SurfaceWaterDistance")
+                        .HasColumnType("decimal(8,2)")
+                        .HasColumnName("surface_water_distance");
+
+                    b.Property<string>("SurfaceWaterFeatures")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)")
+                        .HasColumnName("surface_water_features");
+
+                    b.Property<decimal?>("SurfaceWaterFlow")
+                        .HasColumnType("decimal(8,2)")
+                        .HasColumnName("surface_water_flow");
+
+                    b.Property<decimal?>("SurfaceWaterLevel")
+                        .HasColumnType("decimal(8,2)")
+                        .HasColumnName("surface_water_level");
+
+                    b.Property<string>("SurfaceWaterType")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasColumnName("surface_water_type");
+
+                    b.Property<int>("SurveyPointId")
+                        .HasColumnType("int")
+                        .HasColumnName("survey_point_id");
+
+                    b.Property<decimal?>("WaterFlow")
+                        .HasColumnType("decimal(8,2)")
+                        .HasColumnName("water_flow");
+
+                    b.Property<decimal?>("WaterLevel")
+                        .HasColumnType("decimal(8,2)")
+                        .HasColumnName("water_level");
+
+                    b.Property<bool>("WaterPresence")
+                        .HasColumnType("bit")
+                        .HasColumnName("water_presence");
+
+                    b.Property<string>("WaterSourceFeatures")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)")
+                        .HasColumnName("water_source_features");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SurveyPointId")
+                        .IsUnique();
+
+                    b.ToTable("Hydrologies");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DistanceToWaterSource = 50.0m,
+                            SurfaceWaterDistance = 45.0m,
+                            SurfaceWaterFeatures = "Clean flowing water",
+                            SurfaceWaterFlow = 0.8m,
+                            SurfaceWaterLevel = 1.8m,
+                            SurfaceWaterType = "River",
+                            SurveyPointId = 1,
+                            WaterFlow = 1.2m,
+                            WaterLevel = 2.5m,
+                            WaterPresence = true,
+                            WaterSourceFeatures = "Small river nearby"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            DistanceToWaterSource = 200.0m,
+                            SurveyPointId = 2,
+                            WaterPresence = false,
+                            WaterSourceFeatures = "Distant water source"
+                        });
+                });
+
+            modelBuilder.Entity("BusinessObject.Models.LocationDescription", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)")
+                        .HasColumnName("location_description");
+
+                    b.Property<string>("Infrastructure")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)")
+                        .HasColumnName("infrastructure");
+
+                    b.Property<decimal?>("PopulationDensity")
+                        .HasColumnType("decimal(10,2)")
+                        .HasColumnName("population_density");
+
+                    b.Property<string>("Residents")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasColumnName("residents");
+
+                    b.Property<int>("SurveyPointId")
+                        .HasColumnType("int")
+                        .HasColumnName("survey_point_id");
+
+                    b.Property<string>("SurveyPointType")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasColumnName("survey_point_type");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SurveyPointId")
+                        .IsUnique();
+
+                    b.ToTable("LocationDescriptions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Central urban area with high population density",
+                            Infrastructure = "Good roads, electricity, water supply",
+                            PopulationDensity = 1500.50m,
+                            Residents = "Mixed residential and commercial",
+                            SurveyPointId = 1,
+                            SurveyPointType = "Urban"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Suburban area with moderate population",
+                            Infrastructure = "Basic infrastructure available",
+                            PopulationDensity = 800.25m,
+                            Residents = "Mainly residential",
+                            SurveyPointId = 2,
+                            SurveyPointType = "Suburban"
+                        });
+                });
+
             modelBuilder.Entity("BusinessObject.Models.MeasuringDevice", b =>
                 {
                     b.Property<int>("Id")
@@ -137,6 +291,41 @@ namespace BusiniessObject.Migrations
                             Id = 3,
                             DeviceTypeId = 3,
                             SerialNumber = "XRF001"
+                        });
+                });
+
+            modelBuilder.Entity("BusinessObject.Models.Notification", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime>("RequiredDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Notifications");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Content = "Kiểm tra thiết bị đo Gamma",
+                            RequiredDate = new DateTime(2025, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Content = "Lập kế hoạch hiệu chuẩn XRF",
+                            RequiredDate = new DateTime(2025, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
@@ -279,6 +468,71 @@ namespace BusiniessObject.Migrations
                         });
                 });
 
+            modelBuilder.Entity("BusinessObject.Models.SurveyPoint", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Address")
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)")
+                        .HasColumnName("address");
+
+                    b.Property<decimal?>("Altitude")
+                        .IsRequired()
+                        .HasColumnType("decimal(8,2)")
+                        .HasColumnName("altitude");
+
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true)
+                        .HasColumnName("is_active");
+
+                    b.Property<decimal>("Latitude")
+                        .HasColumnType("decimal(10,8)")
+                        .HasColumnName("latitude");
+
+                    b.Property<decimal>("Longitude")
+                        .HasColumnType("decimal(11,8)")
+                        .HasColumnName("longitude");
+
+                    b.Property<string>("SurveyName")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)")
+                        .HasColumnName("survey_name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SurveyPoints");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "Hanoi, Vietnam",
+                            Altitude = 10.5m,
+                            IsActive = true,
+                            Latitude = 21.0285m,
+                            Longitude = 105.8542m,
+                            SurveyName = "Survey Point Alpha"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Address = "Hanoi, Vietnam",
+                            Altitude = 12.3m,
+                            IsActive = true,
+                            Latitude = 21.0245m,
+                            Longitude = 105.8412m,
+                            SurveyName = "Survey Point Beta"
+                        });
+                });
+
             modelBuilder.Entity("BusinessObject.Models.User", b =>
                 {
                     b.Property<int>("Id")
@@ -415,6 +669,80 @@ namespace BusiniessObject.Migrations
                         });
                 });
 
+            modelBuilder.Entity("BusinessObject.Models.VegetationCover", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal?>("CropPercentage")
+                        .HasColumnType("decimal(5,2)")
+                        .HasColumnName("crop_percentage");
+
+                    b.Property<decimal?>("FlowerPercentage")
+                        .HasColumnType("decimal(5,2)")
+                        .HasColumnName("flower_percentage");
+
+                    b.Property<decimal?>("ForestPercentage")
+                        .HasColumnType("decimal(5,2)")
+                        .HasColumnName("forest_percentage");
+
+                    b.Property<decimal?>("GrassPercentage")
+                        .HasColumnType("decimal(5,2)")
+                        .HasColumnName("grass_percentage");
+
+                    b.Property<decimal?>("NaturalForestPercentage")
+                        .HasColumnType("decimal(5,2)")
+                        .HasColumnName("natural_forest_percentage");
+
+                    b.Property<decimal?>("Other")
+                        .HasColumnType("decimal(5,2)")
+                        .HasColumnName("other");
+
+                    b.Property<decimal?>("SoilPercentage")
+                        .HasColumnType("decimal(5,2)")
+                        .HasColumnName("soil_percentage");
+
+                    b.Property<int>("SurveyPointId")
+                        .HasColumnType("int")
+                        .HasColumnName("survey_point_id");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SurveyPointId")
+                        .IsUnique();
+
+                    b.ToTable("VegetationCovers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CropPercentage = 10.0m,
+                            FlowerPercentage = 5.0m,
+                            ForestPercentage = 25.0m,
+                            GrassPercentage = 20.0m,
+                            NaturalForestPercentage = 20.0m,
+                            Other = 5.0m,
+                            SoilPercentage = 15.0m,
+                            SurveyPointId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CropPercentage = 10.0m,
+                            FlowerPercentage = 5.0m,
+                            ForestPercentage = 20.0m,
+                            GrassPercentage = 30.0m,
+                            NaturalForestPercentage = 10.0m,
+                            Other = 5.0m,
+                            SoilPercentage = 20.0m,
+                            SurveyPointId = 2
+                        });
+                });
+
             modelBuilder.Entity("BusinessObject.Models.XRFInfo", b =>
                 {
                     b.Property<int>("Id")
@@ -452,364 +780,6 @@ namespace BusiniessObject.Migrations
                         });
                 });
 
-            modelBuilder.Entity("BusiniessObject.Models.Hydrology", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<decimal?>("DistanceToWaterSource")
-                        .HasPrecision(8, 2)
-                        .HasColumnType("decimal(8,2)")
-                        .HasColumnName("distance_to_water_source");
-
-                    b.Property<decimal?>("SurfaceWaterDistance")
-                        .HasPrecision(8, 2)
-                        .HasColumnType("decimal(8,2)")
-                        .HasColumnName("surface_water_distance");
-
-                    b.Property<string>("SurfaceWaterFeatures")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)")
-                        .HasColumnName("surface_water_features");
-
-                    b.Property<decimal?>("SurfaceWaterFlow")
-                        .HasPrecision(8, 2)
-                        .HasColumnType("decimal(8,2)")
-                        .HasColumnName("surface_water_flow");
-
-                    b.Property<decimal?>("SurfaceWaterLevel")
-                        .HasPrecision(8, 2)
-                        .HasColumnType("decimal(8,2)")
-                        .HasColumnName("surface_water_level");
-
-                    b.Property<string>("SurfaceWaterType")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)")
-                        .HasColumnName("surface_water_type");
-
-                    b.Property<int>("SurveyPointId")
-                        .HasColumnType("int")
-                        .HasColumnName("survey_point_id");
-
-                    b.Property<decimal?>("WaterFlow")
-                        .HasPrecision(8, 2)
-                        .HasColumnType("decimal(8,2)")
-                        .HasColumnName("water_flow");
-
-                    b.Property<decimal?>("WaterLevel")
-                        .HasPrecision(8, 2)
-                        .HasColumnType("decimal(8,2)")
-                        .HasColumnName("water_level");
-
-                    b.Property<bool>("WaterPresence")
-                        .HasColumnType("bit")
-                        .HasColumnName("water_presence");
-
-                    b.Property<string>("WaterSourceFeatures")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)")
-                        .HasColumnName("water_source_features");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SurveyPointId")
-                        .IsUnique();
-
-                    b.ToTable("Hydrologies");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            DistanceToWaterSource = 150.0m,
-                            SurfaceWaterDistance = 200.0m,
-                            SurfaceWaterFeatures = "Có thể sử dụng cho tưới tiêu",
-                            SurfaceWaterFlow = 1.2m,
-                            SurfaceWaterLevel = 2.0m,
-                            SurfaceWaterType = "Sông tự nhiên",
-                            SurveyPointId = 1,
-                            WaterFlow = 0.8m,
-                            WaterLevel = 1.5m,
-                            WaterPresence = true,
-                            WaterSourceFeatures = "Sông Hồng, nước chảy theo mùa"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            DistanceToWaterSource = 50.0m,
-                            SurfaceWaterDistance = 30.0m,
-                            SurfaceWaterFeatures = "Chủ yếu phục vụ cảnh quan",
-                            SurfaceWaterFlow = 0.0m,
-                            SurfaceWaterLevel = 1.0m,
-                            SurfaceWaterType = "Hồ nhân tạo",
-                            SurveyPointId = 2,
-                            WaterFlow = 0.0m,
-                            WaterLevel = 0.5m,
-                            WaterPresence = true,
-                            WaterSourceFeatures = "Hồ Hoàn Kiếm, nước tĩnh"
-                        });
-                });
-
-            modelBuilder.Entity("BusiniessObject.Models.LocationDescription", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Description")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)")
-                        .HasColumnName("location_description");
-
-                    b.Property<string>("Infrastructure")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)")
-                        .HasColumnName("infrastructure");
-
-                    b.Property<decimal?>("PopulationDensity")
-                        .HasPrecision(10, 2)
-                        .HasColumnType("decimal(10,2)")
-                        .HasColumnName("population_density");
-
-                    b.Property<string>("Residents")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)")
-                        .HasColumnName("residents");
-
-                    b.Property<int>("SurveyPointId")
-                        .HasColumnType("int")
-                        .HasColumnName("survey_point_id");
-
-                    b.Property<string>("SurveyPointType")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)")
-                        .HasColumnName("survey_point_type");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SurveyPointId")
-                        .IsUnique();
-
-                    b.ToTable("LocationDescriptions");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Description = "Khu vực đồng bằng sông Hồng, gần bờ sông",
-                            Infrastructure = "Có đường liên thôn, điện lưới quốc gia",
-                            PopulationDensity = 850.5m,
-                            Residents = "Nông dân địa phương",
-                            SurveyPointId = 1,
-                            SurveyPointType = "Nông nghiệp"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Description = "Khu vực trung tâm thành phố, gần hồ",
-                            Infrastructure = "Hạ tầng hoàn chỉnh, giao thông thuận lợi",
-                            PopulationDensity = 2500.0m,
-                            Residents = "Cư dân thành phố",
-                            SurveyPointId = 2,
-                            SurveyPointType = "Đô thị"
-                        });
-                });
-
-            modelBuilder.Entity("BusiniessObject.Models.Notification", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<DateTime>("RequiredDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Notifications");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Content = "Kiểm tra thiết bị đo Gamma",
-                            RequiredDate = new DateTime(2025, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Content = "Lập kế hoạch hiệu chuẩn XRF",
-                            RequiredDate = new DateTime(2025, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        });
-                });
-
-            modelBuilder.Entity("BusiniessObject.Models.SurveyPoint", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Address")
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)")
-                        .HasColumnName("address");
-
-                    b.Property<decimal?>("Altitude")
-                        .IsRequired()
-                        .HasColumnType("decimal(8,2)")
-                        .HasColumnName("altitude");
-
-                    b.Property<bool>("IsActive")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(true)
-                        .HasColumnName("is_active");
-
-                    b.Property<decimal>("Latitude")
-                        .HasPrecision(10, 8)
-                        .HasColumnType("decimal(10,8)")
-                        .HasColumnName("latitude");
-
-                    b.Property<decimal>("Longitude")
-                        .HasPrecision(8, 2)
-                        .HasColumnType("decimal(11,8)")
-                        .HasColumnName("longitude");
-
-                    b.Property<string>("SurveyName")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)")
-                        .HasColumnName("survey_name");
-
-                    b.Property<int>("SurveyorId")
-                        .HasMaxLength(100)
-                        .HasColumnType("int")
-                        .HasColumnName("surveyor_id");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("SurveyPoints");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Address = "Điểm khảo sát ban đầu tại khu vực phía Bắc",
-                            Altitude = 68.023m,
-                            IsActive = true,
-                            Latitude = 21.0285m,
-                            Longitude = 105.8542m,
-                            SurveyName = "Điểm khảo sát khu vực A",
-                            SurveyorId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Address = "Điểm khảo sát gần sông Hồng",
-                            Altitude = 68.023m,
-                            IsActive = true,
-                            Latitude = 21.0195m,
-                            Longitude = 105.8445m,
-                            SurveyName = "Điểm khảo sát khu vực B",
-                            SurveyorId = 2
-                        });
-                });
-
-            modelBuilder.Entity("BusiniessObject.Models.VegetationCover", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<decimal?>("CropPercentage")
-                        .HasPrecision(5, 2)
-                        .HasColumnType("decimal(5,2)")
-                        .HasColumnName("crop_percentage");
-
-                    b.Property<decimal?>("FlowerPercentage")
-                        .HasPrecision(5, 2)
-                        .HasColumnType("decimal(5,2)")
-                        .HasColumnName("flower_percentage");
-
-                    b.Property<decimal?>("ForestPercentage")
-                        .HasPrecision(5, 2)
-                        .HasColumnType("decimal(5,2)")
-                        .HasColumnName("forest_percentage");
-
-                    b.Property<decimal?>("GrassPercentage")
-                        .HasPrecision(5, 2)
-                        .HasColumnType("decimal(5,2)")
-                        .HasColumnName("grass_percentage");
-
-                    b.Property<decimal?>("NaturalForestPercentage")
-                        .HasPrecision(5, 2)
-                        .HasColumnType("decimal(5,2)")
-                        .HasColumnName("natural_forest_percentage");
-
-                    b.Property<string>("Other")
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)")
-                        .HasColumnName("other");
-
-                    b.Property<decimal?>("SoilPercentage")
-                        .HasPrecision(5, 2)
-                        .HasColumnType("decimal(5,2)")
-                        .HasColumnName("soil_percentage");
-
-                    b.Property<int>("SurveyPointId")
-                        .HasColumnType("int")
-                        .HasColumnName("survey_point_id");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SurveyPointId")
-                        .IsUnique();
-
-                    b.ToTable("VegetationCovers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CropPercentage = 45.0m,
-                            FlowerPercentage = 1.0m,
-                            ForestPercentage = 10.0m,
-                            GrassPercentage = 25.5m,
-                            NaturalForestPercentage = 3.5m,
-                            Other = "Đất xây dựng, đường xá",
-                            SoilPercentage = 15.0m,
-                            SurveyPointId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CropPercentage = 5.0m,
-                            FlowerPercentage = 20.0m,
-                            ForestPercentage = 20.0m,
-                            GrassPercentage = 35.0m,
-                            NaturalForestPercentage = 15.0m,
-                            Other = "Công trình đô thị, sân vườn",
-                            SoilPercentage = 5.0m,
-                            SurveyPointId = 2
-                        });
-                });
-
             modelBuilder.Entity("BusinessObject.Models.GammaCalibration", b =>
                 {
                     b.HasOne("BusinessObject.Models.MeasuringDevice", "MeasuringDevice")
@@ -819,6 +789,28 @@ namespace BusiniessObject.Migrations
                         .IsRequired();
 
                     b.Navigation("MeasuringDevice");
+                });
+
+            modelBuilder.Entity("BusinessObject.Models.Hydrology", b =>
+                {
+                    b.HasOne("BusinessObject.Models.SurveyPoint", "SurveyPoint")
+                        .WithOne("Hydrology")
+                        .HasForeignKey("BusinessObject.Models.Hydrology", "SurveyPointId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("SurveyPoint");
+                });
+
+            modelBuilder.Entity("BusinessObject.Models.LocationDescription", b =>
+                {
+                    b.HasOne("BusinessObject.Models.SurveyPoint", "SurveyPoint")
+                        .WithOne("LocationDescription")
+                        .HasForeignKey("BusinessObject.Models.LocationDescription", "SurveyPointId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("SurveyPoint");
                 });
 
             modelBuilder.Entity("BusinessObject.Models.MeasuringDevice", b =>
@@ -854,6 +846,17 @@ namespace BusiniessObject.Migrations
                     b.Navigation("Group");
                 });
 
+            modelBuilder.Entity("BusinessObject.Models.VegetationCover", b =>
+                {
+                    b.HasOne("BusinessObject.Models.SurveyPoint", "SurveyPoint")
+                        .WithOne("VegetationCover")
+                        .HasForeignKey("BusinessObject.Models.VegetationCover", "SurveyPointId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("SurveyPoint");
+                });
+
             modelBuilder.Entity("BusinessObject.Models.XRFInfo", b =>
                 {
                     b.HasOne("BusinessObject.Models.MeasuringDevice", "MeasuringDevice")
@@ -863,39 +866,6 @@ namespace BusiniessObject.Migrations
                         .IsRequired();
 
                     b.Navigation("MeasuringDevice");
-                });
-
-            modelBuilder.Entity("BusiniessObject.Models.Hydrology", b =>
-                {
-                    b.HasOne("BusiniessObject.Models.SurveyPoint", "SurveyPoint")
-                        .WithOne("Hydrology")
-                        .HasForeignKey("BusiniessObject.Models.Hydrology", "SurveyPointId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("SurveyPoint");
-                });
-
-            modelBuilder.Entity("BusiniessObject.Models.LocationDescription", b =>
-                {
-                    b.HasOne("BusiniessObject.Models.SurveyPoint", "SurveyPoint")
-                        .WithOne("LocationDescription")
-                        .HasForeignKey("BusiniessObject.Models.LocationDescription", "SurveyPointId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("SurveyPoint");
-                });
-
-            modelBuilder.Entity("BusiniessObject.Models.VegetationCover", b =>
-                {
-                    b.HasOne("BusiniessObject.Models.SurveyPoint", "SurveyPoint")
-                        .WithOne("VegetationCover")
-                        .HasForeignKey("BusiniessObject.Models.VegetationCover", "SurveyPointId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("SurveyPoint");
                 });
 
             modelBuilder.Entity("BusinessObject.Models.DeviceType", b =>
@@ -917,7 +887,7 @@ namespace BusiniessObject.Migrations
                     b.Navigation("Questions");
                 });
 
-            modelBuilder.Entity("BusiniessObject.Models.SurveyPoint", b =>
+            modelBuilder.Entity("BusinessObject.Models.SurveyPoint", b =>
                 {
                     b.Navigation("Hydrology");
 

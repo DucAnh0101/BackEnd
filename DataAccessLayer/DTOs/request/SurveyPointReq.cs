@@ -25,9 +25,6 @@ namespace DataAccessLayer.DTOs.request
         [Column("address")]
         public string? Address { get; set; }
 
-        [Column("surveyor_id")]
-        public int SurveyorId { get; set; }
-
         [Required]
         [Column("is_active")]
         public bool IsActive { get; set; } = true;

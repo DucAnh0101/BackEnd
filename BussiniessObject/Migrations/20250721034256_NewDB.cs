@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BusiniessObject.Migrations
 {
     /// <inheritdoc />
-    public partial class updateDB : Migration
+    public partial class NewDB : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -60,11 +60,10 @@ namespace BusiniessObject.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     survey_name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    latitude = table.Column<decimal>(type: "decimal(10,8)", precision: 10, scale: 8, nullable: false),
-                    longitude = table.Column<decimal>(type: "decimal(11,8)", precision: 8, scale: 2, nullable: false),
+                    latitude = table.Column<decimal>(type: "decimal(10,8)", nullable: false),
+                    longitude = table.Column<decimal>(type: "decimal(11,8)", nullable: false),
                     altitude = table.Column<decimal>(type: "decimal(8,2)", nullable: false),
                     address = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
-                    surveyor_id = table.Column<int>(type: "int", maxLength: 100, nullable: false),
                     is_active = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
@@ -142,14 +141,14 @@ namespace BusiniessObject.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     survey_point_id = table.Column<int>(type: "int", nullable: false),
                     water_presence = table.Column<bool>(type: "bit", nullable: false),
-                    water_level = table.Column<decimal>(type: "decimal(8,2)", precision: 8, scale: 2, nullable: true),
-                    water_flow = table.Column<decimal>(type: "decimal(8,2)", precision: 8, scale: 2, nullable: true),
-                    distance_to_water_source = table.Column<decimal>(type: "decimal(8,2)", precision: 8, scale: 2, nullable: true),
+                    water_level = table.Column<decimal>(type: "decimal(8,2)", nullable: true),
+                    water_flow = table.Column<decimal>(type: "decimal(8,2)", nullable: true),
+                    distance_to_water_source = table.Column<decimal>(type: "decimal(8,2)", nullable: true),
                     water_source_features = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
                     surface_water_type = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    surface_water_level = table.Column<decimal>(type: "decimal(8,2)", precision: 8, scale: 2, nullable: true),
-                    surface_water_flow = table.Column<decimal>(type: "decimal(8,2)", precision: 8, scale: 2, nullable: true),
-                    surface_water_distance = table.Column<decimal>(type: "decimal(8,2)", precision: 8, scale: 2, nullable: true),
+                    surface_water_level = table.Column<decimal>(type: "decimal(8,2)", nullable: true),
+                    surface_water_flow = table.Column<decimal>(type: "decimal(8,2)", nullable: true),
+                    surface_water_distance = table.Column<decimal>(type: "decimal(8,2)", nullable: true),
                     surface_water_features = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true)
                 },
                 constraints: table =>
@@ -171,7 +170,7 @@ namespace BusiniessObject.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     survey_point_id = table.Column<int>(type: "int", nullable: false),
                     survey_point_type = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    population_density = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: true),
+                    population_density = table.Column<decimal>(type: "decimal(10,2)", nullable: true),
                     location_description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
                     infrastructure = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
                     residents = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true)
@@ -194,13 +193,13 @@ namespace BusiniessObject.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     survey_point_id = table.Column<int>(type: "int", nullable: false),
-                    grass_percentage = table.Column<decimal>(type: "decimal(5,2)", precision: 5, scale: 2, nullable: true),
-                    soil_percentage = table.Column<decimal>(type: "decimal(5,2)", precision: 5, scale: 2, nullable: true),
-                    forest_percentage = table.Column<decimal>(type: "decimal(5,2)", precision: 5, scale: 2, nullable: true),
-                    crop_percentage = table.Column<decimal>(type: "decimal(5,2)", precision: 5, scale: 2, nullable: true),
-                    other = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
-                    natural_forest_percentage = table.Column<decimal>(type: "decimal(5,2)", precision: 5, scale: 2, nullable: true),
-                    flower_percentage = table.Column<decimal>(type: "decimal(5,2)", precision: 5, scale: 2, nullable: true)
+                    grass_percentage = table.Column<decimal>(type: "decimal(5,2)", nullable: true),
+                    soil_percentage = table.Column<decimal>(type: "decimal(5,2)", nullable: true),
+                    forest_percentage = table.Column<decimal>(type: "decimal(5,2)", nullable: true),
+                    crop_percentage = table.Column<decimal>(type: "decimal(5,2)", nullable: true),
+                    other = table.Column<decimal>(type: "decimal(5,2)", nullable: true),
+                    natural_forest_percentage = table.Column<decimal>(type: "decimal(5,2)", nullable: true),
+                    flower_percentage = table.Column<decimal>(type: "decimal(5,2)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -297,11 +296,11 @@ namespace BusiniessObject.Migrations
 
             migrationBuilder.InsertData(
                 table: "SurveyPoints",
-                columns: new[] { "Id", "address", "altitude", "is_active", "latitude", "longitude", "survey_name", "surveyor_id" },
+                columns: new[] { "Id", "address", "altitude", "is_active", "latitude", "longitude", "survey_name" },
                 values: new object[,]
                 {
-                    { 1, "Điểm khảo sát ban đầu tại khu vực phía Bắc", 68.023m, true, 21.0285m, 105.8542m, "Điểm khảo sát khu vực A", 1 },
-                    { 2, "Điểm khảo sát gần sông Hồng", 68.023m, true, 21.0195m, 105.8445m, "Điểm khảo sát khu vực B", 2 }
+                    { 1, "Hanoi, Vietnam", 10.5m, true, 21.0285m, 105.8542m, "Survey Point Alpha" },
+                    { 2, "Hanoi, Vietnam", 12.3m, true, 21.0245m, 105.8412m, "Survey Point Beta" }
                 });
 
             migrationBuilder.InsertData(
@@ -331,8 +330,8 @@ namespace BusiniessObject.Migrations
                 columns: new[] { "Id", "distance_to_water_source", "surface_water_distance", "surface_water_features", "surface_water_flow", "surface_water_level", "surface_water_type", "survey_point_id", "water_flow", "water_level", "water_presence", "water_source_features" },
                 values: new object[,]
                 {
-                    { 1, 150.0m, 200.0m, "Có thể sử dụng cho tưới tiêu", 1.2m, 2.0m, "Sông tự nhiên", 1, 0.8m, 1.5m, true, "Sông Hồng, nước chảy theo mùa" },
-                    { 2, 50.0m, 30.0m, "Chủ yếu phục vụ cảnh quan", 0.0m, 1.0m, "Hồ nhân tạo", 2, 0.0m, 0.5m, true, "Hồ Hoàn Kiếm, nước tĩnh" }
+                    { 1, 50.0m, 45.0m, "Clean flowing water", 0.8m, 1.8m, "River", 1, 1.2m, 2.5m, true, "Small river nearby" },
+                    { 2, 200.0m, null, null, null, null, null, 2, null, null, false, "Distant water source" }
                 });
 
             migrationBuilder.InsertData(
@@ -340,8 +339,8 @@ namespace BusiniessObject.Migrations
                 columns: new[] { "Id", "location_description", "infrastructure", "population_density", "residents", "survey_point_id", "survey_point_type" },
                 values: new object[,]
                 {
-                    { 1, "Khu vực đồng bằng sông Hồng, gần bờ sông", "Có đường liên thôn, điện lưới quốc gia", 850.5m, "Nông dân địa phương", 1, "Nông nghiệp" },
-                    { 2, "Khu vực trung tâm thành phố, gần hồ", "Hạ tầng hoàn chỉnh, giao thông thuận lợi", 2500.0m, "Cư dân thành phố", 2, "Đô thị" }
+                    { 1, "Central urban area with high population density", "Good roads, electricity, water supply", 1500.50m, "Mixed residential and commercial", 1, "Urban" },
+                    { 2, "Suburban area with moderate population", "Basic infrastructure available", 800.25m, "Mainly residential", 2, "Suburban" }
                 });
 
             migrationBuilder.InsertData(
@@ -359,8 +358,8 @@ namespace BusiniessObject.Migrations
                 columns: new[] { "Id", "crop_percentage", "flower_percentage", "forest_percentage", "grass_percentage", "natural_forest_percentage", "other", "soil_percentage", "survey_point_id" },
                 values: new object[,]
                 {
-                    { 1, 45.0m, 1.0m, 10.0m, 25.5m, 3.5m, "Đất xây dựng, đường xá", 15.0m, 1 },
-                    { 2, 5.0m, 20.0m, 20.0m, 35.0m, 15.0m, "Công trình đô thị, sân vườn", 5.0m, 2 }
+                    { 1, 10.0m, 5.0m, 25.0m, 20.0m, 20.0m, 5.0m, 15.0m, 1 },
+                    { 2, 10.0m, 5.0m, 20.0m, 30.0m, 10.0m, 5.0m, 20.0m, 2 }
                 });
 
             migrationBuilder.InsertData(

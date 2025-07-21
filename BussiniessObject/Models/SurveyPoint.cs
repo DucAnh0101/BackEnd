@@ -3,7 +3,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BusinessObject.Models
 {
-
     [Table("SurveyPoints")]
     public class SurveyPoint
     {
@@ -32,15 +31,12 @@ namespace BusinessObject.Models
         [Column("address")]
         public string? Address { get; set; }
 
-        [Column("surveyor_id")]
-        public int SurveyorId { get; set; }
-
         [Required]
         [Column("is_active")]
         public bool IsActive { get; set; } = true;
+
         public virtual LocationDescription? LocationDescription { get; set; }
         public virtual VegetationCover? VegetationCover { get; set; }
         public virtual Hydrology? Hydrology { get; set; }
     }
 }
-

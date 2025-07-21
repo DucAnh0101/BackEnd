@@ -1,4 +1,5 @@
 ﻿using DataAccessLayer.DTOs.request;
+using DataAccessLayer.DTOs.response;
 using Microsoft.AspNetCore.Mvc;
 using Services.Implements;
 
@@ -49,8 +50,92 @@ namespace CustomStore.Controllers
         {
             try
             {
-                _surveyPointServices.DeleteSurveyPoint(id); `
+                _surveyPointServices.DeleteSurveyPoint(id);
                 return Ok("Delete survey ponit successfully!");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost("add-hydrology/{id}")]
+        public async Task<IActionResult> AddHydrology([FromBody] HydrologyDto hydrology, int id)
+        {
+            try
+            {
+                var hydro = _surveyPointServices.CreateHydrology(hydrology, id);
+                return Ok(hydro);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut("update-hydro/{id}")]
+        public async Task<IActionResult> UpdateHydrology([FromBody] HydrologyDto hydrology, int id)
+        {
+            try
+            {
+                _surveyPointServices.UpdateHydrology(hydrology, id);
+                return Ok("Update hydrology successfully");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost("add-location/{id}")]
+        public async Task<IActionResult> AddLocation([FromBody] LocationDesDto location, int id)
+        {
+            try
+            {
+                var hydro = _surveyPointServices.CreateLocation(location, id);
+                return Ok(hydro);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut("update-location/{id}")]
+        public async Task<IActionResult> UpdateLocation([FromBody] LocationDesDto location, int id)
+        {
+            try
+            {
+                _surveyPointServices.UpdateLocation(location, id);
+                return Ok("Update hydrology successfully");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost("add-vegetation/{id}")]
+        public async Task<IActionResult> AddVegetation([FromBody] LocationDesDto location, int id)
+        {
+            try
+            {
+                var hydro = _surveyPointServices.CreateLocation(location, id);
+                return Ok(hydro);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut("update-vegetation/{id}")]
+        public async Task<IActionResult> UpdateVegetation([FromBody] VegetationCoverDto vegetation, int id)
+        {
+            try
+            {
+                _surveyPointServices.UpdateVegetationCover(vegetation, id);
+                return Ok("Update hydrology successfully");
             }
             catch (Exception ex)
             {

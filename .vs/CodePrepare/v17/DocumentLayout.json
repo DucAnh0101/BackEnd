@@ -1,34 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "F:\\Code\\C#\\BackEnd\\",
+  "WorkspaceRootPath": "F:\\Code\\C#\\backend\\",
   "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|f:\\code\\c#\\backend\\services\\services\\surveypointservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|solutionrelative:services\\services\\surveypointservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
     {
       "AbsoluteMoniker": "D:0:0:{B235D242-179E-4A08-8A2F-7AC3D48F78EE}|CustomStore\\CustomStore.csproj|f:\\code\\c#\\backend\\customstore\\controllers\\surveypointcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B235D242-179E-4A08-8A2F-7AC3D48F78EE}|CustomStore\\CustomStore.csproj|solutionrelative:customstore\\controllers\\surveypointcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{42645C7A-C264-411B-AE64-793A5E6C46FD}|BussiniessObject\\BusiniessObject.csproj|f:\\code\\c#\\backend\\bussiniessobject\\models\\surveypoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42645C7A-C264-411B-AE64-793A5E6C46FD}|BussiniessObject\\BusiniessObject.csproj|solutionrelative:bussiniessobject\\models\\surveypoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|f:\\code\\c#\\backend\\services\\implements\\isurveypointservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|solutionrelative:services\\implements\\isurveypointservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{02B5DD56-B2CD-4AD9-9F85-F636B349116E}|DataAccessLayer\\DataAccessLayer.csproj|f:\\code\\c#\\backend\\dataaccesslayer\\dtos\\response\\surveypointres.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{02B5DD56-B2CD-4AD9-9F85-F636B349116E}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\dtos\\response\\surveypointres.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{42645C7A-C264-411B-AE64-793A5E6C46FD}|BussiniessObject\\BusiniessObject.csproj|f:\\code\\c#\\backend\\bussiniessobject\\mydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42645C7A-C264-411B-AE64-793A5E6C46FD}|BussiniessObject\\BusiniessObject.csproj|solutionrelative:bussiniessobject\\mydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{02B5DD56-B2CD-4AD9-9F85-F636B349116E}|DataAccessLayer\\DataAccessLayer.csproj|f:\\code\\c#\\backend\\dataaccesslayer\\dtos\\request\\surveypointreq.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{02B5DD56-B2CD-4AD9-9F85-F636B349116E}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\dtos\\request\\surveypointreq.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|f:\\code\\c#\\backend\\services\\services\\surveypointservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|solutionrelative:services\\services\\surveypointservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -37,98 +17,33 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 200,
+          "DockedWidth": 170,
           "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "MyDbContext.cs",
-              "DocumentMoniker": "F:\\Code\\C#\\BackEnd\\BussiniessObject\\MyDbContext.cs",
-              "RelativeDocumentMoniker": "BussiniessObject\\MyDbContext.cs",
-              "ToolTip": "F:\\Code\\C#\\BackEnd\\BussiniessObject\\MyDbContext.cs",
-              "RelativeToolTip": "BussiniessObject\\MyDbContext.cs",
-              "ViewState": "AgIAANgBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "SurveyPointServices.cs",
+              "DocumentMoniker": "F:\\Code\\C#\\backend\\Services\\Services\\SurveyPointServices.cs",
+              "RelativeDocumentMoniker": "Services\\Services\\SurveyPointServices.cs",
+              "ToolTip": "F:\\Code\\C#\\backend\\Services\\Services\\SurveyPointServices.cs",
+              "RelativeToolTip": "Services\\Services\\SurveyPointServices.cs",
+              "ViewState": "AgIAAMEAAAAAAAAAAAA1wAwAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-18T09:01:31.513Z",
+              "WhenOpened": "2025-07-21T03:54:15.345Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "SurveyPointServices.cs",
-              "DocumentMoniker": "F:\\Code\\C#\\BackEnd\\Services\\Services\\SurveyPointServices.cs",
-              "RelativeDocumentMoniker": "Services\\Services\\SurveyPointServices.cs",
-              "ToolTip": "F:\\Code\\C#\\BackEnd\\Services\\Services\\SurveyPointServices.cs",
-              "RelativeToolTip": "Services\\Services\\SurveyPointServices.cs",
-              "ViewState": "AgIAADEAAAAAAAAAAAAYwEYAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-18T07:10:38.943Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "SurveyPointController.cs",
               "DocumentMoniker": "F:\\Code\\C#\\backend\\CustomStore\\Controllers\\SurveyPointController.cs",
               "RelativeDocumentMoniker": "CustomStore\\Controllers\\SurveyPointController.cs",
               "ToolTip": "F:\\Code\\C#\\backend\\CustomStore\\Controllers\\SurveyPointController.cs",
               "RelativeToolTip": "CustomStore\\Controllers\\SurveyPointController.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAYwDQAAAA8AAAAAAAAAA==",
+              "ViewState": "AgIAAGkAAAAAAAAAAAA0wGcAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-18T08:04:45.456Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "SurveyPointReq.cs",
-              "DocumentMoniker": "F:\\Code\\C#\\BackEnd\\DataAccessLayer\\DTOs\\request\\SurveyPointReq.cs",
-              "RelativeDocumentMoniker": "DataAccessLayer\\DTOs\\request\\SurveyPointReq.cs",
-              "ToolTip": "F:\\Code\\C#\\BackEnd\\DataAccessLayer\\DTOs\\request\\SurveyPointReq.cs",
-              "RelativeToolTip": "DataAccessLayer\\DTOs\\request\\SurveyPointReq.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-18T07:53:32.463Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "SurveyPointRes.cs",
-              "DocumentMoniker": "F:\\Code\\C#\\BackEnd\\DataAccessLayer\\DTOs\\response\\SurveyPointRes.cs",
-              "RelativeDocumentMoniker": "DataAccessLayer\\DTOs\\response\\SurveyPointRes.cs",
-              "ToolTip": "F:\\Code\\C#\\BackEnd\\DataAccessLayer\\DTOs\\response\\SurveyPointRes.cs",
-              "RelativeToolTip": "DataAccessLayer\\DTOs\\response\\SurveyPointRes.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAA4wBsAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-18T07:26:06.89Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SurveyPoint.cs",
-              "DocumentMoniker": "F:\\Code\\C#\\BackEnd\\BussiniessObject\\Models\\SurveyPoint.cs",
-              "RelativeDocumentMoniker": "BussiniessObject\\Models\\SurveyPoint.cs",
-              "ToolTip": "F:\\Code\\C#\\BackEnd\\BussiniessObject\\Models\\SurveyPoint.cs",
-              "RelativeToolTip": "BussiniessObject\\Models\\SurveyPoint.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAA3wCUAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-18T07:16:46.863Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ISurveyPointServices.cs",
-              "DocumentMoniker": "F:\\Code\\C#\\BackEnd\\Services\\Implements\\ISurveyPointServices.cs",
-              "RelativeDocumentMoniker": "Services\\Implements\\ISurveyPointServices.cs",
-              "ToolTip": "F:\\Code\\C#\\BackEnd\\Services\\Implements\\ISurveyPointServices.cs",
-              "RelativeToolTip": "Services\\Implements\\ISurveyPointServices.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-18T07:10:16.784Z",
+              "WhenOpened": "2025-07-21T03:53:32.929Z",
               "EditorCaption": ""
             }
           ]

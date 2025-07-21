@@ -15,7 +15,6 @@ namespace BusinessObject
         {
         }
 
-        // Existing DbSets
         public DbSet<User> Users { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<QuestionGroup> QuestionGroups { get; set; }
@@ -25,8 +24,6 @@ namespace BusinessObject
         public DbSet<PhoGammaInfo> PhoGammaInfos { get; set; }
         public DbSet<XRFInfo> XRFInfos { get; set; }
         public DbSet<Notification> Notifications { get; set; }
-
-        // New DbSets for Survey System
         public DbSet<SurveyPoint> SurveyPoints { get; set; }
         public DbSet<LocationDescription> LocationDescriptions { get; set; }
         public DbSet<VegetationCover> VegetationCovers { get; set; }
@@ -48,7 +45,6 @@ namespace BusinessObject
         {
             base.OnModelCreating(modelBuilder);
 
-            // User entity configuration
             modelBuilder.Entity<User>(entity =>
             {
                 entity.HasKey(e => e.Id);
@@ -90,7 +86,6 @@ namespace BusinessObject
                     .IsRequired();
             });
 
-            // Question entity configuration
             modelBuilder.Entity<Question>(entity =>
             {
                 entity.HasKey(e => e.Id).HasName("PK__question__3213E83F197C22A5");
@@ -105,7 +100,6 @@ namespace BusinessObject
                     .HasConstraintName("FK__question__group___398D8EEE");
             });
 
-            // QuestionGroup entity configuration
             modelBuilder.Entity<QuestionGroup>(entity =>
             {
                 entity.HasKey(e => e.Id).HasName("PK__question__3213E83F4DFF750F");
@@ -116,14 +110,12 @@ namespace BusinessObject
                     .HasColumnName("name");
             });
 
-            // DeviceType entity configuration
             modelBuilder.Entity<DeviceType>(entity =>
             {
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.TypeName).HasMaxLength(100).IsRequired();
             });
 
-            // MeasuringDevice entity configuration
             modelBuilder.Entity<MeasuringDevice>(entity =>
             {
                 entity.HasKey(e => e.Id);
@@ -135,7 +127,6 @@ namespace BusinessObject
                     .OnDelete(DeleteBehavior.Cascade);
             });
 
-            // GammaCalibration entity configuration
             modelBuilder.Entity<GammaCalibration>(entity =>
             {
                 entity.HasKey(e => e.Id);
@@ -148,7 +139,6 @@ namespace BusinessObject
                     .OnDelete(DeleteBehavior.Cascade);
             });
 
-            // PhoGammaInfo entity configuration
             modelBuilder.Entity<PhoGammaInfo>(entity =>
             {
                 entity.HasKey(e => e.Id);
@@ -159,7 +149,6 @@ namespace BusinessObject
                     .OnDelete(DeleteBehavior.Cascade);
             });
 
-            // XRFInfo entity configuration
             modelBuilder.Entity<XRFInfo>(entity =>
             {
                 entity.HasKey(e => e.Id);
@@ -171,7 +160,6 @@ namespace BusinessObject
                     .OnDelete(DeleteBehavior.Cascade);
             });
 
-            // Notification entity configuration
             modelBuilder.Entity<Notification>(entity =>
             {
                 entity.HasKey(e => e.Id);
@@ -183,7 +171,6 @@ namespace BusinessObject
                       .IsRequired();
             });
 
-            // SurveyPoint entity configuration
             modelBuilder.Entity<SurveyPoint>(entity =>
             {
                 entity.HasKey(e => e.Id);
@@ -207,14 +194,10 @@ namespace BusinessObject
                 entity.Property(e => e.Address)
                     .HasMaxLength(1000);
 
-                entity.Property(e => e.SurveyorId)
-                    .IsRequired();
-
                 entity.Property(e => e.IsActive)
                     .IsRequired()
                     .HasDefaultValue(true);
 
-                // Configure relationships
                 entity.HasOne(s => s.LocationDescription)
                     .WithOne(l => l.SurveyPoint)
                     .HasForeignKey<LocationDescription>(l => l.SurveyPointId)
@@ -231,7 +214,6 @@ namespace BusinessObject
                     .OnDelete(DeleteBehavior.Cascade);
             });
 
-            // LocationDescription entity configuration
             modelBuilder.Entity<LocationDescription>(entity =>
             {
                 entity.HasKey(e => e.Id);
@@ -253,7 +235,6 @@ namespace BusinessObject
                     .HasMaxLength(100);
             });
 
-            // VegetationCover entity configuration
             modelBuilder.Entity<VegetationCover>(entity =>
             {
                 entity.HasKey(e => e.Id);
@@ -272,7 +253,7 @@ namespace BusinessObject
                     .HasColumnType("decimal(5,2)");
 
                 entity.Property(e => e.Other)
-                    .HasMaxLength(200);
+                    .HasColumnType("decimal(5,2)");
 
                 entity.Property(e => e.NaturalForestPercentage)
                     .HasColumnType("decimal(5,2)");
@@ -281,7 +262,6 @@ namespace BusinessObject
                     .HasColumnType("decimal(5,2)");
             });
 
-            // Hydrology entity configuration
             modelBuilder.Entity<Hydrology>(entity =>
             {
                 entity.HasKey(e => e.Id);
@@ -318,13 +298,11 @@ namespace BusinessObject
                     .HasMaxLength(500);
             });
 
-            // Seed data
             SeedData(modelBuilder);
         }
 
         private void SeedData(ModelBuilder modelBuilder)
         {
-            // Seed User data
             modelBuilder.Entity<User>().HasData(
                 new User
                 {
@@ -398,14 +376,12 @@ namespace BusinessObject
                 }
             );
 
-            // Seed QuestionGroup data
             modelBuilder.Entity<QuestionGroup>().HasData(
                 new QuestionGroup { Id = 1, Name = "General Knowledge" },
                 new QuestionGroup { Id = 2, Name = "Technical Questions" },
                 new QuestionGroup { Id = 3, Name = "Safety Procedures" }
             );
 
-            // Seed Question data
             modelBuilder.Entity<Question>().HasData(
                 new Question
                 {
@@ -430,45 +406,38 @@ namespace BusinessObject
                 }
             );
 
-            // Seed DeviceType data
             modelBuilder.Entity<DeviceType>().HasData(
                 new DeviceType { Id = 1, TypeName = "Gamma" },
                 new DeviceType { Id = 2, TypeName = "Gamma Spectrum" },
                 new DeviceType { Id = 3, TypeName = "XRF" }
             );
 
-            // Seed MeasuringDevice data
             modelBuilder.Entity<MeasuringDevice>().HasData(
                 new MeasuringDevice { Id = 1, SerialNumber = "GAMMA001", DeviceTypeId = 1 },
                 new MeasuringDevice { Id = 2, SerialNumber = "GAMMASPEC001", DeviceTypeId = 2 },
                 new MeasuringDevice { Id = 3, SerialNumber = "XRF001", DeviceTypeId = 3 }
             );
 
-            // Seed GammaCalibration data
             modelBuilder.Entity<GammaCalibration>().HasData(
                 new GammaCalibration { Id = 1, Khoang = 50, HeSoChuanMay = 0.98, MeasuringDeviceId = 1 },
                 new GammaCalibration { Id = 2, Khoang = 14, HeSoChuanMay = 1.05, MeasuringDeviceId = 1 }
             );
 
-            // Seed PhoGammaInfo data
             modelBuilder.Entity<PhoGammaInfo>().HasData(
                 new PhoGammaInfo { Id = 1, MeasuringDeviceId = 2, K = 12.5, U = 5.2, Th = 3.1 },
                 new PhoGammaInfo { Id = 2, MeasuringDeviceId = 2, K = 14.0, U = 4.9, Th = 3.8 }
             );
 
-            // Seed XRFInfo data
             modelBuilder.Entity<XRFInfo>().HasData(
                 new XRFInfo { Id = 1, MeasuringDeviceId = 3, Note = "Thiết bị kiểm tra tại mỏ A" },
                 new XRFInfo { Id = 2, MeasuringDeviceId = 3, Note = "Thiết bị đang hiệu chuẩn" }
             );
 
-            // Seed Notification data
             modelBuilder.Entity<Notification>().HasData(
                 new Notification { Id = 1, Content = "Kiểm tra thiết bị đo Gamma", RequiredDate = new DateTime(2025, 8, 1) },
                 new Notification { Id = 2, Content = "Lập kế hoạch hiệu chuẩn XRF", RequiredDate = new DateTime(2025, 8, 15) }
             );
 
-            // Seed SurveyPoint data
             modelBuilder.Entity<SurveyPoint>().HasData(
                 new SurveyPoint
                 {
@@ -478,7 +447,6 @@ namespace BusinessObject
                     Longitude = 105.8542m,
                     Altitude = 10.5m,
                     Address = "Hanoi, Vietnam",
-                    SurveyorId = 1,
                     IsActive = true
                 },
                 new SurveyPoint
@@ -489,12 +457,10 @@ namespace BusinessObject
                     Longitude = 105.8412m,
                     Altitude = 12.3m,
                     Address = "Hanoi, Vietnam",
-                    SurveyorId = 2,
                     IsActive = true
                 }
             );
 
-            // Seed LocationDescription data
             modelBuilder.Entity<LocationDescription>().HasData(
                 new LocationDescription
                 {
@@ -518,31 +484,30 @@ namespace BusinessObject
                 }
             );
 
-            // Seed VegetationCover data
             modelBuilder.Entity<VegetationCover>().HasData(
                 new VegetationCover
                 {
                     Id = 1,
                     SurveyPointId = 1,
-                    GrassPercentage = 25.5m,
-                    SoilPercentage = 15.2m,
-                    ForestPercentage = 35.8m,
-                    CropPercentage = 10.5m,
-                    Other = "Urban structures",
-                    NaturalForestPercentage = 30.0m,
+                    GrassPercentage = 20.0m,
+                    SoilPercentage = 15.0m,
+                    ForestPercentage = 25.0m,
+                    CropPercentage = 10.0m,
+                    Other = 5.0m,
+                    NaturalForestPercentage = 20.0m,
                     FlowerPercentage = 5.0m
                 },
                 new VegetationCover
                 {
                     Id = 2,
                     SurveyPointId = 2,
-                    GrassPercentage = 40.0m,
+                    GrassPercentage = 30.0m,
                     SoilPercentage = 20.0m,
-                    ForestPercentage = 25.0m,
-                    CropPercentage = 15.0m,
-                    Other = "Small buildings",
-                    NaturalForestPercentage = 20.0m,
-                    FlowerPercentage = 8.0m
+                    ForestPercentage = 20.0m,
+                    CropPercentage = 10.0m,
+                    Other = 5.0m,
+                    NaturalForestPercentage = 10.0m,
+                    FlowerPercentage = 5.0m
                 }
             );
 

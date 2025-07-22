@@ -142,5 +142,20 @@ namespace CustomStore.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpGet("search/{search}&&{id}")]
+        public async Task<IActionResult> SearchSurveyPoint(string search, int id)
+        {
+            if (string.IsNullOrEmpty(search)) return BadRequest("Please enter survey point name");
+            try
+            {
+                var s = _surveyPointServices.SearchSurveyPointByName(search, id);
+                return Ok(s);
+            }
+            catch (Exception x)
+            {
+                return BadRequest(x.Message);
+            }
+        }
     }
 }

@@ -196,6 +196,26 @@ namespace Services.Services
             return surveyPoints;
         }
 
+        public List<SurveyPointReq> SearchSurveyPointByName(string name, int id)
+        {
+            var s = myDbContext.SurveyPoints
+                .Where(ss => ss.SurveyName.
+                Trim().ToLower().
+                Contains(name.Trim().ToLower()) && ss.UserId == id)
+                .Select(a => new SurveyPointReq
+                {
+                    SurveyName = a.SurveyName,
+                    Address = a.Address,
+                    Latitude = a.Latitude,
+                    Longitude = a.Longitude,
+                    Altitude = a.Altitude,
+                    IsActive = a.IsActive
+                })
+                .ToList();
+            if (s == null) throw new Exception("Can not found any survey point");
+            return s;
+        }
+
         public void UpdateHydrology(HydrologyDto hydrology, int id)
         {
             try

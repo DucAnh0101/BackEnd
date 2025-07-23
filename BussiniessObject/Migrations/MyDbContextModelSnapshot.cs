@@ -382,6 +382,116 @@ namespace BusiniessObject.Migrations
                         });
                 });
 
+            modelBuilder.Entity("BusinessObject.Models.Project", b =>
+                {
+                    b.Property<int>("PrId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PrId"));
+
+                    b.Property<DateOnly>("CreatedDate")
+                        .HasColumnType("date");
+
+                    b.Property<DateOnly>("EndDate")
+                        .HasColumnType("date");
+
+                    b.Property<bool>("IsDelete")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false)
+                        .HasColumnName("is_delete");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<int>("ProposalId")
+                        .HasColumnType("int");
+
+                    b.HasKey("PrId");
+
+                    b.HasIndex("ProposalId");
+
+                    b.ToTable("Projects");
+
+                    b.HasData(
+                        new
+                        {
+                            PrId = 1,
+                            CreatedDate = new DateOnly(2025, 1, 15),
+                            EndDate = new DateOnly(2025, 5, 1),
+                            IsDelete = false,
+                            Name = "Project A",
+                            ProposalId = 1
+                        },
+                        new
+                        {
+                            PrId = 2,
+                            CreatedDate = new DateOnly(2025, 2, 15),
+                            EndDate = new DateOnly(2025, 5, 1),
+                            IsDelete = false,
+                            Name = "Project B",
+                            ProposalId = 1
+                        });
+                });
+
+            modelBuilder.Entity("BusinessObject.Models.Proposal", b =>
+                {
+                    b.Property<int>("PId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PId"));
+
+                    b.Property<DateOnly>("CreatedDate")
+                        .HasColumnType("date");
+
+                    b.Property<DateOnly>("EndDate")
+                        .HasColumnType("date");
+
+                    b.Property<bool>("IsDelete")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false)
+                        .HasColumnName("is_delete");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("PId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Proposals");
+
+                    b.HasData(
+                        new
+                        {
+                            PId = 1,
+                            CreatedDate = new DateOnly(2025, 1, 1),
+                            EndDate = new DateOnly(2025, 5, 1),
+                            IsDelete = false,
+                            Name = "Proposal Alpha",
+                            UserId = 1
+                        },
+                        new
+                        {
+                            PId = 2,
+                            CreatedDate = new DateOnly(2025, 2, 1),
+                            EndDate = new DateOnly(2025, 5, 1),
+                            IsDelete = false,
+                            Name = "Proposal Beta",
+                            UserId = 1
+                        });
+                });
+
             modelBuilder.Entity("BusinessObject.Models.Question", b =>
                 {
                     b.Property<int>("Id")
@@ -476,13 +586,73 @@ namespace BusiniessObject.Migrations
                         });
                 });
 
-            modelBuilder.Entity("BusinessObject.Models.SurveyPoint", b =>
+            modelBuilder.Entity("BusinessObject.Models.SurveyLine", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("SlId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SlId"));
+
+                    b.Property<decimal>("CompletionPercentage")
+                        .HasColumnType("decimal(5,2)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDelete")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false)
+                        .HasColumnName("is_delete");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<int>("ProjectId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.HasKey("SlId");
+
+                    b.HasIndex("ProjectId");
+
+                    b.ToTable("SurveyLines");
+
+                    b.HasData(
+                        new
+                        {
+                            SlId = 1,
+                            CompletionPercentage = 50.0m,
+                            CreatedDate = new DateTime(2025, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
+                            Name = "Survey Line 1",
+                            ProjectId = 1,
+                            Status = 0
+                        },
+                        new
+                        {
+                            SlId = 2,
+                            CompletionPercentage = 75.0m,
+                            CreatedDate = new DateTime(2025, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDelete = false,
+                            Name = "Survey Line 2",
+                            ProjectId = 1,
+                            Status = 1
+                        });
+                });
+
+            modelBuilder.Entity("BusinessObject.Models.SurveyPoint", b =>
+                {
+                    b.Property<int>("SpId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SpId"));
 
                     b.Property<string>("Address")
                         .HasMaxLength(1000)
@@ -490,15 +660,18 @@ namespace BusiniessObject.Migrations
                         .HasColumnName("address");
 
                     b.Property<decimal?>("Altitude")
-                        .IsRequired()
                         .HasColumnType("decimal(8,2)")
                         .HasColumnName("altitude");
 
-                    b.Property<bool>("IsActive")
+                    b.Property<DateOnly>("CreatedDate")
+                        .HasColumnType("date")
+                        .HasColumnName("created_date");
+
+                    b.Property<bool>("IsDelete")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bit")
-                        .HasDefaultValue(true)
-                        .HasColumnName("is_active");
+                        .HasDefaultValue(false)
+                        .HasColumnName("is_delete");
 
                     b.Property<decimal>("Latitude")
                         .HasColumnType("decimal(10,8)")
@@ -508,54 +681,56 @@ namespace BusiniessObject.Migrations
                         .HasColumnType("decimal(11,8)")
                         .HasColumnName("longitude");
 
+                    b.Property<int>("SurveyLineId")
+                        .HasColumnType("int")
+                        .HasColumnName("survey_line_id");
+
                     b.Property<string>("SurveyName")
                         .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)")
                         .HasColumnName("survey_name");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int")
-                        .HasColumnName("user_id");
+                    b.HasKey("SpId");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
+                    b.HasIndex("SurveyLineId");
 
                     b.ToTable("SurveyPoints");
 
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            SpId = 1,
                             Address = "Hanoi, Vietnam",
                             Altitude = 10.5m,
-                            IsActive = true,
+                            CreatedDate = new DateOnly(2025, 1, 21),
+                            IsDelete = false,
                             Latitude = 21.0285m,
                             Longitude = 105.8542m,
-                            SurveyName = "Survey Point Alpha",
-                            UserId = 1
+                            SurveyLineId = 1,
+                            SurveyName = "Survey Point Alpha"
                         },
                         new
                         {
-                            Id = 2,
+                            SpId = 2,
                             Address = "Hanoi, Vietnam",
                             Altitude = 12.3m,
-                            IsActive = true,
+                            CreatedDate = new DateOnly(2025, 1, 22),
+                            IsDelete = false,
                             Latitude = 21.0245m,
                             Longitude = 105.8412m,
-                            SurveyName = "Survey Point Beta",
-                            UserId = 1
+                            SurveyLineId = 1,
+                            SurveyName = "Survey Point Beta"
                         });
                 });
 
             modelBuilder.Entity("BusinessObject.Models.User", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("UId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UId"));
 
                     b.Property<string>("AvtUrl")
                         .IsRequired()
@@ -576,7 +751,9 @@ namespace BusiniessObject.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<bool>("IsDelete")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
 
                     b.Property<bool>("IsMale")
                         .HasColumnType("bit");
@@ -599,7 +776,7 @@ namespace BusiniessObject.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.HasKey("Id");
+                    b.HasKey("UId");
 
                     b.HasIndex("CitizenId")
                         .IsUnique();
@@ -615,73 +792,31 @@ namespace BusiniessObject.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            UId = 1,
                             AvtUrl = "https://example.com/avatar1.jpg",
                             CitizenId = "040203007094",
                             DOB = new DateOnly(2003, 1, 1),
                             Email = "bda2k3@gmail.com",
                             IsDelete = false,
                             IsMale = true,
-                            Password = "01012003",
+                            Password = "1",
                             PhoneNumber = "0899070745",
                             RoleId = 1,
-                            UserName = "DucAnh"
+                            UserName = "a"
                         },
                         new
                         {
-                            Id = 2,
+                            UId = 2,
                             AvtUrl = "https://example.com/avatar2.jpg",
                             CitizenId = "987654321098",
                             DOB = new DateOnly(1995, 8, 22),
                             Email = "tranthib@gmail.com",
                             IsDelete = true,
                             IsMale = false,
-                            Password = "12345678",
+                            Password = "1",
                             PhoneNumber = "0912345678",
                             RoleId = 2,
-                            UserName = "TranThiB"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            AvtUrl = "https://example.com/avatar3.jpg",
-                            CitizenId = "456789123456",
-                            DOB = new DateOnly(1988, 3, 10),
-                            Email = "levanc@gmail.com",
-                            IsDelete = false,
-                            IsMale = true,
-                            Password = "12345678",
-                            PhoneNumber = "0923456789",
-                            RoleId = 1,
-                            UserName = "LeVanC"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            AvtUrl = "https://example.com/avatar4.jpg",
-                            CitizenId = "789123456789",
-                            DOB = new DateOnly(1992, 11, 30),
-                            Email = "phamthid@gmail.com",
-                            IsDelete = true,
-                            IsMale = false,
-                            Password = "12345678",
-                            PhoneNumber = "0934567890",
-                            RoleId = 3,
-                            UserName = "PhamThiD"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            AvtUrl = "https://example.com/avatar5.jpg",
-                            CitizenId = "321654987123",
-                            DOB = new DateOnly(1993, 7, 25),
-                            Email = "hoangvane@gmail.com",
-                            IsDelete = false,
-                            IsMale = true,
-                            Password = "12345678",
-                            PhoneNumber = "0945678901",
-                            RoleId = 2,
-                            UserName = "HoangVanE"
+                            UserName = "b"
                         });
                 });
 
@@ -862,6 +997,28 @@ namespace BusiniessObject.Migrations
                     b.Navigation("MeasuringDevice");
                 });
 
+            modelBuilder.Entity("BusinessObject.Models.Project", b =>
+                {
+                    b.HasOne("BusinessObject.Models.Proposal", "Proposal")
+                        .WithMany("Projects")
+                        .HasForeignKey("ProposalId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Proposal");
+                });
+
+            modelBuilder.Entity("BusinessObject.Models.Proposal", b =>
+                {
+                    b.HasOne("BusinessObject.Models.User", "User")
+                        .WithMany("Proposals")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("BusinessObject.Models.Question", b =>
                 {
                     b.HasOne("BusinessObject.Models.QuestionGroup", "Group")
@@ -873,15 +1030,26 @@ namespace BusiniessObject.Migrations
                     b.Navigation("Group");
                 });
 
-            modelBuilder.Entity("BusinessObject.Models.SurveyPoint", b =>
+            modelBuilder.Entity("BusinessObject.Models.SurveyLine", b =>
                 {
-                    b.HasOne("BusinessObject.Models.User", "User")
-                        .WithMany("SurveyPoints")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                    b.HasOne("BusinessObject.Models.Project", "Project")
+                        .WithMany("SurveyLines")
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("User");
+                    b.Navigation("Project");
+                });
+
+            modelBuilder.Entity("BusinessObject.Models.SurveyPoint", b =>
+                {
+                    b.HasOne("BusinessObject.Models.SurveyLine", "SurveyLine")
+                        .WithMany("SurveyPoints")
+                        .HasForeignKey("SurveyLineId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("SurveyLine");
                 });
 
             modelBuilder.Entity("BusinessObject.Models.VegetationCover", b =>
@@ -920,9 +1088,24 @@ namespace BusiniessObject.Migrations
                     b.Navigation("XRFInfos");
                 });
 
+            modelBuilder.Entity("BusinessObject.Models.Project", b =>
+                {
+                    b.Navigation("SurveyLines");
+                });
+
+            modelBuilder.Entity("BusinessObject.Models.Proposal", b =>
+                {
+                    b.Navigation("Projects");
+                });
+
             modelBuilder.Entity("BusinessObject.Models.QuestionGroup", b =>
                 {
                     b.Navigation("Questions");
+                });
+
+            modelBuilder.Entity("BusinessObject.Models.SurveyLine", b =>
+                {
+                    b.Navigation("SurveyPoints");
                 });
 
             modelBuilder.Entity("BusinessObject.Models.SurveyPoint", b =>
@@ -938,7 +1121,7 @@ namespace BusiniessObject.Migrations
                 {
                     b.Navigation("Notifications");
 
-                    b.Navigation("SurveyPoints");
+                    b.Navigation("Proposals");
                 });
 #pragma warning restore 612, 618
         }

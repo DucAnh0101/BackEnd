@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BusiniessObject.Migrations
 {
     /// <inheritdoc />
-    public partial class Init : Migration
+    public partial class NewDB : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -43,7 +43,7 @@ namespace BusiniessObject.Migrations
                 name: "Users",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    UId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     RoleId = table.Column<int>(type: "int", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
@@ -53,12 +53,12 @@ namespace BusiniessObject.Migrations
                     PhoneNumber = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     AvtUrl = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
-                    IsDelete = table.Column<bool>(type: "bit", nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
                     IsMale = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Users", x => x.Id);
+                    table.PrimaryKey("PK_Users", x => x.UId);
                 });
 
             migrationBuilder.CreateTable(
@@ -118,32 +118,30 @@ namespace BusiniessObject.Migrations
                         name: "FK_Notifications_Users_user_id",
                         column: x => x.user_id,
                         principalTable: "Users",
-                        principalColumn: "Id",
+                        principalColumn: "UId",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "SurveyPoints",
+                name: "Proposals",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    PId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    survey_name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    latitude = table.Column<decimal>(type: "decimal(10,8)", nullable: false),
-                    longitude = table.Column<decimal>(type: "decimal(11,8)", nullable: false),
-                    altitude = table.Column<decimal>(type: "decimal(8,2)", nullable: false),
-                    address = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
-                    is_active = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
-                    user_id = table.Column<int>(type: "int", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    CreatedDate = table.Column<DateOnly>(type: "date", nullable: false),
+                    EndDate = table.Column<DateOnly>(type: "date", nullable: false),
+                    is_delete = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
+                    UserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SurveyPoints", x => x.Id);
+                    table.PrimaryKey("PK_Proposals", x => x.PId);
                     table.ForeignKey(
-                        name: "FK_SurveyPoints_Users_user_id",
-                        column: x => x.user_id,
+                        name: "FK_Proposals_Users_UserId",
+                        column: x => x.UserId,
                         principalTable: "Users",
-                        principalColumn: "Id",
+                        principalColumn: "UId",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -211,6 +209,79 @@ namespace BusiniessObject.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Projects",
+                columns: table => new
+                {
+                    PrId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    CreatedDate = table.Column<DateOnly>(type: "date", nullable: false),
+                    EndDate = table.Column<DateOnly>(type: "date", nullable: false),
+                    is_delete = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
+                    ProposalId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Projects", x => x.PrId);
+                    table.ForeignKey(
+                        name: "FK_Projects_Proposals_ProposalId",
+                        column: x => x.ProposalId,
+                        principalTable: "Proposals",
+                        principalColumn: "PId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SurveyLines",
+                columns: table => new
+                {
+                    SlId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false),
+                    CompletionPercentage = table.Column<decimal>(type: "decimal(5,2)", nullable: false),
+                    is_delete = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ProjectId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SurveyLines", x => x.SlId);
+                    table.ForeignKey(
+                        name: "FK_SurveyLines_Projects_ProjectId",
+                        column: x => x.ProjectId,
+                        principalTable: "Projects",
+                        principalColumn: "PrId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SurveyPoints",
+                columns: table => new
+                {
+                    SpId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    survey_name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    latitude = table.Column<decimal>(type: "decimal(10,8)", nullable: false),
+                    longitude = table.Column<decimal>(type: "decimal(11,8)", nullable: false),
+                    altitude = table.Column<decimal>(type: "decimal(8,2)", nullable: true),
+                    address = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
+                    is_delete = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
+                    created_date = table.Column<DateOnly>(type: "date", nullable: false),
+                    survey_line_id = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SurveyPoints", x => x.SpId);
+                    table.ForeignKey(
+                        name: "FK_SurveyPoints_SurveyLines_survey_line_id",
+                        column: x => x.survey_line_id,
+                        principalTable: "SurveyLines",
+                        principalColumn: "SlId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Hydrologies",
                 columns: table => new
                 {
@@ -235,7 +306,7 @@ namespace BusiniessObject.Migrations
                         name: "FK_Hydrologies_SurveyPoints_survey_point_id",
                         column: x => x.survey_point_id,
                         principalTable: "SurveyPoints",
-                        principalColumn: "Id",
+                        principalColumn: "SpId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -259,7 +330,7 @@ namespace BusiniessObject.Migrations
                         name: "FK_LocationDescriptions_SurveyPoints_survey_point_id",
                         column: x => x.survey_point_id,
                         principalTable: "SurveyPoints",
-                        principalColumn: "Id",
+                        principalColumn: "SpId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -285,7 +356,7 @@ namespace BusiniessObject.Migrations
                         name: "FK_VegetationCovers_SurveyPoints_survey_point_id",
                         column: x => x.survey_point_id,
                         principalTable: "SurveyPoints",
-                        principalColumn: "Id",
+                        principalColumn: "SpId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -301,15 +372,13 @@ namespace BusiniessObject.Migrations
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "Id", "AvtUrl", "CitizenId", "DOB", "Email", "IsDelete", "IsMale", "Password", "PhoneNumber", "RoleId", "UserName" },
-                values: new object[,]
-                {
-                    { 1, "https://example.com/avatar1.jpg", "040203007094", new DateOnly(2003, 1, 1), "bda2k3@gmail.com", false, true, "01012003", "0899070745", 1, "DucAnh" },
-                    { 2, "https://example.com/avatar2.jpg", "987654321098", new DateOnly(1995, 8, 22), "tranthib@gmail.com", true, false, "12345678", "0912345678", 2, "TranThiB" },
-                    { 3, "https://example.com/avatar3.jpg", "456789123456", new DateOnly(1988, 3, 10), "levanc@gmail.com", false, true, "12345678", "0923456789", 1, "LeVanC" },
-                    { 4, "https://example.com/avatar4.jpg", "789123456789", new DateOnly(1992, 11, 30), "phamthid@gmail.com", true, false, "12345678", "0934567890", 3, "PhamThiD" },
-                    { 5, "https://example.com/avatar5.jpg", "321654987123", new DateOnly(1993, 7, 25), "hoangvane@gmail.com", false, true, "12345678", "0945678901", 2, "HoangVanE" }
-                });
+                columns: new[] { "UId", "AvtUrl", "CitizenId", "DOB", "Email", "IsMale", "Password", "PhoneNumber", "RoleId", "UserName" },
+                values: new object[] { 1, "https://example.com/avatar1.jpg", "040203007094", new DateOnly(2003, 1, 1), "bda2k3@gmail.com", true, "1", "0899070745", 1, "a" });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "UId", "AvtUrl", "CitizenId", "DOB", "Email", "IsDelete", "IsMale", "Password", "PhoneNumber", "RoleId", "UserName" },
+                values: new object[] { 2, "https://example.com/avatar2.jpg", "987654321098", new DateOnly(1995, 8, 22), "tranthib@gmail.com", true, false, "1", "0912345678", 2, "b" });
 
             migrationBuilder.InsertData(
                 table: "question_group",
@@ -341,12 +410,12 @@ namespace BusiniessObject.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "SurveyPoints",
-                columns: new[] { "Id", "address", "altitude", "is_active", "latitude", "longitude", "survey_name", "user_id" },
+                table: "Proposals",
+                columns: new[] { "PId", "CreatedDate", "EndDate", "Name", "UserId" },
                 values: new object[,]
                 {
-                    { 1, "Hanoi, Vietnam", 10.5m, true, 21.0285m, 105.8542m, "Survey Point Alpha", 1 },
-                    { 2, "Hanoi, Vietnam", 12.3m, true, 21.0245m, 105.8412m, "Survey Point Beta", 1 }
+                    { 1, new DateOnly(2025, 1, 1), new DateOnly(2025, 5, 1), "Proposal Alpha", 1 },
+                    { 2, new DateOnly(2025, 2, 1), new DateOnly(2025, 5, 1), "Proposal Beta", 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -369,6 +438,51 @@ namespace BusiniessObject.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "PhoGammaInfos",
+                columns: new[] { "Id", "K", "MeasuringDeviceId", "Th", "U" },
+                values: new object[,]
+                {
+                    { 1, 12.5, 2, 3.1000000000000001, 5.2000000000000002 },
+                    { 2, 14.0, 2, 3.7999999999999998, 4.9000000000000004 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Projects",
+                columns: new[] { "PrId", "CreatedDate", "EndDate", "Name", "ProposalId" },
+                values: new object[,]
+                {
+                    { 1, new DateOnly(2025, 1, 15), new DateOnly(2025, 5, 1), "Project A", 1 },
+                    { 2, new DateOnly(2025, 2, 15), new DateOnly(2025, 5, 1), "Project B", 1 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "XRFInfos",
+                columns: new[] { "Id", "MeasuringDeviceId", "Note" },
+                values: new object[,]
+                {
+                    { 1, 3, "Thiết bị kiểm tra tại mỏ A" },
+                    { 2, 3, "Thiết bị đang hiệu chuẩn" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "SurveyLines",
+                columns: new[] { "SlId", "CompletionPercentage", "CreatedDate", "Name", "ProjectId", "Status" },
+                values: new object[,]
+                {
+                    { 1, 50.0m, new DateTime(2025, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "Survey Line 1", 1, 0 },
+                    { 2, 75.0m, new DateTime(2025, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "Survey Line 2", 1, 1 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "SurveyPoints",
+                columns: new[] { "SpId", "address", "altitude", "created_date", "latitude", "longitude", "survey_line_id", "survey_name" },
+                values: new object[,]
+                {
+                    { 1, "Hanoi, Vietnam", 10.5m, new DateOnly(2025, 1, 21), 21.0285m, 105.8542m, 1, "Survey Point Alpha" },
+                    { 2, "Hanoi, Vietnam", 12.3m, new DateOnly(2025, 1, 22), 21.0245m, 105.8412m, 1, "Survey Point Beta" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Hydrologies",
                 columns: new[] { "Id", "distance_to_water_source", "surface_water_distance", "surface_water_features", "surface_water_flow", "surface_water_level", "surface_water_type", "survey_point_id", "water_flow", "water_level", "water_presence", "water_source_features" },
                 values: new object[,]
@@ -387,30 +501,12 @@ namespace BusiniessObject.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "PhoGammaInfos",
-                columns: new[] { "Id", "K", "MeasuringDeviceId", "Th", "U" },
-                values: new object[,]
-                {
-                    { 1, 12.5, 2, 3.1000000000000001, 5.2000000000000002 },
-                    { 2, 14.0, 2, 3.7999999999999998, 4.9000000000000004 }
-                });
-
-            migrationBuilder.InsertData(
                 table: "VegetationCovers",
                 columns: new[] { "Id", "crop_percentage", "flower_percentage", "forest_percentage", "grass_percentage", "natural_forest_percentage", "other", "soil_percentage", "survey_point_id" },
                 values: new object[,]
                 {
                     { 1, 10.0m, 5.0m, 25.0m, 20.0m, 20.0m, 5.0m, 15.0m, 1 },
                     { 2, 10.0m, 5.0m, 20.0m, 30.0m, 10.0m, 5.0m, 20.0m, 2 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "XRFInfos",
-                columns: new[] { "Id", "MeasuringDeviceId", "Note" },
-                values: new object[,]
-                {
-                    { 1, 3, "Thiết bị kiểm tra tại mỏ A" },
-                    { 2, 3, "Thiết bị đang hiệu chuẩn" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -446,14 +542,29 @@ namespace BusiniessObject.Migrations
                 column: "MeasuringDeviceId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Projects_ProposalId",
+                table: "Projects",
+                column: "ProposalId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Proposals_UserId",
+                table: "Proposals",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_question_group_id",
                 table: "question",
                 column: "group_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SurveyPoints_user_id",
+                name: "IX_SurveyLines_ProjectId",
+                table: "SurveyLines",
+                column: "ProjectId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SurveyPoints_survey_line_id",
                 table: "SurveyPoints",
-                column: "user_id");
+                column: "survey_line_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_CitizenId",
@@ -522,10 +633,19 @@ namespace BusiniessObject.Migrations
                 name: "MeasuringDevices");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "SurveyLines");
 
             migrationBuilder.DropTable(
                 name: "DeviceTypes");
+
+            migrationBuilder.DropTable(
+                name: "Projects");
+
+            migrationBuilder.DropTable(
+                name: "Proposals");
+
+            migrationBuilder.DropTable(
+                name: "Users");
         }
     }
 }

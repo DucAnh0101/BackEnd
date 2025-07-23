@@ -17,6 +17,7 @@ namespace Services.Services
 
         public HydrologyDto CreateHydrology(HydrologyDto hydrology, int id)
         {
+            if (id <= 0) throw new Exception("Please enter an id greater than 0");
             if (hydrology == null) throw new ArgumentNullException("Please fill all needed informaton");
             var ehydro = myDbContext.Hydrologies.FirstOrDefault(h => h.SurveyPointId == id);
             if (ehydro != null) throw new Exception("Hydro already exist in this database");
@@ -26,12 +27,15 @@ namespace Services.Services
                 {
                     SurveyPointId = id,
                     WaterPresence = hydrology.WaterPresence,
-                    WaterLevel = hydrology.WaterLevel,
-                    WaterFlow = hydrology.WaterFlow,
-                    DistanceToWaterSource = hydrology.DistanceToWaterSource,
-                    WaterSourceFeatures = hydrology.WaterSourceFeatures,
+                    WaterLevel = hydrology.WaterPresence ? hydrology.WaterLevel : null,
+                    WaterFlow = hydrology.WaterPresence ? hydrology.WaterFlow : null,
+                    DistanceToWaterSource = hydrology.WaterPresence ? hydrology.DistanceToWaterSource : null,
+                    WaterSourceFeatures = hydrology.WaterPresence ? hydrology.WaterSourceFeatures : null,
                     SurfaceWaterType = hydrology.SurfaceWaterType,
                     SurfaceWaterLevel = hydrology.SurfaceWaterLevel,
+                    SurfaceWaterFlow = hydrology.SurfaceWaterFlow,
+                    SurfaceWaterDistance = hydrology.SurfaceWaterDistance,
+                    SurfaceWaterFeatures = hydrology.SurfaceWaterFeatures,
 
                 };
 
@@ -47,6 +51,7 @@ namespace Services.Services
 
         public LocationDesDto CreateLocation(LocationDesDto location, int id)
         {
+            if (id <= 0) throw new Exception("Please enter an id greater than 0");
             if (location == null) throw new ArgumentNullException("Please fill all needed informaton");
             var ehydro = myDbContext.LocationDescriptions.FirstOrDefault(h => h.SurveyPointId == id);
             if (ehydro != null) throw new Exception("Location descruption already exist in this database");
@@ -75,6 +80,7 @@ namespace Services.Services
         public SurveyPoint CreateSurveyPonit(SurveyPointReq req, int id)
         {
             if (req == null) throw new Exception("Please enter all information needed!");
+            if (id <= 0) throw new Exception("Please enter an id greater than 0");
             try
             {
                 var surveyp = new SurveyPoint
@@ -84,8 +90,8 @@ namespace Services.Services
                     Longitude = req.Longitude,
                     Altitude = req.Altitude,
                     Address = req.Address,
-                    IsActive = req.IsActive,
-                    UserId = id
+                    IsDelete = req.IsActive,
+                    SurveyLineId = id
                 };
 
                 myDbContext.SurveyPoints.Add(surveyp);
@@ -101,6 +107,7 @@ namespace Services.Services
 
         public VegetationCoverDto CreateVegetationCover(VegetationCoverDto vegetationCover, int id)
         {
+            if (id <= 0) throw new Exception("Please enter an id greater than 0");
             if (vegetationCover == null) throw new ArgumentNullException("Please fill all needed informaton");
             var ehydro = myDbContext.VegetationCovers.FirstOrDefault(h => h.SurveyPointId == id);
             if (ehydro != null) throw new Exception("Vegetation already exist in this database");
@@ -131,24 +138,26 @@ namespace Services.Services
 
         public void DeleteSurveyPoint(int id)
         {
+            if (id <= 0) throw new Exception("Please enter an id greater than 0");
             var sp = myDbContext.SurveyPoints
-                .FirstOrDefault(p => p.Id == id);
+                .FirstOrDefault(p => p.SpId == id);
             if (sp == null) throw new Exception("No surveypoint was found!");
 
-            sp.IsActive = false;
+            sp.IsDelete = true;
             myDbContext.SaveChanges();
         }
 
-        public List<SurveyPointRes> GetSurveyPointByUId(int id)
+        public List<SurveyPointRes> GetSurveyPointBySurveyLineId(int id)
         {
+            if (id <= 0) throw new Exception("Please enter an id greater than 0");
             var surveyPoints = myDbContext.SurveyPoints
                 .Include(s => s.Hydrology)
                 .Include(s => s.LocationDescription)
                 .Include(s => s.VegetationCover)
-                .Where(s => s.UserId == id && s.IsActive == true)
+                .Where(s => s.SurveyLineId == id && s.IsDelete == false)
                 .Select(sp => new SurveyPointRes
                 {
-                    Id = sp.Id,
+                    Id = sp.SpId,
                     SurveyName = sp.SurveyName,
                     Latitude = sp.Latitude,
                     Longitude = sp.Longitude,
@@ -196,38 +205,64 @@ namespace Services.Services
             return surveyPoints;
         }
 
-        public List<SurveyPointReq> SearchSurveyPointByName(string name, int id)
+        public List<SurveyPointReq> SearchSurveyPointByName(string? name, int id, DateOnly? from, DateOnly? to)
         {
-            var s = myDbContext.SurveyPoints
-                .Where(ss => ss.SurveyName.
-                Trim().ToLower().
-                Contains(name.Trim().ToLower()) && ss.UserId == id)
-                .Select(a => new SurveyPointReq
-                {
-                    SurveyName = a.SurveyName,
-                    Address = a.Address,
-                    Latitude = a.Latitude,
-                    Longitude = a.Longitude,
-                    Altitude = a.Altitude,
-                    IsActive = a.IsActive
-                })
-                .ToList();
-            if (s == null) throw new Exception("Can not found any survey point");
-            return s;
+            if (id <= 0) throw new Exception("Please enter an id greater than 0");
+
+            var query = myDbContext.SurveyPoints
+                .Where(sp => sp.SurveyLineId == id && !sp.IsDelete);
+            if (!string.IsNullOrWhiteSpace(name))
+            {
+                string nameLower = name.Trim().ToLower();
+
+                query = query.Where(sp =>
+                    sp.SurveyName != null &&
+                    EF.Functions.Like(sp.SurveyName.ToLower(), $"%{nameLower}%")
+                );
+            }
+
+            if (from.HasValue)
+            {
+                query = query.Where(sp => sp.CreatedDate >= from.Value);
+            }
+
+            if (to.HasValue)
+            {
+                query = query.Where(sp => sp.CreatedDate <= to.Value);
+            }
+
+            var result = query.Select(sp => new SurveyPointReq
+            {
+                SurveyName = sp.SurveyName,
+                Address = sp.Address,
+                Latitude = sp.Latitude,
+                Longitude = sp.Longitude,
+                Altitude = sp.Altitude,
+                IsActive = !sp.IsDelete
+            }).ToList();
+
+            if (!result.Any())
+                throw new Exception("No survey point found matching the criteria.");
+
+            return result;
         }
 
         public void UpdateHydrology(HydrologyDto hydrology, int id)
         {
             try
             {
+                if (id <= 0) throw new Exception("Please enter an id greater than 0");
                 var uhydro = myDbContext.Hydrologies.FirstOrDefault(h => h.SurveyPointId == id);
-                if (uhydro == null) throw new Exception("Can not find the hydro in this survey point");
+                if (uhydro == null)
+                {
+                    throw new Exception("Cannot find the hydrology record for this survey point");
+                }
 
                 uhydro.WaterPresence = hydrology.WaterPresence;
-                uhydro.WaterLevel = hydrology.WaterLevel;
-                uhydro.WaterFlow = hydrology.WaterFlow;
-                uhydro.DistanceToWaterSource = hydrology.DistanceToWaterSource;
-                uhydro.WaterSourceFeatures = hydrology.WaterSourceFeatures;
+                uhydro.WaterLevel = hydrology.WaterPresence ? hydrology.WaterLevel : null;
+                uhydro.WaterFlow = hydrology.WaterPresence ? hydrology.WaterFlow : null;
+                uhydro.DistanceToWaterSource = hydrology.WaterPresence ? hydrology.DistanceToWaterSource : null;
+                uhydro.WaterSourceFeatures = hydrology.WaterPresence ? hydrology.WaterSourceFeatures : null;
                 uhydro.SurfaceWaterType = hydrology.SurfaceWaterType;
                 uhydro.SurfaceWaterLevel = hydrology.SurfaceWaterLevel;
                 uhydro.SurfaceWaterFlow = hydrology.SurfaceWaterFlow;
@@ -238,7 +273,7 @@ namespace Services.Services
             }
             catch (Exception ex)
             {
-                throw new Exception("Can not update hydrology");
+                throw new Exception($"Cannot update hydrology: {ex.Message}", ex);
             }
         }
 
@@ -246,6 +281,7 @@ namespace Services.Services
         {
             try
             {
+                if (id <= 0) throw new Exception("Please enter an id greater than 0");
                 var ulocation = myDbContext.LocationDescriptions.FirstOrDefault(h => h.SurveyPointId == id);
                 if (ulocation == null) throw new Exception("Can not find the location in this survey");
 
@@ -267,6 +303,7 @@ namespace Services.Services
         {
             try
             {
+                if (id <= 0) throw new Exception("Please enter an id greater than 0");
                 var uveget = myDbContext.VegetationCovers.FirstOrDefault(h => h.SurveyPointId == id);
                 if (uveget == null) throw new Exception("Can not find the location in this survey");
 

@@ -23,7 +23,7 @@ namespace Services.Services
 
         public UserRes GetUserById(int id)
         {
-            var user = _dbContext.Users.FirstOrDefault(x => x.Id == id);
+            var user = _dbContext.Users.FirstOrDefault(x => x.UId == id);
             if (user == null) throw new Exception("No User found!");
             if (user.IsDelete) throw new Exception("User has been banned");
 
@@ -43,7 +43,7 @@ namespace Services.Services
         {
             var u = _dbContext.Users
                 .Where(u => u.IsDelete == false)
-                .FirstOrDefault(x => x.Id == id);
+                .FirstOrDefault(x => x.UId == id);
             if (u == null) throw new Exception($"No User found with {id}!");
 
             u.UserName = user.UserName;
@@ -72,7 +72,7 @@ namespace Services.Services
         {
             var u = _dbContext.Users
                 .Where(u => u.IsDelete == false)
-                .FirstOrDefault(x => x.Id == id);
+                .FirstOrDefault(x => x.UId == id);
             if (u == null) throw new Exception($"No User found with {id}!");
 
             u.IsDelete = true;
@@ -83,7 +83,7 @@ namespace Services.Services
         {
             var u = _dbContext.Users
                 .Where(u => u.IsDelete == false)
-                .FirstOrDefault(x => x.Id == id);
+                .FirstOrDefault(x => x.UId == id);
             if (u == null) throw new Exception($"No User found with {id}!");
 
             if (oldpass != u.Password) throw new Exception("The old password is wrong!");

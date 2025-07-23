@@ -6,7 +6,7 @@ using Services.Implements;
 namespace CustomStore.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class SurveyPointController : ControllerBase
     {
         private readonly ISurveyPointServices _surveyPointServices;
@@ -23,7 +23,7 @@ namespace CustomStore.Controllers
             try
             {
                 var sp = _surveyPointServices.CreateSurveyPonit(req, id);
-                return Ok(sp.Id);
+                return Ok(sp.SpId);
             }
             catch (Exception ex)
             {
@@ -32,11 +32,11 @@ namespace CustomStore.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetAllSurveyPonitByUId(int id)
+        public async Task<IActionResult> GetSurveyPointBySurveyLineId(int id)
         {
             try
             {
-                var sp = _surveyPointServices.GetSurveyPointByUId(id);
+                var sp = _surveyPointServices.GetSurveyPointBySurveyLineId(id);
                 return Ok(sp);
             }
             catch (Exception ex)
@@ -143,13 +143,12 @@ namespace CustomStore.Controllers
             }
         }
 
-        [HttpGet("search/{search}&&{id}")]
-        public async Task<IActionResult> SearchSurveyPoint(string search, int id)
+        [HttpGet("search")]
+        public async Task<IActionResult> SearchSurveyPoint(string? search, int id, DateOnly from, DateOnly to)
         {
-            if (string.IsNullOrEmpty(search)) return BadRequest("Please enter survey point name");
             try
             {
-                var s = _surveyPointServices.SearchSurveyPointByName(search, id);
+                var s = _surveyPointServices.SearchSurveyPointByName(search, id, from, to);
                 return Ok(s);
             }
             catch (Exception x)

@@ -120,7 +120,7 @@ namespace Services.Services
             if (user == null) throw new Exception("Username or password is incorrect");
             if (user.IsDelete == true) throw new Exception("Your account is not be able to login.");
 
-            var token = jwtTokenGenerator.GenerateToken(user.Id.ToString(), user.RoleId.ToString());
+            var token = jwtTokenGenerator.GenerateToken(user.UId.ToString(), user.RoleId.ToString());
 
             return token;
         }

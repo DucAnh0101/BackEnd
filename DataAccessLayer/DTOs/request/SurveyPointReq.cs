@@ -26,7 +26,7 @@ namespace DataAccessLayer.DTOs.request
         public string? Address { get; set; }
 
         [Required]
-        [Column("is_active")]
-        public bool IsActive { get; set; } = true;
+        [Column("is_delete")]
+        public bool IsDelete { get; set; } = false;
     }
 }

@@ -2,14 +2,11 @@
 using BusinessObject.Models;
 using DataAccessLayer.DTOs.request;
 using DataAccessLayer.DTOs.response;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Services.Implements;
 
 namespace Services.Services
 {
-    [ApiController]
-    [Route("api/[controller]")]
     public class SurveyLineServices : ISurveyLineServices
     {
         private readonly MyDbContext myDbContext;

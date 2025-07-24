@@ -90,7 +90,7 @@ namespace Services.Services
                     Longitude = req.Longitude,
                     Altitude = req.Altitude,
                     Address = req.Address,
-                    IsDelete = req.IsActive,
+                    IsDelete = false,
                     SurveyLineId = id
                 };
 
@@ -213,12 +213,8 @@ namespace Services.Services
                 .Where(sp => sp.SurveyLineId == id && !sp.IsDelete);
             if (!string.IsNullOrWhiteSpace(name))
             {
-                string nameLower = name.Trim().ToLower();
-
-                query = query.Where(sp =>
-                    sp.SurveyName != null &&
-                    EF.Functions.Like(sp.SurveyName.ToLower(), $"%{nameLower}%")
-                );
+                string namePattern = $"%{name.Trim().ToLower()}%";
+                query = query.Where(sp => EF.Functions.Like(sp.SurveyName, namePattern));
             }
 
             if (from.HasValue)
@@ -238,7 +234,7 @@ namespace Services.Services
                 Latitude = sp.Latitude,
                 Longitude = sp.Longitude,
                 Altitude = sp.Altitude,
-                IsActive = !sp.IsDelete
+                IsDelete = !sp.IsDelete
             }).ToList();
 
             if (!result.Any())

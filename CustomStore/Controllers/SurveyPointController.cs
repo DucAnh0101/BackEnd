@@ -144,7 +144,7 @@ namespace CustomStore.Controllers
         }
 
         [HttpGet("search")]
-        public async Task<IActionResult> SearchSurveyPoint(string? search, int id, DateOnly from, DateOnly to)
+        public async Task<IActionResult> SearchSurveyPoint(string? search, int id, DateOnly? from, DateOnly? to)
         {
             try
             {

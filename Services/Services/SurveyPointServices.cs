@@ -214,7 +214,7 @@ namespace Services.Services
             if (!string.IsNullOrWhiteSpace(name))
             {
                 string namePattern = $"%{name.Trim().ToLower()}%";
-                query = query.Where(sp => EF.Functions.Like(sp.SurveyName, namePattern));
+                query = query.Where(sp => EF.Functions.Like(sp.SurveyName.Trim().ToLower(), namePattern));
             }
 
             if (from.HasValue)

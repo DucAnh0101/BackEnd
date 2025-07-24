@@ -479,7 +479,7 @@ namespace BusinessObject
                     Name = "Survey Line 1",
                     Status = SurveyLineStatus.Investigation,
                     CompletionPercentage = 50.0m,
-                    CreatedDate = new DateTime(2025, 1, 20),
+                    CreatedDate = new DateOnly(2025, 1, 20),
                     IsDelete = false,
                     ProjectId = 1
                 },
@@ -489,7 +489,7 @@ namespace BusinessObject
                     Name = "Survey Line 2",
                     Status = SurveyLineStatus.Evaluation,
                     CompletionPercentage = 75.0m,
-                    CreatedDate = new DateTime(2025, 2, 20),
+                    CreatedDate = new DateOnly(2025, 2, 20),
                     IsDelete = false,
                     ProjectId = 1
                 }

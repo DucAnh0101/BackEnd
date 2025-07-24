@@ -28,7 +28,7 @@ namespace BusinessObject.Models
         public bool IsDelete { get; set; } = false;
 
         [Required]
-        public DateTime CreatedDate { get; set; }
+        public DateOnly CreatedDate { get; set; }
 
         [Required]
         [ForeignKey("Project")]

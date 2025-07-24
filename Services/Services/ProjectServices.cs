@@ -102,8 +102,8 @@ namespace Services.Services
 
             if (!string.IsNullOrWhiteSpace(name))
             {
-                string lowered = name.Trim().ToLower();
-                query = query.Where(pr => pr.Name.ToLower().Contains(lowered));
+                string namePattern = $"%{name.Trim().ToLower()}%";
+                query = query.Where(pr => EF.Functions.Like(pr.Name.Trim().ToLower(), namePattern));
             }
 
             if (from.HasValue)
@@ -111,16 +111,10 @@ namespace Services.Services
                 query = query.Where(pr => pr.CreatedDate >= from.Value);
             }
 
-            if (to.HasValue)
-            {
-                query = query.Where(pr => pr.CreatedDate <= to.Value);
-            }
+            if (to.HasValue) query = query.Where(pr => pr.EndDate <= to.Value);
 
-            if (status.HasValue)
-            {
-                query = query.Where(pr =>
+            if (status.HasValue) query = query.Where(pr =>
                     pr.SurveyLines.Any(sl => (int)sl.Status == status));
-            }
 
             var result = query.Select(pr => new ProjectRes
             {
@@ -139,7 +133,7 @@ namespace Services.Services
             }).ToList();
 
             if (!result.Any())
-                throw new Exception("Nothing was found");
+                throw new Exception("No project found matching the criteria.");
 
             return result;
         }

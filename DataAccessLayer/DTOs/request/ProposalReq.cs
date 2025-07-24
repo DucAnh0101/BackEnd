@@ -49,6 +49,6 @@ namespace DataAccessLayer.DTOs.request
         public bool IsDelete { get; set; } = false;
 
         [Required]
-        public DateTime CreatedDate { get; set; }
+        public DateOnly CreatedDate { get; set; }
     }
 }

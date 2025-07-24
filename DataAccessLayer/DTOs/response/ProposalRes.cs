@@ -47,7 +47,7 @@ namespace DataAccessLayer.DTOs.response
 
         public bool IsDelete { get; set; } = false;
 
-        public DateTime CreatedDate { get; set; }
+        public DateOnly CreatedDate { get; set; }
 
         public virtual ICollection<SurveyPointReturn> SurveyPoints { get; set; } = new List<SurveyPointReturn>();
     }
@@ -64,7 +64,7 @@ namespace DataAccessLayer.DTOs.response
 
         public decimal CompletionPercentage { get; set; }
 
-        public DateTime PrCreatedDate { get; set; }
+        public DateOnly PrCreatedDate { get; set; }
     }
 
     public class SurveyPointReturn

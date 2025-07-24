@@ -205,7 +205,7 @@ namespace Services.Services
             return surveyPoints;
         }
 
-        public List<SurveyPointReq> SearchSurveyPointByName(string? name, int id, DateOnly? from, DateOnly? to)
+        public List<SurReq> SearchSurveyPointByName(string? name, int id, DateOnly? from, DateOnly? to)
         {
             if (id <= 0) throw new Exception("Please enter an id greater than 0");
 
@@ -227,14 +227,14 @@ namespace Services.Services
                 query = query.Where(sp => sp.CreatedDate <= to.Value);
             }
 
-            var result = query.Select(sp => new SurveyPointReq
+            var result = query.Select(sp => new SurReq
             {
                 SurveyName = sp.SurveyName,
                 Address = sp.Address,
                 Latitude = sp.Latitude,
                 Longitude = sp.Longitude,
                 Altitude = sp.Altitude,
-                IsDelete = !sp.IsDelete
+                CreatedDate = sp.CreatedDate,
             }).ToList();
 
             if (!result.Any())

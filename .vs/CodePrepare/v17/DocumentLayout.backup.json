@@ -3,22 +3,6 @@
   "WorkspaceRootPath": "F:\\Code\\C#\\backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{02B5DD56-B2CD-4AD9-9F85-F636B349116E}|DataAccessLayer\\DataAccessLayer.csproj|f:\\code\\c#\\backend\\dataaccesslayer\\dtos\\request\\proposalreq.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{02B5DD56-B2CD-4AD9-9F85-F636B349116E}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\dtos\\request\\proposalreq.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|f:\\code\\c#\\backend\\services\\services\\surveylineservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|solutionrelative:services\\services\\surveylineservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{42645C7A-C264-411B-AE64-793A5E6C46FD}|BussiniessObject\\BusiniessObject.csproj|f:\\code\\c#\\backend\\bussiniessobject\\mydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42645C7A-C264-411B-AE64-793A5E6C46FD}|BussiniessObject\\BusiniessObject.csproj|solutionrelative:bussiniessobject\\mydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{02B5DD56-B2CD-4AD9-9F85-F636B349116E}|DataAccessLayer\\DataAccessLayer.csproj|f:\\code\\c#\\backend\\dataaccesslayer\\dtos\\response\\proposalres.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{02B5DD56-B2CD-4AD9-9F85-F636B349116E}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\dtos\\response\\proposalres.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|f:\\code\\c#\\backend\\services\\services\\projectservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|solutionrelative:services\\services\\projectservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -42,63 +26,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 168,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ProposalReq.cs",
-              "DocumentMoniker": "F:\\Code\\C#\\backend\\DataAccessLayer\\DTOs\\request\\ProposalReq.cs",
-              "RelativeDocumentMoniker": "DataAccessLayer\\DTOs\\request\\ProposalReq.cs",
-              "ToolTip": "F:\\Code\\C#\\backend\\DataAccessLayer\\DTOs\\request\\ProposalReq.cs",
-              "RelativeToolTip": "DataAccessLayer\\DTOs\\request\\ProposalReq.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAEwBMAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-24T02:30:55.438Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "SurveyLineServices.cs",
-              "DocumentMoniker": "F:\\Code\\C#\\backend\\Services\\Services\\SurveyLineServices.cs",
-              "RelativeDocumentMoniker": "Services\\Services\\SurveyLineServices.cs",
-              "ToolTip": "F:\\Code\\C#\\backend\\Services\\Services\\SurveyLineServices.cs",
-              "RelativeToolTip": "Services\\Services\\SurveyLineServices.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAQwBEAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-24T02:30:52.149Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MyDbContext.cs",
-              "DocumentMoniker": "F:\\Code\\C#\\backend\\BussiniessObject\\MyDbContext.cs",
-              "RelativeDocumentMoniker": "BussiniessObject\\MyDbContext.cs",
-              "ToolTip": "F:\\Code\\C#\\backend\\BussiniessObject\\MyDbContext.cs",
-              "RelativeToolTip": "BussiniessObject\\MyDbContext.cs",
-              "ViewState": "AgIAANEBAAAAAAAAAAAQwOoBAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-24T02:30:33.636Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ProposalRes.cs",
-              "DocumentMoniker": "F:\\Code\\C#\\backend\\DataAccessLayer\\DTOs\\response\\ProposalRes.cs",
-              "RelativeDocumentMoniker": "DataAccessLayer\\DTOs\\response\\ProposalRes.cs",
-              "ToolTip": "F:\\Code\\C#\\backend\\DataAccessLayer\\DTOs\\response\\ProposalRes.cs",
-              "RelativeToolTip": "DataAccessLayer\\DTOs\\response\\ProposalRes.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAvwCUAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-24T02:29:54.143Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
               "Title": "SurveyLine.cs",
               "DocumentMoniker": "F:\\Code\\C#\\backend\\BussiniessObject\\Models\\SurveyLine.cs",
               "RelativeDocumentMoniker": "BussiniessObject\\Models\\SurveyLine.cs",
@@ -111,20 +43,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "ProjectServices.cs",
               "DocumentMoniker": "F:\\Code\\C#\\backend\\Services\\Services\\ProjectServices.cs",
               "RelativeDocumentMoniker": "Services\\Services\\ProjectServices.cs",
               "ToolTip": "F:\\Code\\C#\\backend\\Services\\Services\\ProjectServices.cs",
               "RelativeToolTip": "Services\\Services\\ProjectServices.cs",
-              "ViewState": "AgIAAGYAAAAAAAAAAAAgwHwAAABLAAAAAAAAAA==",
+              "ViewState": "AgIAAHUAAAAAAAAAAAAgwHIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-24T02:21:59.694Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 2,
               "Title": "ProjectController.cs",
               "DocumentMoniker": "F:\\Code\\C#\\backend\\CustomStore\\Controllers\\ProjectController.cs",
               "RelativeDocumentMoniker": "CustomStore\\Controllers\\ProjectController.cs",
@@ -137,7 +69,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 3,
               "Title": "SurveyPointController.cs",
               "DocumentMoniker": "F:\\Code\\C#\\backend\\CustomStore\\Controllers\\SurveyPointController.cs",
               "RelativeDocumentMoniker": "CustomStore\\Controllers\\SurveyPointController.cs",

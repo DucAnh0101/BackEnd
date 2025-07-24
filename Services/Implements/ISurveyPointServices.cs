@@ -8,7 +8,7 @@ namespace Services.Implements
     {
         List<SurveyPointRes> GetSurveyPointBySurveyLineId(int id);
         SurveyPoint CreateSurveyPonit(SurveyPointReq req, int id);
-        List<SurveyPointReq> SearchSurveyPointByName(string? name, int id, DateOnly? from, DateOnly? to);
+        List<SurReq> SearchSurveyPointByName(string? name, int id, DateOnly? from, DateOnly? to);
         void DeleteSurveyPoint(int id);
         LocationDesDto CreateLocation(LocationDesDto location, int id);
         void UpdateLocation(LocationDesDto location, int id);

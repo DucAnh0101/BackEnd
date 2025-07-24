@@ -91,13 +91,15 @@ namespace Services.Services
                 })
                 .ToList();
             if (!p.Any()) throw new Exception($"Can not found the project with id {id}");
+
             return p;
         }
 
-        public List<ProjectRes> SearchProject(string? name, int? status, DateOnly? from, DateOnly? to)
+        public List<ProjectRes> SearchProject(string? name, int? status, DateOnly? from, DateOnly? to, int id)
         {
             var query = myDbContext.Projects
                 .Include(p => p.SurveyLines)
+                .Where(a => a.ProposalId == id)
                 .AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(name))
@@ -122,18 +124,18 @@ namespace Services.Services
                 Name = pr.Name,
                 CreatedDate = pr.CreatedDate,
                 EndDate = pr.EndDate,
-                SurveyLines = pr.SurveyLines.Select(sl => new SurveyLineRes
+                SurveyLines = pr.SurveyLines
+                .Where(a => (int)a.Status == status || !status.HasValue)
+                .Select(sl => new SurveyLineRes
                 {
                     SlId = sl.SlId,
                     Name = sl.Name,
                     Status = sl.Status,
                     CompletionPercentage = sl.CompletionPercentage,
                     CreatedDate = sl.CreatedDate
-                }).ToList()
+                })
+                .ToList()
             }).ToList();
-
-            if (!result.Any())
-                throw new Exception("No project found matching the criteria.");
 
             return result;
         }

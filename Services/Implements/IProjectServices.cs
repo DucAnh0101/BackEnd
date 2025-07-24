@@ -11,7 +11,7 @@ namespace Services.Implements
         ProjectRes GetProjectById(int id);
         Project CreateProject(ProjectReq req);
         Project UpdateProject(ProjectReq req, int id);
-        List<ProjectRes> SearchProject(string? name, int? status, DateOnly? from, DateOnly? to);
+        List<ProjectRes> SearchProject(string? name, int? status, DateOnly? from, DateOnly? to, int id);
 
     }
 }

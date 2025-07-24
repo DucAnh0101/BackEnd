@@ -85,11 +85,11 @@ namespace CustomStore.Controllers
         }
 
         [HttpGet("search")]
-        public async Task<IActionResult> Search(string? name, int status, DateOnly? from, DateOnly? to)
+        public async Task<IActionResult> Search(string? name, int? status, DateOnly? from, DateOnly? to, int id)
         {
             try
             {
-                var p = projectServices.SearchProject(name, status, from, to);
+                var p = projectServices.SearchProject(name, status, from, to, id);
                 return Ok(p);
             }
             catch (Exception ex)

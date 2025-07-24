@@ -237,9 +237,6 @@ namespace Services.Services
                 CreatedDate = sp.CreatedDate,
             }).ToList();
 
-            if (!result.Any())
-                throw new Exception("No survey point found matching the criteria.");
-
             return result;
         }
 

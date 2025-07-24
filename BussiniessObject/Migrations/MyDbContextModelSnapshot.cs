@@ -597,8 +597,8 @@ namespace BusiniessObject.Migrations
                     b.Property<decimal>("CompletionPercentage")
                         .HasColumnType("decimal(5,2)");
 
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
+                    b.Property<DateOnly>("CreatedDate")
+                        .HasColumnType("date");
 
                     b.Property<bool>("IsDelete")
                         .ValueGeneratedOnAdd()
@@ -628,7 +628,7 @@ namespace BusiniessObject.Migrations
                         {
                             SlId = 1,
                             CompletionPercentage = 50.0m,
-                            CreatedDate = new DateTime(2025, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateOnly(2025, 1, 20),
                             IsDelete = false,
                             Name = "Survey Line 1",
                             ProjectId = 1,
@@ -638,7 +638,7 @@ namespace BusiniessObject.Migrations
                         {
                             SlId = 2,
                             CompletionPercentage = 75.0m,
-                            CreatedDate = new DateTime(2025, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateOnly(2025, 2, 20),
                             IsDelete = false,
                             Name = "Survey Line 2",
                             ProjectId = 1,

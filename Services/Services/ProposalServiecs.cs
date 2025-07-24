@@ -100,7 +100,7 @@ namespace Services.Services
                        }).ToList()
                })
                .ToList();
-            if (proposal == null)
+            if (proposal.Count() <= 0)
             {
                 throw new Exception($"No proposal found with id {id}");
             }

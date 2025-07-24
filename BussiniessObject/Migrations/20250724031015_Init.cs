@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BusiniessObject.Migrations
 {
     /// <inheritdoc />
-    public partial class NewDB : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -241,7 +241,7 @@ namespace BusiniessObject.Migrations
                     Status = table.Column<int>(type: "int", nullable: false),
                     CompletionPercentage = table.Column<decimal>(type: "decimal(5,2)", nullable: false),
                     is_delete = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedDate = table.Column<DateOnly>(type: "date", nullable: false),
                     ProjectId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -469,8 +469,8 @@ namespace BusiniessObject.Migrations
                 columns: new[] { "SlId", "CompletionPercentage", "CreatedDate", "Name", "ProjectId", "Status" },
                 values: new object[,]
                 {
-                    { 1, 50.0m, new DateTime(2025, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "Survey Line 1", 1, 0 },
-                    { 2, 75.0m, new DateTime(2025, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "Survey Line 2", 1, 1 }
+                    { 1, 50.0m, new DateOnly(2025, 1, 20), "Survey Line 1", 1, 0 },
+                    { 2, 75.0m, new DateOnly(2025, 2, 20), "Survey Line 2", 1, 1 }
                 });
 
             migrationBuilder.InsertData(

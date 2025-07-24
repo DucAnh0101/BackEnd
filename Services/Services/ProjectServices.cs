@@ -90,7 +90,7 @@ namespace Services.Services
                         }).ToList()
                 })
                 .ToList();
-            if (p == null) throw new Exception($"Can not found the project with id {id}");
+            if (!p.Any()) throw new Exception($"Can not found the project with id {id}");
             return p;
         }
 

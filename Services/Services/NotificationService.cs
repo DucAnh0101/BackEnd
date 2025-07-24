@@ -25,7 +25,7 @@ namespace Services.Services
         public List<Notification> GetAllNotification()
         {
             var n = _dbContext.Notifications.ToList();
-            if (n == null) throw new Exception($"No notification found!");
+            if (!n.Any()) throw new Exception($"No notification found!");
             return n;
         }
 

@@ -111,8 +111,8 @@ namespace Services.Services
                 })
                 .ToList();
 
-            if (s == null)
-                throw new Exception("SurveyLine not found.");
+            if (!s.Any())
+                throw new Exception("No surveyLines found.");
 
             return s;
         }

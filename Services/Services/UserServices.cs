@@ -17,7 +17,7 @@ namespace Services.Services
         public List<User> GetAllUser()
         {
             var user = _dbContext.Users.ToList();
-            if (user == null) throw new Exception("No user registered to system!");
+            if (!user.Any()) throw new Exception("No user registered to system!");
             return user;
         }
 

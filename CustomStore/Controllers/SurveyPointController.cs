@@ -6,7 +6,7 @@ using Services.Implements;
 namespace CustomStore.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class SurveyPointController : ControllerBase
     {
         private readonly ISurveyPointServices _surveyPointServices;
@@ -18,12 +18,12 @@ namespace CustomStore.Controllers
 
         [HttpPost]
         [Route("add-surveypoint")]
-        public async Task<IActionResult> CreateSurveyPoint(SurveyPointReq req)
+        public async Task<IActionResult> CreateSurveyPoint(SurveyPointReq req, int id)
         {
             try
             {
-                var sp = _surveyPointServices.CreateSurveyPonit(req);
-                return Ok("Create Successfully");
+                var sp = _surveyPointServices.CreateSurveyPonit(req, id);
+                return Ok(sp.SpId);
             }
             catch (Exception ex)
             {
@@ -32,11 +32,11 @@ namespace CustomStore.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetAllSurveyPonitByUId(int id)
+        public async Task<IActionResult> GetSurveyPointBySurveyLineId(int id)
         {
             try
             {
-                var sp = _surveyPointServices.GetSurveyPointByUId(id);
+                var sp = _surveyPointServices.GetSurveyPointBySurveyLineId(id);
                 return Ok(sp);
             }
             catch (Exception ex)
@@ -140,6 +140,20 @@ namespace CustomStore.Controllers
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("search")]
+        public async Task<IActionResult> SearchSurveyPoint(string? search, int id, DateOnly? from, DateOnly? to)
+        {
+            try
+            {
+                var s = _surveyPointServices.SearchSurveyPointByName(search, id, from, to);
+                return Ok(s);
+            }
+            catch (Exception x)
+            {
+                return BadRequest(x.Message);
             }
         }
     }

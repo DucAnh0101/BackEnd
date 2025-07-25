@@ -6,10 +6,7 @@ namespace BusinessObject
 {
     public class MyDbContext : DbContext
     {
-        public MyDbContext(DbContextOptions<MyDbContext> options)
-            : base(options)
-        {
-        }
+        public MyDbContext(DbContextOptions options) : base(options) { }
 
         public MyDbContext()
         {
@@ -24,6 +21,9 @@ namespace BusinessObject
         public DbSet<PhoGammaInfo> PhoGammaInfos { get; set; }
         public DbSet<XRFInfo> XRFInfos { get; set; }
         public DbSet<Notification> Notifications { get; set; }
+        public DbSet<Proposal> Proposals { get; set; }
+        public DbSet<Project> Projects { get; set; }
+        public DbSet<SurveyLine> SurveyLines { get; set; }
         public DbSet<SurveyPoint> SurveyPoints { get; set; }
         public DbSet<LocationDescription> LocationDescriptions { get; set; }
         public DbSet<VegetationCover> VegetationCovers { get; set; }
@@ -45,10 +45,11 @@ namespace BusinessObject
         {
             base.OnModelCreating(modelBuilder);
 
+            // User entity configuration
             modelBuilder.Entity<User>(entity =>
             {
-                entity.HasKey(e => e.Id);
-                entity.Property(e => e.Id).ValueGeneratedOnAdd();
+                entity.HasKey(e => e.UId);
+                entity.Property(e => e.UId).ValueGeneratedOnAdd();
                 entity.HasIndex(e => e.UserName).IsUnique();
                 entity.HasIndex(e => e.CitizenId).IsUnique();
                 entity.HasIndex(e => e.Email).IsUnique();
@@ -77,104 +78,89 @@ namespace BusinessObject
                     .IsRequired();
 
                 entity.Property(e => e.AvtUrl)
-                    .HasMaxLength(1000);
+                    .HasMaxLength(1000)
+                    .IsRequired();
 
                 entity.Property(e => e.IsDelete)
-                    .IsRequired();
+                    .IsRequired()
+                    .HasDefaultValue(false);
 
                 entity.Property(e => e.IsMale)
                     .IsRequired();
             });
 
-            modelBuilder.Entity<Question>(entity =>
+            // Proposal entity configuration
+            modelBuilder.Entity<Proposal>(entity =>
             {
-                entity.HasKey(e => e.Id).HasName("PK__question__3213E83F197C22A5");
-                entity.ToTable("question");
-                entity.Property(e => e.Id).HasColumnName("id");
-                entity.Property(e => e.AnswerText).HasColumnName("answer_text");
-                entity.Property(e => e.GroupId).HasColumnName("group_id");
-                entity.Property(e => e.QuestionText).HasColumnName("questionWriting");
-                entity.HasOne(d => d.Group).WithMany(p => p.Questions)
-                    .HasForeignKey(d => d.GroupId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__question__group___398D8EEE");
-            });
-
-            modelBuilder.Entity<QuestionGroup>(entity =>
-            {
-                entity.HasKey(e => e.Id).HasName("PK__question__3213E83F4DFF750F");
-                entity.ToTable("question_group");
-                entity.Property(e => e.Id).HasColumnName("id");
+                entity.HasKey(e => e.PId);
+                entity.Property(e => e.PId).ValueGeneratedOnAdd();
                 entity.Property(e => e.Name)
-                    .HasMaxLength(100)
-                    .HasColumnName("name");
+                    .HasMaxLength(200)
+                    .IsRequired();
+                entity.Property(e => e.CreatedDate)
+                    .IsRequired();
+                entity.Property(e => e.EndDate)
+                   .IsRequired();
+                entity.Property(e => e.IsDelete)
+                    .IsRequired()
+                    .HasDefaultValue(false);
+                entity.HasOne(p => p.User)
+                    .WithMany(u => u.Proposals)
+                    .HasForeignKey(p => p.UserId)
+                    .OnDelete(DeleteBehavior.Restrict);
             });
 
-            modelBuilder.Entity<DeviceType>(entity =>
+            // Project entity configuration
+            modelBuilder.Entity<Project>(entity =>
             {
-                entity.HasKey(e => e.Id);
-                entity.Property(e => e.TypeName).HasMaxLength(100).IsRequired();
-            });
-
-            modelBuilder.Entity<MeasuringDevice>(entity =>
-            {
-                entity.HasKey(e => e.Id);
-                entity.Property(e => e.SerialNumber).IsRequired().HasMaxLength(100);
-
-                entity.HasOne(d => d.DeviceType)
-                    .WithMany(dt => dt.MeasuringDevices)
-                    .HasForeignKey(d => d.DeviceTypeId)
+                entity.HasKey(e => e.PrId);
+                entity.Property(e => e.PrId).ValueGeneratedOnAdd();
+                entity.Property(e => e.Name)
+                    .HasMaxLength(200)
+                    .IsRequired();
+                entity.Property(e => e.CreatedDate)
+                    .IsRequired();
+                entity.Property(e => e.EndDate)
+                   .IsRequired();
+                entity.Property(e => e.IsDelete)
+                    .IsRequired()
+                    .HasDefaultValue(false);
+                entity.HasOne(p => p.Proposal)
+                    .WithMany(pr => pr.Projects)
+                    .HasForeignKey(p => p.ProposalId)
                     .OnDelete(DeleteBehavior.Cascade);
             });
 
-            modelBuilder.Entity<GammaCalibration>(entity =>
+            // SurveyLine entity configuration
+            modelBuilder.Entity<SurveyLine>(entity =>
             {
-                entity.HasKey(e => e.Id);
-                entity.Property(e => e.Khoang);
-                entity.Property(e => e.HeSoChuanMay).IsRequired();
+                entity.HasKey(e => e.SlId);
+                entity.Property(e => e.SlId).ValueGeneratedOnAdd();
+                entity.Property(e => e.Name)
+                    .HasMaxLength(200)
+                    .IsRequired();
+                entity.Property(e => e.Status)
+                    .IsRequired();
+                entity.Property(e => e.IsDelete)
+                    .IsRequired()
+                    .HasDefaultValue(false);
+                entity.Property(e => e.CompletionPercentage)
+                    .HasColumnType("decimal(5,2)")
+                    .IsRequired();
+                entity.Property(e => e.CreatedDate)
+                    .IsRequired();
 
-                entity.HasOne(g => g.MeasuringDevice)
-                    .WithMany(d => d.GammaCalibrations)
-                    .HasForeignKey(g => g.MeasuringDeviceId)
+                entity.HasOne(sl => sl.Project)
+                    .WithMany(p => p.SurveyLines)
+                    .HasForeignKey(sl => sl.ProjectId)
                     .OnDelete(DeleteBehavior.Cascade);
             });
 
-            modelBuilder.Entity<PhoGammaInfo>(entity =>
-            {
-                entity.HasKey(e => e.Id);
-
-                entity.HasOne(p => p.MeasuringDevice)
-                    .WithMany(d => d.PhoGammaInfos)
-                    .HasForeignKey(p => p.MeasuringDeviceId)
-                    .OnDelete(DeleteBehavior.Cascade);
-            });
-
-            modelBuilder.Entity<XRFInfo>(entity =>
-            {
-                entity.HasKey(e => e.Id);
-                entity.Property(e => e.Note).HasMaxLength(1000);
-
-                entity.HasOne(x => x.MeasuringDevice)
-                    .WithMany(d => d.XRFInfos)
-                    .HasForeignKey(x => x.MeasuringDeviceId)
-                    .OnDelete(DeleteBehavior.Cascade);
-            });
-
-            modelBuilder.Entity<Notification>(entity =>
-            {
-                entity.HasKey(e => e.Id);
-                entity.Property(e => e.Content)
-                      .HasMaxLength(50)
-                      .IsRequired();
-
-                entity.Property(e => e.RequiredDate)
-                      .IsRequired();
-            });
-
+            // SurveyPoint entity configuration
             modelBuilder.Entity<SurveyPoint>(entity =>
             {
-                entity.HasKey(e => e.Id);
-                entity.Property(e => e.Id).ValueGeneratedOnAdd();
+                entity.HasKey(e => e.SpId);
+                entity.Property(e => e.SpId).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.SurveyName)
                     .HasMaxLength(200)
@@ -194,9 +180,17 @@ namespace BusinessObject
                 entity.Property(e => e.Address)
                     .HasMaxLength(1000);
 
-                entity.Property(e => e.IsActive)
+                entity.Property(e => e.IsDelete)
                     .IsRequired()
-                    .HasDefaultValue(true);
+                    .HasDefaultValue(false);
+
+                entity.Property(e => e.CreatedDate)
+                    .IsRequired();
+
+                entity.HasOne(s => s.SurveyLine)
+                    .WithMany(sl => sl.SurveyPoints)
+                    .HasForeignKey(s => s.SurveyLineId)
+                    .OnDelete(DeleteBehavior.Cascade);
 
                 entity.HasOne(s => s.LocationDescription)
                     .WithOne(l => l.SurveyPoint)
@@ -214,6 +208,7 @@ namespace BusinessObject
                     .OnDelete(DeleteBehavior.Cascade);
             });
 
+            // LocationDescription entity configuration
             modelBuilder.Entity<LocationDescription>(entity =>
             {
                 entity.HasKey(e => e.Id);
@@ -235,6 +230,7 @@ namespace BusinessObject
                     .HasMaxLength(100);
             });
 
+            // VegetationCover entity configuration
             modelBuilder.Entity<VegetationCover>(entity =>
             {
                 entity.HasKey(e => e.Id);
@@ -262,6 +258,7 @@ namespace BusinessObject
                     .HasColumnType("decimal(5,2)");
             });
 
+            // Hydrology entity configuration
             modelBuilder.Entity<Hydrology>(entity =>
             {
                 entity.HasKey(e => e.Id);
@@ -298,20 +295,120 @@ namespace BusinessObject
                     .HasMaxLength(500);
             });
 
+            // Question entity configuration
+            modelBuilder.Entity<Question>(entity =>
+            {
+                entity.HasKey(e => e.Id).HasName("PK__question__3213E83F197C22A5");
+                entity.ToTable("question");
+                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.AnswerText).HasColumnName("answer_text");
+                entity.Property(e => e.GroupId).HasColumnName("group_id");
+                entity.Property(e => e.QuestionText).HasColumnName("questionWriting");
+                entity.HasOne(d => d.Group).WithMany(p => p.Questions)
+                    .HasForeignKey(d => d.GroupId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__question__group___398D8EEE");
+            });
+
+            // QuestionGroup entity configuration
+            modelBuilder.Entity<QuestionGroup>(entity =>
+            {
+                entity.HasKey(e => e.Id).HasName("PK__question__3213E83F4DFF750F");
+                entity.ToTable("question_group");
+                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.Name)
+                    .HasMaxLength(100)
+                    .HasColumnName("name");
+            });
+
+            // DeviceType entity configuration
+            modelBuilder.Entity<DeviceType>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.TypeName).HasMaxLength(100).IsRequired();
+            });
+
+            // MeasuringDevice entity configuration
+            modelBuilder.Entity<MeasuringDevice>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.SerialNumber).IsRequired().HasMaxLength(100);
+
+                entity.HasOne(d => d.DeviceType)
+                    .WithMany(dt => dt.MeasuringDevices)
+                    .HasForeignKey(d => d.DeviceTypeId)
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
+
+            // GammaCalibration entity configuration
+            modelBuilder.Entity<GammaCalibration>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Khoang);
+                entity.Property(e => e.HeSoChuanMay).IsRequired();
+
+                entity.HasOne(g => g.MeasuringDevice)
+                    .WithMany(d => d.GammaCalibrations)
+                    .HasForeignKey(g => g.MeasuringDeviceId)
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
+
+            // PhoGammaInfo entity configuration
+            modelBuilder.Entity<PhoGammaInfo>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+
+                entity.HasOne(p => p.MeasuringDevice)
+                    .WithMany(d => d.PhoGammaInfos)
+                    .HasForeignKey(p => p.MeasuringDeviceId)
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
+
+            // XRFInfo entity configuration
+            modelBuilder.Entity<XRFInfo>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Note).HasMaxLength(1000);
+
+                entity.HasOne(x => x.MeasuringDevice)
+                    .WithMany(d => d.XRFInfos)
+                    .HasForeignKey(x => x.MeasuringDeviceId)
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
+
+            // Notification entity configuration
+            modelBuilder.Entity<Notification>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Content)
+                      .HasMaxLength(50)
+                      .IsRequired();
+
+                entity.Property(e => e.RequiredDate)
+                      .IsRequired();
+
+                entity.HasOne(s => s.User)
+                    .WithMany(u => u.Notifications)
+                    .HasForeignKey(s => s.UserId)
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
+
+            // Seed data
             SeedData(modelBuilder);
         }
 
         private void SeedData(ModelBuilder modelBuilder)
         {
+            // Seed User data
             modelBuilder.Entity<User>().HasData(
                 new User
                 {
-                    Id = 1,
+                    UId = 1,
                     RoleId = 1,
-                    UserName = "DucAnh",
-                    Password = "01012003",
+                    UserName = "a",
+                    Password = "1",
                     CitizenId = "040203007094",
-                    DOB = DateOnly.FromDateTime(new DateTime(2003, 1, 1)),
+                    DOB = new DateOnly(2003, 1, 1),
                     PhoneNumber = "0899070745",
                     Email = "bda2k3@gmail.com",
                     AvtUrl = "https://example.com/avatar1.jpg",
@@ -320,147 +417,113 @@ namespace BusinessObject
                 },
                 new User
                 {
-                    Id = 2,
+                    UId = 2,
                     RoleId = 2,
-                    UserName = "TranThiB",
-                    Password = "12345678",
+                    UserName = "b",
+                    Password = "1",
                     CitizenId = "987654321098",
-                    DOB = DateOnly.FromDateTime(new DateTime(1995, 8, 22)),
+                    DOB = new DateOnly(1995, 8, 22),
                     PhoneNumber = "0912345678",
                     Email = "tranthib@gmail.com",
                     AvtUrl = "https://example.com/avatar2.jpg",
                     IsDelete = true,
                     IsMale = false
-                },
-                new User
-                {
-                    Id = 3,
-                    RoleId = 1,
-                    UserName = "LeVanC",
-                    Password = "12345678",
-                    CitizenId = "456789123456",
-                    DOB = DateOnly.FromDateTime(new DateTime(1988, 3, 10)),
-                    PhoneNumber = "0923456789",
-                    Email = "levanc@gmail.com",
-                    AvtUrl = "https://example.com/avatar3.jpg",
-                    IsDelete = false,
-                    IsMale = true
-                },
-                new User
-                {
-                    Id = 4,
-                    RoleId = 3,
-                    UserName = "PhamThiD",
-                    Password = "12345678",
-                    CitizenId = "789123456789",
-                    DOB = DateOnly.FromDateTime(new DateTime(1992, 11, 30)),
-                    PhoneNumber = "0934567890",
-                    Email = "phamthid@gmail.com",
-                    AvtUrl = "https://example.com/avatar4.jpg",
-                    IsDelete = true,
-                    IsMale = false
-                },
-                new User
-                {
-                    Id = 5,
-                    RoleId = 2,
-                    UserName = "HoangVanE",
-                    Password = "12345678",
-                    CitizenId = "321654987123",
-                    DOB = DateOnly.FromDateTime(new DateTime(1993, 7, 25)),
-                    PhoneNumber = "0945678901",
-                    Email = "hoangvane@gmail.com",
-                    AvtUrl = "https://example.com/avatar5.jpg",
-                    IsDelete = false,
-                    IsMale = true
                 }
             );
 
-            modelBuilder.Entity<QuestionGroup>().HasData(
-                new QuestionGroup { Id = 1, Name = "General Knowledge" },
-                new QuestionGroup { Id = 2, Name = "Technical Questions" },
-                new QuestionGroup { Id = 3, Name = "Safety Procedures" }
-            );
-
-            modelBuilder.Entity<Question>().HasData(
-                new Question
+            // Seed Proposal data
+            modelBuilder.Entity<Proposal>().HasData(
+                new Proposal
                 {
-                    Id = 1,
-                    GroupId = 1,
-                    QuestionText = "What is the capital city of Vietnam?",
-                    AnswerText = "Hanoi"
+                    PId = 1,
+                    Name = "Proposal Alpha",
+                    CreatedDate = new DateOnly(2025, 1, 1),
+                    EndDate = new DateOnly(2025, 5, 1),
+                    UserId = 1
                 },
-                new Question
+                new Proposal
                 {
-                    Id = 2,
-                    GroupId = 2,
-                    QuestionText = "What is the primary function of a gamma spectrometer?",
-                    AnswerText = "To measure gamma radiation levels"
-                },
-                new Question
-                {
-                    Id = 3,
-                    GroupId = 3,
-                    QuestionText = "What is the first step in radiation safety protocol?",
-                    AnswerText = "Wear appropriate protective gear"
+                    PId = 2,
+                    Name = "Proposal Beta",
+                    CreatedDate = new DateOnly(2025, 2, 1),
+                    EndDate = new DateOnly(2025, 5, 1),
+                    UserId = 1
                 }
             );
 
-            modelBuilder.Entity<DeviceType>().HasData(
-                new DeviceType { Id = 1, TypeName = "Gamma" },
-                new DeviceType { Id = 2, TypeName = "Gamma Spectrum" },
-                new DeviceType { Id = 3, TypeName = "XRF" }
+            // Seed Project data
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    PrId = 1,
+                    Name = "Project A",
+                    CreatedDate = new DateOnly(2025, 1, 15),
+                    EndDate = new DateOnly(2025, 5, 1),
+                    ProposalId = 1
+                },
+                new Project
+                {
+                    PrId = 2,
+                    Name = "Project B",
+                    CreatedDate = new DateOnly(2025, 2, 15),
+                    EndDate = new DateOnly(2025, 5, 1),
+                    ProposalId = 1
+                }
             );
 
-            modelBuilder.Entity<MeasuringDevice>().HasData(
-                new MeasuringDevice { Id = 1, SerialNumber = "GAMMA001", DeviceTypeId = 1 },
-                new MeasuringDevice { Id = 2, SerialNumber = "GAMMASPEC001", DeviceTypeId = 2 },
-                new MeasuringDevice { Id = 3, SerialNumber = "XRF001", DeviceTypeId = 3 }
+            // Seed SurveyLine data
+            modelBuilder.Entity<SurveyLine>().HasData(
+                new SurveyLine
+                {
+                    SlId = 1,
+                    Name = "Survey Line 1",
+                    Status = SurveyLineStatus.Investigation,
+                    CompletionPercentage = 50.0m,
+                    CreatedDate = new DateOnly(2025, 1, 20),
+                    IsDelete = false,
+                    ProjectId = 1
+                },
+                new SurveyLine
+                {
+                    SlId = 2,
+                    Name = "Survey Line 2",
+                    Status = SurveyLineStatus.Evaluation,
+                    CompletionPercentage = 75.0m,
+                    CreatedDate = new DateOnly(2025, 2, 20),
+                    IsDelete = false,
+                    ProjectId = 1
+                }
             );
 
-            modelBuilder.Entity<GammaCalibration>().HasData(
-                new GammaCalibration { Id = 1, Khoang = 50, HeSoChuanMay = 0.98, MeasuringDeviceId = 1 },
-                new GammaCalibration { Id = 2, Khoang = 14, HeSoChuanMay = 1.05, MeasuringDeviceId = 1 }
-            );
-
-            modelBuilder.Entity<PhoGammaInfo>().HasData(
-                new PhoGammaInfo { Id = 1, MeasuringDeviceId = 2, K = 12.5, U = 5.2, Th = 3.1 },
-                new PhoGammaInfo { Id = 2, MeasuringDeviceId = 2, K = 14.0, U = 4.9, Th = 3.8 }
-            );
-
-            modelBuilder.Entity<XRFInfo>().HasData(
-                new XRFInfo { Id = 1, MeasuringDeviceId = 3, Note = "Thiết bị kiểm tra tại mỏ A" },
-                new XRFInfo { Id = 2, MeasuringDeviceId = 3, Note = "Thiết bị đang hiệu chuẩn" }
-            );
-
-            modelBuilder.Entity<Notification>().HasData(
-                new Notification { Id = 1, Content = "Kiểm tra thiết bị đo Gamma", RequiredDate = new DateTime(2025, 8, 1) },
-                new Notification { Id = 2, Content = "Lập kế hoạch hiệu chuẩn XRF", RequiredDate = new DateTime(2025, 8, 15) }
-            );
-
+            // Seed SurveyPoint data
             modelBuilder.Entity<SurveyPoint>().HasData(
                 new SurveyPoint
                 {
-                    Id = 1,
+                    SpId = 1,
                     SurveyName = "Survey Point Alpha",
                     Latitude = 21.0285m,
                     Longitude = 105.8542m,
                     Altitude = 10.5m,
                     Address = "Hanoi, Vietnam",
-                    IsActive = true
+                    SurveyLineId = 1,
+                    IsDelete = false,
+                    CreatedDate = new DateOnly(2025, 1, 21)
                 },
                 new SurveyPoint
                 {
-                    Id = 2,
+                    SpId = 2,
                     SurveyName = "Survey Point Beta",
                     Latitude = 21.0245m,
                     Longitude = 105.8412m,
                     Altitude = 12.3m,
                     Address = "Hanoi, Vietnam",
-                    IsActive = true
+                    SurveyLineId = 1,
+                    IsDelete = false,
+                    CreatedDate = new DateOnly(2025, 1, 22)
                 }
             );
 
+            // Seed LocationDescription data
             modelBuilder.Entity<LocationDescription>().HasData(
                 new LocationDescription
                 {
@@ -484,6 +547,7 @@ namespace BusinessObject
                 }
             );
 
+            // Seed VegetationCover data
             modelBuilder.Entity<VegetationCover>().HasData(
                 new VegetationCover
                 {
@@ -543,6 +607,76 @@ namespace BusinessObject
                     SurfaceWaterDistance = null,
                     SurfaceWaterFeatures = null
                 }
+            );
+
+            // Seed QuestionGroup data
+            modelBuilder.Entity<QuestionGroup>().HasData(
+                new QuestionGroup { Id = 1, Name = "General Knowledge" },
+                new QuestionGroup { Id = 2, Name = "Technical Questions" },
+                new QuestionGroup { Id = 3, Name = "Safety Procedures" }
+            );
+
+            // Seed Question data
+            modelBuilder.Entity<Question>().HasData(
+                new Question
+                {
+                    Id = 1,
+                    GroupId = 1,
+                    QuestionText = "What is the capital city of Vietnam?",
+                    AnswerText = "Hanoi"
+                },
+                new Question
+                {
+                    Id = 2,
+                    GroupId = 2,
+                    QuestionText = "What is the primary function of a gamma spectrometer?",
+                    AnswerText = "To measure gamma radiation levels"
+                },
+                new Question
+                {
+                    Id = 3,
+                    GroupId = 3,
+                    QuestionText = "What is the first step in radiation safety protocol?",
+                    AnswerText = "Wear appropriate protective gear"
+                }
+            );
+
+            // Seed DeviceType data
+            modelBuilder.Entity<DeviceType>().HasData(
+                new DeviceType { Id = 1, TypeName = "Gamma" },
+                new DeviceType { Id = 2, TypeName = "Gamma Spectrum" },
+                new DeviceType { Id = 3, TypeName = "XRF" }
+            );
+
+            // Seed MeasuringDevice data
+            modelBuilder.Entity<MeasuringDevice>().HasData(
+                new MeasuringDevice { Id = 1, SerialNumber = "GAMMA001", DeviceTypeId = 1 },
+                new MeasuringDevice { Id = 2, SerialNumber = "GAMMASPEC001", DeviceTypeId = 2 },
+                new MeasuringDevice { Id = 3, SerialNumber = "XRF001", DeviceTypeId = 3 }
+            );
+
+            // Seed GammaCalibration data
+            modelBuilder.Entity<GammaCalibration>().HasData(
+                new GammaCalibration { Id = 1, Khoang = 50, HeSoChuanMay = 0.98, MeasuringDeviceId = 1 },
+                new GammaCalibration { Id = 2, Khoang = 14, HeSoChuanMay = 1.05, MeasuringDeviceId = 1 }
+            );
+
+            // Seed PhoGammaInfo data
+            modelBuilder.Entity<PhoGammaInfo>().HasData(
+                new PhoGammaInfo { Id = 1, MeasuringDeviceId = 2, K = 12.5, U = 5.2, Th = 3.1 },
+                new PhoGammaInfo { Id = 2, MeasuringDeviceId = 2, K = 14.0, U = 4.9, Th = 3.8 }
+            );
+
+            // Seed XRFInfo data
+            modelBuilder.Entity<XRFInfo>().HasData(
+                new XRFInfo { Id = 1, MeasuringDeviceId = 3, Note = "Thiết bị kiểm tra tại mỏ A" },
+                new XRFInfo { Id = 2, MeasuringDeviceId = 3, Note = "Thiết bị đang hiệu chuẩn" }
+            );
+
+            // Seed Notification data
+            modelBuilder.Entity<Notification>().HasData(
+                new Notification { Id = 1, Content = "Kiểm tra thiết bị đo Gamma", RequiredDate = new DateTime(2025, 8, 1), UserId = 1 },
+                new Notification { Id = 2, Content = "Lập kế hoạch hiệu chuẩn XRF", RequiredDate = new DateTime(2025, 8, 15), UserId = 1 }
             );
         }
     }

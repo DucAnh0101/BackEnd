@@ -26,7 +26,32 @@ namespace DataAccessLayer.DTOs.request
         public string? Address { get; set; }
 
         [Required]
-        [Column("is_active")]
-        public bool IsActive { get; set; } = true;
+        [Column("is_delete")]
+        public bool IsDelete { get; set; } = false;
+    }
+
+    public class SurReq
+    {
+        [Required]
+        [MaxLength(200)]
+        public string SurveyName { get; set; }
+        [Required]
+        [Column("latitude", TypeName = "decimal(10,8)")]
+        public decimal Latitude { get; set; }
+
+        [Required]
+        [Column("longitude", TypeName = "decimal(11,8)")]
+        public decimal Longitude { get; set; }
+
+        [Column("altitude", TypeName = "decimal(8,2)")]
+        public decimal? Altitude { get; set; }
+
+        [MaxLength(1000)]
+        [Column("address")]
+        public string? Address { get; set; }
+
+        [Required]
+        [Column("created_date")]
+        public DateOnly CreatedDate { get; set; }
     }
 }

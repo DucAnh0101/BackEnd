@@ -3,6 +3,7 @@
   "WorkspaceRootPath": "D:\\TTS\\Dat_Hiem\\backend\\",
   "Documents": [
     {
+<<<<<<< HEAD
       "AbsoluteMoniker": "D:0:0:{42645C7A-C264-411B-AE64-793A5E6C46FD}|BussiniessObject\\BusiniessObject.csproj|d:\\tts\\dat_hiem\\backend\\bussiniessobject\\migrations\\20250721034256_newdb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{42645C7A-C264-411B-AE64-793A5E6C46FD}|BussiniessObject\\BusiniessObject.csproj|solutionrelative:bussiniessobject\\migrations\\20250721034256_newdb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -17,10 +18,30 @@
     {
       "AbsoluteMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|d:\\tts\\dat_hiem\\backend\\services\\services\\surveypointservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|solutionrelative:services\\services\\surveypointservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+=======
+      "AbsoluteMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|f:\\code\\c#\\backend\\services\\implements\\iprojectservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|solutionrelative:services\\implements\\iprojectservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B235D242-179E-4A08-8A2F-7AC3D48F78EE}|CustomStore\\CustomStore.csproj|f:\\code\\c#\\backend\\customstore\\controllers\\projectcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B235D242-179E-4A08-8A2F-7AC3D48F78EE}|CustomStore\\CustomStore.csproj|solutionrelative:customstore\\controllers\\projectcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|f:\\code\\c#\\backend\\services\\services\\projectservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|solutionrelative:services\\services\\projectservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+>>>>>>> bb063965eb18aa536877f24cea1b04219b632ccf
     },
     {
       "AbsoluteMoniker": "D:0:0:{B235D242-179E-4A08-8A2F-7AC3D48F78EE}|CustomStore\\CustomStore.csproj|d:\\tts\\dat_hiem\\backend\\customstore\\controllers\\surveypointcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B235D242-179E-4A08-8A2F-7AC3D48F78EE}|CustomStore\\CustomStore.csproj|solutionrelative:customstore\\controllers\\surveypointcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|f:\\code\\c#\\backend\\services\\services\\surveypointservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|solutionrelative:services\\services\\surveypointservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|f:\\code\\c#\\backend\\services\\services\\notificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47495FFF-314F-4E54-81A0-291D7B0192EE}|Services\\Services.csproj|solutionrelative:services\\services\\notificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -29,7 +50,11 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
+<<<<<<< HEAD
           "DockedWidth": 170,
+=======
+          "DockedWidth": 168,
+>>>>>>> bb063965eb18aa536877f24cea1b04219b632ccf
           "SelectedChildIndex": 1,
           "Children": [
             {
@@ -38,6 +63,7 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 0,
               "Title": "20250721034256_NewDB.cs",
               "DocumentMoniker": "D:\\TTS\\Dat_Hiem\\backend\\BussiniessObject\\Migrations\\20250721034256_NewDB.cs",
@@ -47,10 +73,22 @@
               "ViewState": "AgIAABABAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-21T06:21:32.782Z",
+=======
+              "DocumentIndex": 1,
+              "Title": "ProjectController.cs",
+              "DocumentMoniker": "F:\\Code\\C#\\backend\\CustomStore\\Controllers\\ProjectController.cs",
+              "RelativeDocumentMoniker": "CustomStore\\Controllers\\ProjectController.cs",
+              "ToolTip": "F:\\Code\\C#\\backend\\CustomStore\\Controllers\\ProjectController.cs",
+              "RelativeToolTip": "CustomStore\\Controllers\\ProjectController.cs",
+              "ViewState": "AgIAAEcAAAAAAAAAAAA2wFEAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-24T06:29:25.151Z",
+>>>>>>> bb063965eb18aa536877f24cea1b04219b632ccf
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 1,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\TTS\\Dat_Hiem\\backend\\BussiniessObject\\appsettings.json",
@@ -60,10 +98,23 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-07-21T06:19:51.543Z"
+=======
+              "DocumentIndex": 0,
+              "Title": "IProjectServices.cs",
+              "DocumentMoniker": "F:\\Code\\C#\\backend\\Services\\Implements\\IProjectServices.cs",
+              "RelativeDocumentMoniker": "Services\\Implements\\IProjectServices.cs",
+              "ToolTip": "F:\\Code\\C#\\backend\\Services\\Implements\\IProjectServices.cs",
+              "RelativeToolTip": "Services\\Implements\\IProjectServices.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-24T06:28:33.007Z",
+              "EditorCaption": ""
+>>>>>>> bb063965eb18aa536877f24cea1b04219b632ccf
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+<<<<<<< HEAD
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\TTS\\Dat_Hiem\\backend\\CustomStore\\appsettings.json",
               "RelativeDocumentMoniker": "CustomStore\\appsettings.json",
@@ -72,10 +123,22 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-07-21T06:19:26.623Z"
+=======
+              "Title": "ProjectServices.cs",
+              "DocumentMoniker": "F:\\Code\\C#\\backend\\Services\\Services\\ProjectServices.cs",
+              "RelativeDocumentMoniker": "Services\\Services\\ProjectServices.cs",
+              "ToolTip": "F:\\Code\\C#\\backend\\Services\\Services\\ProjectServices.cs",
+              "RelativeToolTip": "Services\\Services\\ProjectServices.cs",
+              "ViewState": "AgIAAFwAAAAAAAAAAADwv30AAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-24T06:26:54.521Z",
+              "EditorCaption": ""
+>>>>>>> bb063965eb18aa536877f24cea1b04219b632ccf
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
+<<<<<<< HEAD
               "Title": "SurveyPointServices.cs",
               "DocumentMoniker": "D:\\TTS\\Dat_Hiem\\backend\\Services\\Services\\SurveyPointServices.cs",
               "RelativeDocumentMoniker": "Services\\Services\\SurveyPointServices.cs",
@@ -88,14 +151,47 @@
             {
               "$type": "Document",
               "DocumentIndex": 4,
+=======
+>>>>>>> bb063965eb18aa536877f24cea1b04219b632ccf
               "Title": "SurveyPointController.cs",
               "DocumentMoniker": "D:\\TTS\\Dat_Hiem\\backend\\CustomStore\\Controllers\\SurveyPointController.cs",
               "RelativeDocumentMoniker": "CustomStore\\Controllers\\SurveyPointController.cs",
               "ToolTip": "D:\\TTS\\Dat_Hiem\\backend\\CustomStore\\Controllers\\SurveyPointController.cs",
               "RelativeToolTip": "CustomStore\\Controllers\\SurveyPointController.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAA3wF8AAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAAHsAAAAAAAAAAAA0wJAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+<<<<<<< HEAD
               "WhenOpened": "2025-07-21T03:53:32.929Z"
+=======
+              "WhenOpened": "2025-07-24T06:22:17.929Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SurveyPointServices.cs",
+              "DocumentMoniker": "F:\\Code\\C#\\backend\\Services\\Services\\SurveyPointServices.cs",
+              "RelativeDocumentMoniker": "Services\\Services\\SurveyPointServices.cs",
+              "ToolTip": "F:\\Code\\C#\\backend\\Services\\Services\\SurveyPointServices.cs",
+              "RelativeToolTip": "Services\\Services\\SurveyPointServices.cs",
+              "ViewState": "AgIAAM0AAAAAAAAAAAA1wO0AAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-24T06:21:31.554Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "NotificationService.cs",
+              "DocumentMoniker": "F:\\Code\\C#\\backend\\Services\\Services\\NotificationService.cs",
+              "RelativeDocumentMoniker": "Services\\Services\\NotificationService.cs",
+              "ToolTip": "F:\\Code\\C#\\backend\\Services\\Services\\NotificationService.cs",
+              "RelativeToolTip": "Services\\Services\\NotificationService.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAmwCMAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-24T03:15:34.231Z",
+              "EditorCaption": ""
+>>>>>>> bb063965eb18aa536877f24cea1b04219b632ccf
             }
           ]
         }

@@ -80,39 +80,37 @@ namespace DataAccessLayer.DTOs.response
 
     public class HydrologyDto
     {
-
         [Required]
-        [Column("water_presence")]
         public bool WaterPresence { get; set; }
 
-        [Column("water_level", TypeName = "decimal(8,2)")]
+        [Column(TypeName = "decimal(8,2)")]
         public decimal? WaterLevel { get; set; }
 
-        [Column("water_flow", TypeName = "decimal(8,2)")]
+        [Column(TypeName = "decimal(8,2)")]
         public decimal? WaterFlow { get; set; }
 
-        [Column("distance_to_water_source", TypeName = "decimal(8,2)")]
+        [Column(TypeName = "decimal(8,2)")]
         public decimal? DistanceToWaterSource { get; set; }
 
         [MaxLength(500)]
-        [Column("water_source_features")]
         public string? WaterSourceFeatures { get; set; }
 
         [MaxLength(100)]
-        [Column("surface_water_type")]
         public string? SurfaceWaterType { get; set; }
 
-        [Column("surface_water_level", TypeName = "decimal(8,2)")]
+        [Column(TypeName = "decimal(8,2)")]
         public decimal? SurfaceWaterLevel { get; set; }
 
-        [Column("surface_water_flow", TypeName = "decimal(8,2)")]
+        [Column(TypeName = "decimal(8,2)")]
+        [Required(ErrorMessage = "SurfaceWaterFlow is required")]
         public decimal? SurfaceWaterFlow { get; set; }
 
-        [Column("surface_water_distance", TypeName = "decimal(8,2)")]
+        [Column(TypeName = "decimal(8,2)")]
+        [Required(ErrorMessage = "SurfaceWaterDistance is required")]
         public decimal? SurfaceWaterDistance { get; set; }
 
         [MaxLength(500)]
-        [Column("surface_water_features")]
+        [Required(ErrorMessage = "SurfaceWaterFeatures is required")]
         public string? SurfaceWaterFeatures { get; set; }
     }
 }

@@ -28,7 +28,7 @@ namespace CustomStore.Controllers
             }
         }
 
-        [HttpGet("user/{id}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetUserById(int id)
         {
             try

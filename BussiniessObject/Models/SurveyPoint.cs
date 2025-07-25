@@ -8,7 +8,7 @@ namespace BusinessObject.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int SpId { get; set; }
 
         [Required]
         [MaxLength(200)]
@@ -23,7 +23,6 @@ namespace BusinessObject.Models
         [Column("longitude", TypeName = "decimal(11,8)")]
         public decimal Longitude { get; set; }
 
-        [Required]
         [Column("altitude", TypeName = "decimal(8,2)")]
         public decimal? Altitude { get; set; }
 
@@ -32,11 +31,22 @@ namespace BusinessObject.Models
         public string? Address { get; set; }
 
         [Required]
-        [Column("is_active")]
-        public bool IsActive { get; set; } = true;
+        [Column("is_delete")]
+        public bool IsDelete { get; set; } = false;
 
+        [Required]
+        [Column("created_date")]
+        public DateOnly CreatedDate { get; set; }
+
+        [Required]
+        [ForeignKey("SurveyLine")]
+        [Column("survey_line_id")]
+        public int SurveyLineId { get; set; }
+
+        public virtual SurveyLine SurveyLine { get; set; }
         public virtual LocationDescription? LocationDescription { get; set; }
         public virtual VegetationCover? VegetationCover { get; set; }
         public virtual Hydrology? Hydrology { get; set; }
     }
+
 }

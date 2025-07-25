@@ -5,7 +5,7 @@ using Services.Implements;
 namespace CustomStore.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class NotificationController : Controller
     {
         private readonly INotificationServices _notificationServices;

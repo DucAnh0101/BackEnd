@@ -8,7 +8,7 @@ namespace BusinessObject.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int UId { get; set; }
 
         [Required]
         public int RoleId { get; set; } = 0;
@@ -36,12 +36,18 @@ namespace BusinessObject.Models
         [StringLength(50)]
         [EmailAddress]
         public string Email { get; set; }
+
         [Required]
         [StringLength(1000)]
         public string AvtUrl { get; set; }
+
         [Required]
         public bool IsDelete { get; set; } = false;
+
         [Required]
         public bool IsMale { get; set; } = false;
+
+        public virtual ICollection<Proposal> Proposals { get; set; } = new List<Proposal>();
+        public virtual ICollection<Notification> Notifications { get; set; } = new List<Notification>();
     }
 }

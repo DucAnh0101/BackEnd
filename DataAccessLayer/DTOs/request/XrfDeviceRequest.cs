@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.DTOs.request
 {
-    public class DeviceTypeReq
+    public class XrfDeviceRequest
     {
-        [Required]
-        [MaxLength(100)]
-        public string TypeName { get; set; } = null!;
+        public string SerialNumber { get; set; }
+        public string Note { get; set; }
     }
 }

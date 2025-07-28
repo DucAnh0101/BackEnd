@@ -7,13 +7,11 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.DTOs.request
 {
-    public class MeasuringDeviceReq
+    public class PhoGammaDeviceRequest
     {
-        [Required]
-        [MaxLength(100)]
         public string SerialNumber { get; set; }
-
-        [Required]
-        public int DeviceTypeId { get; set; }
+        public double? K { get; set; }
+        public double? U { get; set; }
+        public double? Th { get; set; }
     }
 }

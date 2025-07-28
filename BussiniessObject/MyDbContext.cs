@@ -1,4 +1,5 @@
 ﻿using BusinessObject.Models;
+using BusiniessObject.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -15,11 +16,10 @@ namespace BusinessObject
         public DbSet<User> Users { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<QuestionGroup> QuestionGroups { get; set; }
-        public DbSet<DeviceType> DeviceTypes { get; set; }
-        public DbSet<MeasuringDevice> MeasuringDevices { get; set; }
+        public DbSet<GammaDevice> GammaDevices { get; set; }
         public DbSet<GammaCalibration> GammaCalibrations { get; set; }
-        public DbSet<PhoGammaInfo> PhoGammaInfos { get; set; }
-        public DbSet<XRFInfo> XRFInfos { get; set; }
+        public DbSet<PhoGammaDevice> PhoGammaDevices { get; set; }
+        public DbSet<XrfDevice> XrfDevices { get; set; }
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<Proposal> Proposals { get; set; }
         public DbSet<Project> Projects { get; set; }
@@ -321,60 +321,32 @@ namespace BusinessObject
                     .HasColumnName("name");
             });
 
-            // DeviceType entity configuration
-            modelBuilder.Entity<DeviceType>(entity =>
-            {
-                entity.HasKey(e => e.Id);
-                entity.Property(e => e.TypeName).HasMaxLength(100).IsRequired();
-            });
+            modelBuilder.Entity<GammaDevice>().HasQueryFilter(d => d.Status == "Active");
+            modelBuilder.Entity<PhoGammaDevice>().HasQueryFilter(d => d.Status == "Active");
+            modelBuilder.Entity<XrfDevice>().HasQueryFilter(d => d.Status == "Active");
+            modelBuilder.Entity<GammaCalibration>().HasQueryFilter(c => c.GammaDevice.Status == "Active");
 
-            // MeasuringDevice entity configuration
-            modelBuilder.Entity<MeasuringDevice>(entity =>
-            {
-                entity.HasKey(e => e.Id);
-                entity.Property(e => e.SerialNumber).IsRequired().HasMaxLength(100);
+            // Seed data
+            modelBuilder.Entity<GammaDevice>().HasData(
+                new GammaDevice { Id = 1, SerialNumber = "GAM-001", Status = "Active" },
+                new GammaDevice { Id = 2, SerialNumber = "GAM-002", Status = "Active" }
+            );
 
-                entity.HasOne(d => d.DeviceType)
-                    .WithMany(dt => dt.MeasuringDevices)
-                    .HasForeignKey(d => d.DeviceTypeId)
-                    .OnDelete(DeleteBehavior.Cascade);
-            });
+            modelBuilder.Entity<GammaCalibration>().HasData(
+                new GammaCalibration { Id = 1, GammaDeviceId = 1, RangeValue = 0.1, Coefficient = 1.5, Status = "Active" },
+                new GammaCalibration { Id = 2, GammaDeviceId = 1, RangeValue = 0.2, Coefficient = 2.5, Status = "Active" },
+                new GammaCalibration { Id = 3, GammaDeviceId = 2, RangeValue = 0.3, Coefficient = 3.5, Status = "Active" }
+            );
 
-            // GammaCalibration entity configuration
-            modelBuilder.Entity<GammaCalibration>(entity =>
-            {
-                entity.HasKey(e => e.Id);
-                entity.Property(e => e.Khoang);
-                entity.Property(e => e.HeSoChuanMay).IsRequired();
+            modelBuilder.Entity<PhoGammaDevice>().HasData(
+                new PhoGammaDevice { Id = 1, SerialNumber = "PHO-001", K = 10.5, U = 12.3, Th = 14.2, Status = "Active" },
+                new PhoGammaDevice { Id = 2, SerialNumber = "PHO-002", K = 11.5, U = 13.3, Th = 15.2, Status = "Active" }
+            );
 
-                entity.HasOne(g => g.MeasuringDevice)
-                    .WithMany(d => d.GammaCalibrations)
-                    .HasForeignKey(g => g.MeasuringDeviceId)
-                    .OnDelete(DeleteBehavior.Cascade);
-            });
-
-            // PhoGammaInfo entity configuration
-            modelBuilder.Entity<PhoGammaInfo>(entity =>
-            {
-                entity.HasKey(e => e.Id);
-
-                entity.HasOne(p => p.MeasuringDevice)
-                    .WithMany(d => d.PhoGammaInfos)
-                    .HasForeignKey(p => p.MeasuringDeviceId)
-                    .OnDelete(DeleteBehavior.Cascade);
-            });
-
-            // XRFInfo entity configuration
-            modelBuilder.Entity<XRFInfo>(entity =>
-            {
-                entity.HasKey(e => e.Id);
-                entity.Property(e => e.Note).HasMaxLength(1000);
-
-                entity.HasOne(x => x.MeasuringDevice)
-                    .WithMany(d => d.XRFInfos)
-                    .HasForeignKey(x => x.MeasuringDeviceId)
-                    .OnDelete(DeleteBehavior.Cascade);
-            });
+            modelBuilder.Entity<XrfDevice>().HasData(
+                new XrfDevice { Id = 1, SerialNumber = "XRF-001", Note = "Initial XRF device", Status = "Active" },
+                new XrfDevice { Id = 2, SerialNumber = "XRF-002", Note = "Backup device", Status = "Active" }
+            );
 
             // Notification entity configuration
             modelBuilder.Entity<Notification>(entity =>
@@ -639,44 +611,6 @@ namespace BusinessObject
                     QuestionText = "What is the first step in radiation safety protocol?",
                     AnswerText = "Wear appropriate protective gear"
                 }
-            );
-
-            // Seed DeviceType data
-            modelBuilder.Entity<DeviceType>().HasData(
-                new DeviceType { Id = 1, TypeName = "Gamma" },
-                new DeviceType { Id = 2, TypeName = "Gamma Spectrum" },
-                new DeviceType { Id = 3, TypeName = "XRF" }
-            );
-
-            // Seed MeasuringDevice data
-            modelBuilder.Entity<MeasuringDevice>().HasData(
-                new MeasuringDevice { Id = 1, SerialNumber = "GAMMA001", DeviceTypeId = 1 },
-                new MeasuringDevice { Id = 2, SerialNumber = "GAMMASPEC001", DeviceTypeId = 2 },
-                new MeasuringDevice { Id = 3, SerialNumber = "XRF001", DeviceTypeId = 3 }
-            );
-
-            // Seed GammaCalibration data
-            modelBuilder.Entity<GammaCalibration>().HasData(
-                new GammaCalibration { Id = 1, Khoang = 50, HeSoChuanMay = 0.98, MeasuringDeviceId = 1 },
-                new GammaCalibration { Id = 2, Khoang = 14, HeSoChuanMay = 1.05, MeasuringDeviceId = 1 }
-            );
-
-            // Seed PhoGammaInfo data
-            modelBuilder.Entity<PhoGammaInfo>().HasData(
-                new PhoGammaInfo { Id = 1, MeasuringDeviceId = 2, K = 12.5, U = 5.2, Th = 3.1 },
-                new PhoGammaInfo { Id = 2, MeasuringDeviceId = 2, K = 14.0, U = 4.9, Th = 3.8 }
-            );
-
-            // Seed XRFInfo data
-            modelBuilder.Entity<XRFInfo>().HasData(
-                new XRFInfo { Id = 1, MeasuringDeviceId = 3, Note = "Thiết bị kiểm tra tại mỏ A" },
-                new XRFInfo { Id = 2, MeasuringDeviceId = 3, Note = "Thiết bị đang hiệu chuẩn" }
-            );
-
-            // Seed Notification data
-            modelBuilder.Entity<Notification>().HasData(
-                new Notification { Id = 1, Content = "Kiểm tra thiết bị đo Gamma", RequiredDate = new DateTime(2025, 8, 1), UserId = 1 },
-                new Notification { Id = 2, Content = "Lập kế hoạch hiệu chuẩn XRF", RequiredDate = new DateTime(2025, 8, 15), UserId = 1 }
             );
         }
     }

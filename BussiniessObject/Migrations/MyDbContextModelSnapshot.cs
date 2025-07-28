@@ -315,15 +315,9 @@ namespace BusiniessObject.Migrations
                         .HasColumnName("user_id");
 
                     b.HasKey("Id");
-
-<<<<<<< HEAD
                     b.ToTable("Notifications", (string)null);
-=======
                     b.HasIndex("UserId");
-
                     b.ToTable("Notifications");
->>>>>>> bb063965eb18aa536877f24cea1b04219b632ccf
-
                     b.HasData(
                         new
                         {

@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.DTOs.response
 {
-    public class DeviceTypeRes
+    public class PhoGammaDeviceResponse
     {
         public int Id { get; set; }
-
-        public string TypeName { get; set; } = null!;
+        public string SerialNumber { get; set; }
+        public double? K { get; set; }
+        public double? U { get; set; }
+        public double? Th { get; set; }
     }
 }

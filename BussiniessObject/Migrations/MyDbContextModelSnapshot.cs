@@ -37,7 +37,7 @@ namespace BusiniessObject.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("DeviceTypes");
+                    b.ToTable("DeviceTypes", (string)null);
 
                     b.HasData(
                         new
@@ -78,7 +78,7 @@ namespace BusiniessObject.Migrations
 
                     b.HasIndex("MeasuringDeviceId");
 
-                    b.ToTable("GammaCalibrations");
+                    b.ToTable("GammaCalibrations", (string)null);
 
                     b.HasData(
                         new
@@ -157,7 +157,7 @@ namespace BusiniessObject.Migrations
                     b.HasIndex("SurveyPointId")
                         .IsUnique();
 
-                    b.ToTable("Hydrologies");
+                    b.ToTable("Hydrologies", (string)null);
 
                     b.HasData(
                         new
@@ -226,7 +226,7 @@ namespace BusiniessObject.Migrations
                     b.HasIndex("SurveyPointId")
                         .IsUnique();
 
-                    b.ToTable("LocationDescriptions");
+                    b.ToTable("LocationDescriptions", (string)null);
 
                     b.HasData(
                         new
@@ -271,7 +271,7 @@ namespace BusiniessObject.Migrations
 
                     b.HasIndex("DeviceTypeId");
 
-                    b.ToTable("MeasuringDevices");
+                    b.ToTable("MeasuringDevices", (string)null);
 
                     b.HasData(
                         new
@@ -315,11 +315,9 @@ namespace BusiniessObject.Migrations
                         .HasColumnName("user_id");
 
                     b.HasKey("Id");
-
+                    b.ToTable("Notifications", (string)null);
                     b.HasIndex("UserId");
-
                     b.ToTable("Notifications");
-
                     b.HasData(
                         new
                         {
@@ -361,7 +359,7 @@ namespace BusiniessObject.Migrations
 
                     b.HasIndex("MeasuringDeviceId");
 
-                    b.ToTable("PhoGammaInfos");
+                    b.ToTable("PhoGammaInfos", (string)null);
 
                     b.HasData(
                         new
@@ -695,7 +693,7 @@ namespace BusiniessObject.Migrations
 
                     b.HasIndex("SurveyLineId");
 
-                    b.ToTable("SurveyPoints");
+                    b.ToTable("SurveyPoints", (string)null);
 
                     b.HasData(
                         new
@@ -787,7 +785,7 @@ namespace BusiniessObject.Migrations
                     b.HasIndex("UserName")
                         .IsUnique();
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
 
                     b.HasData(
                         new
@@ -865,7 +863,7 @@ namespace BusiniessObject.Migrations
                     b.HasIndex("SurveyPointId")
                         .IsUnique();
 
-                    b.ToTable("VegetationCovers");
+                    b.ToTable("VegetationCovers", (string)null);
 
                     b.HasData(
                         new
@@ -914,7 +912,7 @@ namespace BusiniessObject.Migrations
 
                     b.HasIndex("MeasuringDeviceId");
 
-                    b.ToTable("XRFInfos");
+                    b.ToTable("XRFInfos", (string)null);
 
                     b.HasData(
                         new

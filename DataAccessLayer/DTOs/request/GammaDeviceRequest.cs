@@ -7,12 +7,10 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.DTOs.request
 {
-    public class XrfReq
+    public class GammaDeviceRequest
     {
-        [Required]
-        public int MeasuringDeviceId { get; set; }
-
-        [MaxLength(1000)]
-        public string Note { get; set; }
+        public string SerialNumber { get; set; }
+        public List<GammaCalibrationDto> Calibrations { get; set; }
     }
 }
+

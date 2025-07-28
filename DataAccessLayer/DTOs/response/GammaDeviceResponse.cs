@@ -6,16 +6,10 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.DTOs.response
 {
-    public class PhoGammaRes
+    public class GammaDeviceResponse
     {
         public int Id { get; set; }
-
-        public int MeasuringDeviceId { get; set; }
-
-        public double K { get; set; }
-
-        public double U { get; set; }
-
-        public double Th { get; set; }
+        public string SerialNumber { get; set; }
+        public List<GammaCalibrationDto> Calibrations { get; set; }
     }
 }
